@@ -1,0 +1,30 @@
+{
+  "name": "05_backend",
+  "version": "1.0.0",
+  "description": "FlashCard(Flash Mastery) FlashMastery is a versatile flashcard app designed for efficient learning. Create custom flashcard decks, master them with spaced repetition, and share or collaborate with others effortlessly. Perfect for students, and  professionals alike.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MEAN",
+    "Stack",
+    "MongoDB",
+    "Express",
+    "Angular",
+    "and",
+    "NodeJs",
+    "FlashCard",
+    "Rest",
+    "APIs."
+  ],
+  "author": "Ayan Sheikh",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "crypto": "^1.0.1",
+    "express": "^4.18.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.2"
+  }
+}
