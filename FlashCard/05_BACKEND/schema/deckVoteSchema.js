@@ -1,7 +1,7 @@
 const {mongoose} = require('../utils/import')
 
 const deckVoteSchema = new mongoose.Schema({
-    flashcardId: {
+    deckId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Deck',
       required: true

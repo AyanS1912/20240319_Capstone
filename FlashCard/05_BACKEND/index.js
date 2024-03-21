@@ -21,6 +21,7 @@ const deckRoutes = require("./routes/deckRoutes.js")
 const deckVoteRoutes = require("./routes/deckVoteRoutes.js")
 const flashcardRoutes = require("./routes/flashcardRoutes.js")
 const flashcardVoteRoutes = require("./routes/flashcardVoteRoutes.js")
+const searchRoutes = require("./routes/searchRoutes.js")
 
 // Connect to MongoDB asynchronously
 const connectToMongoDB = async () => {
@@ -41,6 +42,7 @@ app.use("/decks", deckRoutes)
 app.use("/decksvote", deckVoteRoutes)
 app.use("/flashcards", flashcardRoutes)
 app.use("/flashcardsvote", flashcardVoteRoutes)
+app.use("/q",searchRoutes)
 
 // Start the server after connecting to MongoDB
 const startServer = async () => {
