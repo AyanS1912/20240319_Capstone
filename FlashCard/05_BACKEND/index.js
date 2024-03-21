@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(cors())
 
 // Define routes
-// const authRoutes = require("./routes/authRoutes.js")
+const authRoutes = require("./routes/authRoutes.js")
 const userRoutes = require("./routes/userRoutes")
 const deckRoutes = require("./routes/deckRoutes.js")
 const deckVoteRoutes = require("./routes/deckVoteRoutes.js")
@@ -35,7 +35,7 @@ const connectToMongoDB = async () => {
 
 
 // Use the routes in your app
-// app.use("/auth", authRoutes)
+app.use("/auth", authRoutes)
 app.use("/users", userRoutes)
 app.use("/decks", deckRoutes)
 app.use("/decksvote", deckVoteRoutes)
