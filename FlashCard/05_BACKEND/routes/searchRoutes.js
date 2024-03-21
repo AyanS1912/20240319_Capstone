@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { search } = require('../controllers/searchControllers')
+const searchController  = require('../controllers/searchControllers')
 
-router.post('/search', search);
+// Router to search
+router.post('/q',searchController)
 
 module.exports = router

@@ -23,6 +23,7 @@ const flashcardRoutes = require("./routes/flashcardRoutes.js")
 const flashcardVoteRoutes = require("./routes/flashcardVoteRoutes.js")
 const searchRoutes = require("./routes/searchRoutes.js")
 
+
 // Connect to MongoDB asynchronously
 const connectToMongoDB = async () => {
   try {
@@ -42,14 +43,19 @@ app.use("/decks", deckRoutes)
 app.use("/decksvote", deckVoteRoutes)
 app.use("/flashcards", flashcardRoutes)
 app.use("/flashcardsvote", flashcardVoteRoutes)
-app.use("/q",searchRoutes)
+app.use("/search",searchRoutes)
 
 // Start the server after connecting to MongoDB
 const startServer = async () => {
-  const port = process.env.PORT
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`)
-  })
+  try {
+    const port = process.env.PORT;
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.error("Error starting the server:", error);
+    // Log the error and do not exit the process
+  }
 }
 
 // Call the asynchronous functions

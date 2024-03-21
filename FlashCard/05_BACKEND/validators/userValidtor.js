@@ -1,40 +1,21 @@
-// validation.js
+// Function to validation User details Field.
 
-/**
- * Function to validate username
- * @param {String} username -  Take username for validation
- * @returns {boolean}
- */
-function isValidUsername(username) {
-    // Regular expression to check if username contains only letters, numbers, underscores, and hyphens
-    const usernameRegex = /^[a-zA-Z0-9_-]{3,20}$/;
-    return usernameRegex.test(username);
-  }
-  
-  /**
-   * Function to validate email
-   * @param {String} email - Take email for validation.
-   * @returns
-   */
-  function isValidEmail(email) {
-    // Regular expression to check if email format is valid
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
-  
-  /**
-   * Function to validate password
-   * @param {password} password - Take password for validation.
-   * @returns
-   */
-  function isValidPassword(password) {
-    // Password must be at least 6 characters long
-    return password.length >= 6;
-  }
-  
-  module.exports = {
-    isValidUsername,
-    isValidEmail,
-    isValidPassword,
-  };
-  
+// Validate username format
+const isValidUsername = (username) => {
+    const usernameRegex = /^[a-zA-Z0-9]{4,20}$/
+    return usernameRegex.test(username)
+}
+
+// Validate email format
+const isValidEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    return emailRegex.test(email)
+}
+
+// Validate password format
+const isValidPassword = (password) => {
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/
+    return passwordRegex.test(password)
+}
+
+module.exports = { isValidUsername, isValidEmail, isValidPassword }
