@@ -91,3 +91,15 @@ body {
 .error-message {
     color: red;
 }
+
+@media (min-width: 768px) {
+    .propertyForm {
+        width: 70%; /* Adjusted width for larger screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .propertyForm {
+        width: 60%; /* Adjusted width for even larger screens */
+    }
+}
