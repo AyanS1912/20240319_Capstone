@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creat & Edit Your Deck</title>
+    <link rel="stylesheet" href="./create_fc.css">
+</head>
+
+<body>
+    <div style="text-align: center; margin-top: 20px">
+        <h2 style="
+          color: #292c44;
+          font-size: 24px;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 8px;
+          word-spacing: 10px;
+          margin-bottom: 5px;
+        ">
+            FlashMastery
+        </h2>
+    </div>
+
+    <main class="mainBody">
+        <!-- LEFT SIDE -->
+        <div class="propertyForm">
+            <h3 style="color: #292c44; font-size: 20px; font-weight: 600; padding: auto">
+                Create your Deck
+            </h3>
+
+            <!-- Input -->
+            <input type="text" class="customInputField" name="name" placeholder="Deck Name" />
+            <input type="text" class="customInputField" name="desc" placeholder="Desk Description" />
+            
+
+            <h3 style="
+            color: #292c44;
+            font-size: 20px;
+            font-weight: 600;
+            padding-top: 10px;
+            padding-bottom: 0px;
+            left : 0px;
+          ">
+                Visibility
+            </h3>
+            <!-- Visibility Dropdown -->
+            <select class="dropdown" name="state" required">
+                <option value="" disabled selected>Select Visibility State</option>
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+            </select>
+            <button class="shadow-button">Create/Update and Save</button>
+        </div>
+
+    </main>
+</body>
+
+</html>
