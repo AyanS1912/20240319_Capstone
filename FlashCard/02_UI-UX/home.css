@@ -9,20 +9,73 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
-.tpn_card img {
+.tpn_card .image-container img {
   border-radius: 23px;
-  min-height: 200px; /* Set maximum height for the image */
+  min-height: 150px; /* Set maximum height for the image */
   object-fit: cover; /* Ensure the image maintains its aspect ratio */
-  min-width: 350px; /* Ensure the image fills its container */
+  min-width: 250px; /* Ensure the image fills its container */
   height: 200px;
   width: 250px;
-
 }
 
 .tpn_card {
-  padding: 10px;
-  margin: 15px;
-  border: solid #181818 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: solid #ccc 1px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative; /* Ensure proper positioning of footer */
+}
+
+.card-content {
+  flex: 1; /* Allow content to expand vertically */
+  display: flex;
+}
+
+.image-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.deck-info {
+  margin-bottom: 10px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.privacy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.privacy-status {
+  /* margin-top: auto; */
+  font-weight: bold;
+}
+
+.footer {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  text-align: right;
+}
+
+.card-count {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .custom-flex-container {
@@ -88,8 +141,8 @@ body {
 }
 
 .wrapper .sidebar ul li:hover {
-    background-color: #fff; /* Change background color to white on hover */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  background-color: #fff; /* Change background color to white on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
 }
 
 .wrapper .sidebar ul li:hover a {
@@ -169,9 +222,9 @@ body {
   margin-bottom: 5px; /* Adjust as needed */
 }
 
-.log_out:hover{
-    background-color: #fff; /* Change background color to white on hover */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+.log_out:hover {
+  background-color: #fff; /* Change background color to white on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
 }
 
 .log_out a:hover {
@@ -263,51 +316,49 @@ body {
   color: black;
 }
 
-
 /* For smaller screen sizes */
 @media (max-width: 768px) {
-    .wrapper {
-      flex-direction: column; /* Change to a column layout on smaller screens */
-    }
-  
-    .wrapper .sidebar {
-      width: 100%; /* Occupy the full width on smaller screens */
-      position: static; /* Remove fixed positioning */
-    }
-  
-    .wrapper .main_content {
-      width: 100%;
-      margin-left: 0; /* Remove left margin on smaller screens */
-    }
-  
-    .header {
-      flex-direction: column; /* Align header content in a column on smaller screens */
-      align-items: center; /* Center align items */
-    }
-  
-    .search-bar {
-      margin: 10px auto; /* Center the search bar */
-    }
-  
-    .search-input {
-      width: 80%; /* Make search input wider */
-    }
-  
-    .user-profile {
-      margin: 10px auto; /* Center the user profile */
-    }
-  
-    .custom-flex-container {
-      justify-content: center; /* Center the card container */
-    }
-  
-    .tpn_card {
-      width: 90%; /* Make cards wider */
-    }
-  
-    .tpn_card img {
-      width: 100%;
-      height: auto; /* Allow image height to adjust proportionally */
-    }
+  .wrapper {
+    flex-direction: column; /* Change to a column layout on smaller screens */
   }
-  
+
+  .wrapper .sidebar {
+    width: 100%; /* Occupy the full width on smaller screens */
+    position: static; /* Remove fixed positioning */
+  }
+
+  .wrapper .main_content {
+    width: 100%;
+    margin-left: 0; /* Remove left margin on smaller screens */
+  }
+
+  .header {
+    flex-direction: column; /* Align header content in a column on smaller screens */
+    align-items: center; /* Center align items */
+  }
+
+  .search-bar {
+    margin: 10px auto; /* Center the search bar */
+  }
+
+  .search-input {
+    width: 80%; /* Make search input wider */
+  }
+
+  .user-profile {
+    margin: 10px auto; /* Center the user profile */
+  }
+
+  .custom-flex-container {
+    justify-content: center; /* Center the card container */
+  }
+
+  .tpn_card {
+    width: 90%; /* Make cards wider */
+  }
+
+  .tpn_card img {
+    width: 100%;
+    height: auto; /* Allow image height to adjust proportionally */
+  }
+}
