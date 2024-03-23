@@ -1,0 +1,345 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  height: 100%;
+  background: #181818;
+  padding: 30px 0px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar ul li a {
+  color: #fff;
+  display: block;
+}
+
+.sidebar ul li:hover {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul li:hover a {
+  color: #000;
+}
+
+.sidebar .log_out {
+  position: absolute;
+  bottom: 2px;
+  left: 4px;
+  width: calc(100%);
+  text-align: left;
+  font-size: 16px;
+}
+
+.sidebar .log_out a {
+  display: block;
+  padding: 5px 0;
+  color: #bdb8d7;
+  margin-left: 8px;
+}
+
+.sidebar .log_out a .material-symbols-outlined {
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.sidebar .log_out:hover {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .log_out a:hover {
+  color: #000;
+}
+
+/* Main Content */
+.main_content {
+  margin-left: 200px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Aligns content horizontally at the center */
+  align-items: center;
+  padding: 10px 20px;
+  padding: 20px;
+  background: #fff;
+  color: #717171;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+.demo_title {
+  margin-right: auto;
+  font-size: xx-large;
+  color: black;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-input {
+  width: 300px;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: #f9f9f9;
+}
+
+.search-btn {
+  padding: 8px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 50%;
+  color: #000;
+  cursor: pointer;
+}
+
+.user-profile {
+  margin-left: auto;
+}
+
+.profile-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  font-size: 35px;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: -80px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+/** Home main Section*/
+
+.home-main {
+  display: flex;
+}
+
+.home-main__split {
+  width: 50%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-main__split--left {
+  justify-content: flex-end;
+  display: flex;
+  min-height: 100vh;
+  width: 50%;
+  flex-direction: column;
+}
+
+.top-left {
+  min-height: 50vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Clip any overflow content */
+}
+
+.top-left::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+  background-image: url("https://i.postimg.cc/7Y5yjX3T/wallpaperflare-com-wallpaper.jpg");
+  background-size: 500px 450px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px; /* Add border radius */
+}
+
+.bottom-left {
+  min-height: 50vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f9f9f9; /* Placeholder color */
+  margin-right: 10px;
+  /* Add any additional styling for the user icon */
+}
+
+.user-info {
+  margin: 20px;
+}
+
+.user-info h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.user-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.bottom-left {
+  min-height: 50vh;
+  width: 100%;
+}
+
+.home-main__split--right {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  background-color: #f0f0f0;
+}
+.home-main__split--right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+    .details-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.detail {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fff;
+  
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.detail-value{
+    margin-left: 10px;
+}
+
+.button-container {
+  display: flex;
+  margin-left: 10px;
+}
+
+.edit-button,
+.delete-button {
+  margin-left: 10px;
+}
+
+/** Media Querys */
+
+@media screen and (min-width: 64em) {
+  .header {
+    justify-content: space-between;
+    padding: 10px 100px;
+  }
+
+  .main-menu {
+    display: flex;
+  }
+
+  .main-menu__link {
+    color: var(--primary-color);
+    font-size: 0.85em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjust sidebar width for smaller screens */
+  .sidebar {
+    width: 160px;
+  }
+
+  /* Adjust margin for main content */
+  .main_content {
+    margin-left: 160px; /* Same as sidebar width */
+  }
+
+  /* Adjust profile circle size for smaller screens */
+  .profile-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+  }
+
+  /* Adjust width of search input for smaller screens */
+  .search-input {
+    width: 200px;
+  }
+
+  /* Adjust padding for header */
+  .header {
+    padding: 10px;
+  }
+
+  /* Adjust font size for demo title */
+  .demo_title {
+    font-size: large;
+  }
+
+  /* Adjust margin for search bar */
+  .search-bar {
+    margin: 10px auto;
+  }
+
+  /* Adjust padding for cards */
+  .flip-card,
+  .flip-card-click {
+    width: calc(50% - 24px); /* Adjust card width for smaller screens */
+    margin: 10px; /* Add margin between cards */
+  }
+}

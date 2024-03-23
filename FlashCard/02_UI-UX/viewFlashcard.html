@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard App - Login </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </link>
+    <link rel="stylesheet" href="./vw_fc.css">
+    </link>
+    <script src="https://kit.fontawesome.com/b268650ca8.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>  
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const flipCards = document.querySelectorAll('.flip-card-click');
+
+            flipCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('flipped');
+                });
+            });
+        });
+    </script>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="#"><i class="fa-solid fa-tachograph-digital"></i> View Decks</a></li>
+                <li><a href="#"><i class="fa-regular fa-square-plus"></i> Create Deck</a></li>
+                <li><a href="#"><i class="fa-solid fa-tachograph-digital"></i> View FlashCard</a></li>
+                <li><a href="#"><i class="fa-regular fa-square-plus"></i> Create FlashCard</a></li>
+
+            </ul>
+            <div class="log_out">
+
+                <hr class="sidebar-hr"> <!-- Horizontal line -->
+                <a href="#">
+                    <span class="material-symbols-outlined">
+                        move_item
+                    </span> Sign Out
+                </a>
+
+            </div>
+        </div>
+        <div class="main_content">
+            <div class="header">
+                <div class="demo_title">
+                    <h6>FlashCards</h6>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-profile">
+                    <div class="profile-circle">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-dropdown">
+                        <a href="#">Show my profile</a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="info">
+                <div id="card-container2">
+                    <div class="flip-card-click">
+                        <div class="flip-card-inner" tab-index="0">
+                            <div class="flip-card-front">
+                                <h2>Card 1 Front</h2>
+                                <div class="card-actions">
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>Card 1 Back</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="flip-card-click">
+                        <div class="flip-card-inner" tab-index="0">
+                            <div class="flip-card-front">
+                                <h2>Card 1 Front</h2>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>Card 1 Back</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card-click">
+                        <div class="flip-card-inner" tab-index="0">
+                            <div class="flip-card-front">
+                                <h2>Card 1 Front</h2>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>Card 1 Back</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="flip-card-click">
+                        <div class="flip-card-inner" tab-index="0">
+                            <div class="flip-card-front">
+                                <h2>Card 1 Front</h2>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>Card 1 Back</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="flip-card-click">
+                        <div class="flip-card-inner" tab-index="0">
+                            <div class="flip-card-front">
+                                <h2>Card 1 Front</h2>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>Card 1 Back</p>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                </div>
+</body>
+
+</html>
