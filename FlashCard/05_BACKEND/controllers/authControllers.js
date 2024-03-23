@@ -4,12 +4,13 @@
  */
 
 // internal imports
-const { User } = require("../schema/userSchema")
+const schema = require('../schema')
+const { User }  = schema.User
 const jwt  = require("jsonwebtoken")
 const { verifyPassword } = require("../utils/authUtil")
 const { hashPassword } = require("../utils/authUtil")
-const { token_provided, verifyToken } = require("../validators/tokenValidator")
-const { isValidUsername, isValidEmail, isValidPassword } = require("../validators/userValidtor");
+const validator = require('../validators')
+const { isValidUsername, isValidEmail, isValidPassword } = validator.userValidator
 
 /**
  * Registers a new user with the provided username, email, and password.

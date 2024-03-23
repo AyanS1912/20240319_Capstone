@@ -2,11 +2,15 @@
  * Controller functions for searching.
  * @module flashcardVoteControllers
  */
-const { Deck } = require('../schema/deckSchema')
-const { Flashcard } = require('../schema/flashcardSchema')
-const { FlashcardVote } = require('../schema/flashcardVoteSchema')
-const { DeckVote } = require('../schema/deckVoteSchema')
-const { token_provided, verifyToken } = require('../validators/tokenValidator')
+
+// internal imports
+const schema = require('../schema')
+const { Deck } = schema.Deck
+const { Flashcard } = schema.Flashcard
+const { FlashcardVote } = schema.FlashcardVote
+const { DeckVote } = schema.DeckVote
+const validator = require('../validators')
+const { token_provided, verifyToken } = validator.tokenValidator
 
 
 /**

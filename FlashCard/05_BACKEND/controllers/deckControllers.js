@@ -3,9 +3,12 @@
  * @module deckControllers
  */
 
+// internal imports
+const schema = require('../schema')
+const { Deck } = schema.Deck
+const validator = require('../validators')
+const { token_provided, verifyToken } = validator.tokenValidator
 
-const { Deck } = require("../schema/deckSchema")
-const { token_provided, verifyToken } = require("../validators/tokenValidator")
 
 /**
  * Retrieves all decks owned by the token owner and public decks.

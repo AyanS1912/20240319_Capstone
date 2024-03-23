@@ -4,7 +4,8 @@
  */
 const { User } = require("../schema/userSchema")
 const { hashPassword } = require("../utils/authUtil")
-const { token_provided, verifyToken } = require("../validators/tokenValidator")
+const validator = require('../validators')
+const { token_provided, verifyToken } = validator.tokenValidator
 
 
 /**

@@ -2,8 +2,12 @@
  * Controller functions for managing flashcards.
  * @module flashcardVoteControllers
  */
-const { FlashcardVote } = require('../schema/flashcardVoteSchema')
-const { token_provided, verifyToken } = require('../validators/tokenValidator')
+
+// internal imports
+const schema = require('../schema')
+const { FlashcardVote } = schema.FlashcardVote
+const validator = require('../validators')
+const { token_provided, verifyToken } = validator.tokenValidator
 
 /**
  * Upvotes a flashcard.

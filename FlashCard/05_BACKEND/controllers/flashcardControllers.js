@@ -3,8 +3,11 @@
  * @module flashcardControllers
  */
 
-const { Flashcard } = require("../schema/flashcardSchema")
-const { token_provided, verifyToken } = require("../validators/tokenValidator")
+// internal imports
+const schema = require('../schema')
+const { Flashcard } = schema.Flashcard
+const validator = require('../validators')
+const { token_provided, verifyToken } = validator.tokenValidator
 
 /**
  * Retrieves all flashcards owned by the token owner and public flashcards.

@@ -14,6 +14,7 @@ const isValidEmail = (email) => {
 
 // Validate password format
 const isValidPassword = (password) => {
+    console.log(password)
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/
     return passwordRegex.test(password)
 }

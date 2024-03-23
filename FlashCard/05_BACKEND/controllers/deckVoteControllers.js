@@ -3,8 +3,9 @@
  * @module deckVoteControllers
  */
 
-
-const { DeckVote } = require('../schema/deckVoteSchema')
+// internal imports
+const schema = require('../schema')
+const { DeckVote } = schema.DeckVote
 const { token_provided, verifyToken } = require('../validators/tokenValidator')
 
 /**
