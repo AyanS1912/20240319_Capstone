@@ -6,7 +6,8 @@ const deckSchema = mongoose.Schema({
     required: true,
     minlength: 3,
     maxlength: 50,
-    unique: true
+    unique: true,
+    match: /^[a-zA-Z]+(?: [a-zA-Z]+)*$/,
   },
   description: {
     type: String,
@@ -17,7 +18,8 @@ const deckSchema = mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
+    match: /^[a-zA-Z0-9 ]*$/,
   },
   createdAt: {
     type: Date,

@@ -97,6 +97,25 @@ const postFlashcard = async (req, res) => {
         const deckId = req.params.deckid
         // Extract flashcard information from request body
         const { frontText, backText, tags, visibility } = req.body
+
+        // Validate front text
+        if (!validateFrontText(frontText)) {
+            return res.status(400).json({ error: "Invalid front text format. Front text can be alphanumeric or in HTML format." });
+        }
+
+        // Validate back text
+        if (!validateBackText(backText)) {
+            return res.status(400).json({ error: "Invalid back text format. Back text can be alphanumeric or in HTML format." });
+        }
+
+        if (!validateTags(tags)) {
+            return res.status(400).json({ error: "Invalid tags format. Tags should be alphanumeric strings." });
+        }
+
+        if (!validateVisibility(visibility)) {
+            return res.status(400).json({ error: "Invalid visibility value. Visibility should be 'private' or 'public'." });
+        }
+
         // Verify token and extract user ID
         const token = req.headers.authorization
         if (!token_provided(token)) {
@@ -146,6 +165,25 @@ const postFlashcard = async (req, res) => {
  */
 const updateFlashcard = async (req, res) => {
     try {
+
+        const { frontText, backText, visibility } = req.body
+
+        // Validate front text
+        if (!validateFrontText(frontText)) {
+            return res.status(400).json({ error: "Invalid front text format. Front text must be between 3 and 200 characters long and can contain any format of HTML tags and alphanumeric characters." });
+        }
+
+        // Validate back text
+        if (!validateBackText(backText)) {
+            return res.status(400).json({ error: "Invalid back text format. Back text must be between 3 and 500 characters long and can contain any format of HTML tags and alphanumeric characters." });
+        }
+
+        // Validate visibility
+        if (!validateVisibility(visibility)) {
+            return res.status(400).json({ error: "Invalid visibility value. Visibility should be 'private' or 'public'." });
+        }
+
+
         // Verify token and extract user ID
         const token = req.headers.authorization
         if (!token_provided(token)) {

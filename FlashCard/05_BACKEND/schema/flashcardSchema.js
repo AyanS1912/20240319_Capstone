@@ -22,7 +22,7 @@ const flashcardSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 3,
-        maxlength: 200
+        maxlength: 500
     },
     tags: [{
         type: String,

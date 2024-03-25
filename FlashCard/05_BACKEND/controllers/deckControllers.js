@@ -8,6 +8,7 @@ const schema = require('../schema')
 const { Deck } = schema.Deck
 const validator = require('../validators')
 const { token_provided, verifyToken } = validator.tokenValidator
+const { validateName, validateDescription , validateVisibility} = validator.deckValidator
 
 
 /**
@@ -91,6 +92,22 @@ const postDeck = async (req, res) => {
     try {
         // Extract deck information from request body
         const { name, description, visibility } = req.body
+
+        // Validate name
+        if (!validateName(name)) {
+            return res.status(400).send({ error: "Invalid name format. Name should contain only alphabets with one space between words." });
+        }
+
+        // Validate description
+        if (!validateDescription(description)) {
+            return res.status(400).send({ error: "Invalid description format. Description should contain only alphanumeric characters." });
+        }
+
+        // Validate visibility
+        if (!validateVisibility(visibility)) {
+            return res.status(400).send({ error: "Invalid visibility value. Visibility should be either 'private' or 'public'." });
+        }
+
         // Verify token and extract user ID
         const deckExist = await Deck.findOne({ name: name })
         if (deckExist) {
@@ -137,6 +154,24 @@ const postDeck = async (req, res) => {
  */
 const updateDeck = async (req, res) => {
     try {
+
+        const { name, description, visibility } = req.body;
+
+        // Validate name
+        if (name && !validateName(name)) {
+            return res.status(400).send({ error: "Invalid name format. Name should contain only alphabets with one space between words." });
+        }
+
+        // Validate description
+        if (description && !validateDescription(description)) {
+            return res.status(400).send({ error: "Invalid description format. Description should contain only alphanumeric characters." });
+        }
+
+        // Validate visibility
+        if (visibility && !validateVisibility(visibility)) {
+            return res.status(400).send({ error: "Invalid visibility value. Visibility should be either 'private' or 'public'." });
+        }
+
         // Verify token and extract user ID
         const token = req.headers.authorization
         if (!token_provided(token)) {
