@@ -20,24 +20,33 @@
 }
 
 .top-left {
-  min-height: 20vh;
+  max-height: 20vh;
   width: 100%;
   position: relative;
   margin-bottom: auto;
   overflow: hidden; /* Clip any overflow content */
+  display: flex;
+}
+
+.button-container {
+  display: flex;
+  margin-left: 10px;
+  height : 5vh
+  
 }
 
 .top-left::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 20vh;
+  max-height: 20vh;
   margin-top: 10px;
   /* background-image: url("https://i.postimg.cc/7Y5yjX3T/wallpaperflare-com-wallpaper.jpg"); */
   background-size: 500px 450px;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px; /* Add border radius */
+  display: flex;
 }
 
 .bottom-left {
@@ -118,10 +127,7 @@
   margin-left: 10px;
 }
 
-.button-container {
-  display: flex;
-  margin-left: 10px;
-}
+
 
 .edit-button,
 .delete-button {

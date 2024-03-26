@@ -24,6 +24,9 @@
   border-radius: 10px;
   margin-bottom: 20px;
   position: relative;
+  min-height: 300px;
+  min-width: 500px;
+  max-width: 500px;
 }
 
 .card-content {

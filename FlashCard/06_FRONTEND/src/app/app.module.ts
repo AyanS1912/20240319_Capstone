@@ -17,7 +17,8 @@ import { ViewDecksComponent } from './components/view-decks/view-decks.component
 import { CreateFlashcardComponent } from './components/create-flashcard/create-flashcard.component';
 import { CreateDecksComponent } from './components/create-decks/create-decks.component';
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { MyprofileComponent } from './components/myprofile/myprofile.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()

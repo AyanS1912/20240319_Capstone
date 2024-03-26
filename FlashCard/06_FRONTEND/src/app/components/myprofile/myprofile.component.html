@@ -6,15 +6,17 @@
                     <div class="user-icon">
                     </div>
                     <div class="user-info">
-                        <h2>User Name</h2>
-                        <p>Email Address</p>
+                        <h2>{{userDetails.username}}</h2>
+                        <p>{{userDetails.email}}</p>
                     </div>
-                    <div class="button-container">
-                        <button class="edit-button"><i class="material-icons">edit</i></button>
-                        <button class="delete-button"><i class="material-icons">delete</i></button>
-                    </div>
+                    
                 </div>
             </div>
+            <div class="button-container" >
+                <button class="edit-button"><i class="material-icons" >edit</i></button>
+                <button class="delete-button" (click)="confirmDelete(userDetails._id)"><i class="material-icons" >delete</i></button>
+            </div>
+            
             <div class="bottom-left">
 
             </div>

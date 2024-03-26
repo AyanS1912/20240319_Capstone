@@ -18,6 +18,7 @@ const { token_provided, verifyToken } = validator.tokenValidator
 const getUser = async (req, res) => {
   try {
     const token = req.headers.authorization
+    // console.log("yo",token)
 
     if (!token_provided(token)) {
       return res
@@ -26,7 +27,7 @@ const getUser = async (req, res) => {
     }
 
     const decodedToken = await verifyToken(token)
-    console.log(decodedToken)
+    // console.log(decodedToken)
     if (!decodedToken) {
       return res
         .status(403)
@@ -39,7 +40,7 @@ const getUser = async (req, res) => {
       return res.status(404).send({ error: "User not Found." })
     }
 
-
+    // console.log(userExist)
     return res.status(200).send(userExist)
   }
   catch (error) {

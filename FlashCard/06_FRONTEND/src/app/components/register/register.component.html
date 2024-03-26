@@ -1,22 +1,49 @@
 <div class="bg-img">
     <div class="content">
         <header>Sign Up</header>
-        <form action="#">
+        <form [formGroup]="registerForm" (submit)="onSubmit()">
             <div class="field">
                 <span class="fa fa-user"></span>
-                <input type="text" required placeholder="Username">
+                <input type="text" formControlName="username" required placeholder="Username"
+                    (blur)="onBlur('userName')" (focus)="onFocus('userName')">
+            </div>
+            <div *ngIf="!usernameInputFocused && registerForm.controls.username.touched" class="error-message">
+                <div *ngIf="registerForm.controls.username.errors?.['required']">Username is required</div>
+                <div *ngIf="registerForm.controls.username.errors?.['pattern']">Username should contain only letters
+                    and numbers</div>
+                <div *ngIf="registerForm.controls.username.errors?.['minlength']">Username should be at least 4
+                    characters long</div>
+                <div *ngIf="registerForm.controls.username.errors?.['maxlength']">Username cannot be longer than 20
+                    characters</div>
             </div>
             <div class="field space">
                 <span class="fa fa-envelope"></span>
-                <input type="email" class="" required placeholder="Email">
+                <input type="email" formControlName="email" required placeholder="Email" (blur)="onBlur('email')"
+                    (focus)="onFocus('email')">
             </div>
+
+            <div *ngIf="!emailInputFocused && registerForm.controls.email.touched" class=" error-message">
+                <div *ngIf="registerForm.controls.email.errors?.['required']">Email is required.</div>
+                <div *ngIf="registerForm.controls.email.errors?.['pattern']">Domain not provided.</div>
+                <div *ngIf="registerForm.controls.email.errors?.['email']">Email is not valid.</div>
+            </div>
+
             <div class="field space">
                 <span class="fa fa-lock"></span>
-                <input type="password" class="pass-key" required placeholder="Password">
+                <input type="password" formControlName="password" required placeholder="Password"
+                    (blur)="onBlur('password')" (focus)="onFocus('password')">
+
+            </div>
+            <div *ngIf="!passwordInputFocused && registerForm.controls.password.touched" class="error-message">
+                <!-- <div *ngIf="registerForm.controls.password">Password is required.</div> -->
+                <div *ngIf="registerForm.controls.password?.errors?.['minlength']">Password must be at least 6
+                    characters long.</div>
+                <div *ngIf="registerForm.controls.password.errors?.['pattern']">Password should contain at least one
+                    uppercae, lowercase, number and symbol  </div>
             </div>
             <br>
             <div class="field">
-                <input type="submit" value="Register">
+                <input type="submit" value="Register" [disabled]="registerForm.invalid">
             </div>
         </form>
         <div class="signup"><br>Already a User?

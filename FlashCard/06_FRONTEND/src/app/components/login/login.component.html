@@ -1,22 +1,39 @@
 <div class="bg-img">
-    <div class="content">
-      <header>Login</header>
-      <form action="#">
-        <div class="field">
-          <span class="fa fa-user"></span>
-          <input type="text" required placeholder="Username">
-        </div>
-        <div class="field space">
-          <span class="fa fa-lock"></span>
-          <input type="password" class="pass-key" required placeholder="Password">
-        </div>
-        <br>
-        <div class="field">
-          <input type="submit" value="Log In">
-        </div>
-      </form>
-      <div class="signup"><br>Don't have account?
-        <a routerLink="/register">Register Now</a>
+  <div class="content">
+    <header>Login</header>
+    <form [formGroup]="loginform" (submit)="onSubmit()">
+      <div class="field">
+        <span class="fa fa-user"></span>
+        <input type="text" formControlName="username" required placeholder="Username" (blur)="onBlur('userName')"
+          (focus)="onFocus('userName')">
       </div>
+      <div *ngIf="!usernameInputFocused && loginform.controls.username.touched" class="error-message">
+        <div *ngIf="loginform.controls.username.errors?.['required']">Username is required</div>
+        <div *ngIf="loginform.controls.username.errors?.['pattern']">Username should contain only letters
+          and numbers</div>
+        <div *ngIf="loginform.controls.username.errors?.['minlength']">Username should be at least 4
+          characters long</div>
+        <div *ngIf="loginform.controls.username.errors?.['maxlength']">Username cannot be longer than 20
+          characters</div>
+      </div>
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        <input type="password" formControlName="password" required placeholder="Password" (blur)="onBlur('password')"
+          (focus)="onFocus('password')">
+
+      </div>
+      <div *ngIf="!passwordInputFocused && loginform.controls.password.touched" class="error-message">
+        <div *ngIf="loginform.controls.password.errors?.['required']">Password is required.</div>
+        <div *ngIf="loginform.controls.password?.errors?.['minlength']">Password must be at least 6
+          characters long.</div>
+      </div>
+      <br>
+      <div class="field">
+        <input type="submit" value="Log In">
+      </div>
+    </form>
+    <div class="signup"><br>Don't have account?
+      <a routerLink="/register">Register Now</a>
     </div>
   </div>
+</div>

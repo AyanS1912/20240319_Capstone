@@ -1,7 +1,7 @@
 <div class="info">
-    <div class="custom-flex-container">
+    <div class="custom-flex-container" >
 
-        <div class="tpn_card">
+        <div class="tpn_card" *ngFor="let deck of decks">  
             <div class="card-content">
                 <div class="image-container">
                     <img src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
@@ -9,11 +9,11 @@
                 </div>
                 <div class="details">
                     <div class="deck-info">
-                        <h5>Deck Name : Dragon Art</h5>
-                        <p>Description : Enjoy this clean styling.</p>
+                        <p>Deck Name : {{deck.name}}</p>
+                        <p>Description : {{deck.description}}</p>
                     </div>
                     <div class="privacy">
-                        <span class="privacy-status">Public</span>
+                        <span class="privacy-status">{{deck.visibility}}</span>
                     </div>
                 </div>
             </div>
@@ -21,113 +21,6 @@
                 <span class="card-count">Cards</span>
             </div>
         </div>
-        <div class="tpn_card">
-            <div class="card-content">
-                <div class="image-container">
-                    <img src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
-                        class="w-100 mb-4" />
-                </div>
-                <div class="details">
-                    <div class="deck-info">
-                        <h5>Deck Name : Dragon Art</h5>
-                        <p>Description : Enjoy this clean styling.</p>
-                    </div>
-                    <div class="privacy">
-                        <span class="privacy-status">Public</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer">
-                <span class="card-count">Cards</span>
-            </div>
-        </div>
-
-        <div class="tpn_card">
-            <div class="card-content">
-                <div class="image-container">
-                    <img src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
-                        class="w-100 mb-4" />
-                </div>
-                <div class="details">
-                    <div class="deck-info">
-                        <h5>Deck Name : Dragon Art</h5>
-                        <p>Description : Enjoy this clean styling.</p>
-                    </div>
-                    <div class="privacy">
-                        <span class="privacy-status">Public</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer">
-                <span class="card-count">Cards</span>
-            </div>
-        </div>
-
-        <div class="tpn_card">
-            <div class="card-content">
-                <div class="image-container">
-                    <img src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
-                        class="w-100 mb-4" />
-                </div>
-                <div class="details">
-                    <div class="deck-info">
-                        <h5>Deck Name : Dragon Art</h5>
-                        <p>Description : Enjoy this clean styling.</p>
-                    </div>
-                    <div class="privacy">
-                        <span class="privacy-status">Public</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer">
-                <span class="card-count">Cards</span>
-            </div>
-        </div>
-
-        <div class="tpn_card">
-            <div class="card-content">
-                <div class="image-container">
-                    <img src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
-                        class="w-100 mb-4" />
-                </div>
-                <div class="details">
-                    <div class="deck-info">
-                        <h5>Deck Name : Dragon Art</h5>
-                        <p>Description : Enjoy this clean styling.</p>
-                    </div>
-                    <div class="privacy">
-                        <span class="privacy-status">Public</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer">
-                <span class="card-count">Cards</span>
-            </div>
-        </div>
-
-        <div class="tpn_card">
-            <div class="card-content">
-                <div class="image-container">
-                    <img src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
-                        class="w-100 mb-4" />
-                </div>
-                <div class="details">
-                    <div class="deck-info">
-                        <h5>Deck Name : Dragon Art</h5>
-                        <p>Description : Enjoy this clean styling.</p>
-                    </div>
-                    <div class="privacy">
-                        <span class="privacy-status">Public</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer">
-                <span class="card-count">Cards</span>
-            </div>
-        </div>
-
-
-
 
     </div>
 </div>
