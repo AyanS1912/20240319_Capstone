@@ -1,7 +1,7 @@
 <div class="wrapper">
     <app-sidebar (buttonClicked)="onButtonClicked($event)"></app-sidebar>
     <div class="main_content">
-        <app-navbar></app-navbar>
+        <app-navbar (profileClicked)="openMyProfile($event)"></app-navbar>
         <div class="info">
             <ng-container *ngIf="selectedComponent === 'deck-card'">
                 <app-deck-card></app-deck-card>
@@ -20,6 +20,9 @@
             </ng-container>
             <ng-container *ngIf="selectedComponent === 'deck-card'">
                 <app-deck-card></app-deck-card>
+            </ng-container>
+            <ng-container *ngIf="isProfileOpen">
+                <app-myprofile></app-myprofile>
             </ng-container>
         </div>
     </div>

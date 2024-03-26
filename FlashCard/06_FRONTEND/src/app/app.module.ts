@@ -16,6 +16,7 @@ import { ViewFlashcardsComponent } from './components/view-flashcards/view-flash
 import { ViewDecksComponent } from './components/view-decks/view-decks.component';
 import { CreateFlashcardComponent } from './components/create-flashcard/create-flashcard.component';
 import { CreateDecksComponent } from './components/create-decks/create-decks.component';
+import { MyprofileComponent } from './components/myprofile/myprofile.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { CreateDecksComponent } from './components/create-decks/create-decks.com
     ViewDecksComponent,
     CreateFlashcardComponent,
     CreateDecksComponent,
+    MyprofileComponent,
   ],
   imports: [
     BrowserModule,

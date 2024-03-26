@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  @Output() profileClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  openProfile() : void{
+    this.profileClicked.emit(true);
+    console.log("Clicked");    
+  }
 }

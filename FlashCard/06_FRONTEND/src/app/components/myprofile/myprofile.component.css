@@ -1,0 +1,197 @@
+/** Home main Section*/
+
+.home-main {
+  display: flex;
+}
+
+.home-main__split {
+  width: 50%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-main__split--left {
+  justify-content: flex-end;
+  display: flex;
+  min-height: 100vh;
+  width: 50%;
+  flex-direction: column;
+}
+
+.top-left {
+  min-height: 20vh;
+  width: 100%;
+  position: relative;
+  margin-bottom: auto;
+  overflow: hidden; /* Clip any overflow content */
+}
+
+.top-left::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20vh;
+  margin-top: 10px;
+  /* background-image: url("https://i.postimg.cc/7Y5yjX3T/wallpaperflare-com-wallpaper.jpg"); */
+  background-size: 500px 450px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px; /* Add border radius */
+}
+
+.bottom-left {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f9f9f9; /* Placeholder color */
+  margin-right: 10px;
+  /* Add any additional styling for the user icon */
+}
+
+.user-info {
+  margin: 20px;
+}
+
+.user-info h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.user-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.bottom-left {
+  min-height: 50vh;
+  width: 100%;
+}
+
+.home-main__split--right {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  background-color: #f0f0f0;
+}
+.home-main__split--right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.detail {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.detail-value {
+  margin-left: 10px;
+}
+
+.button-container {
+  display: flex;
+  margin-left: 10px;
+}
+
+.edit-button,
+.delete-button {
+  margin-top: 5px;
+  margin-left: 10px;
+  background: none; /* Remove button background */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/** Media Querys */
+
+@media screen and (min-width: 64em) {
+  .header {
+    justify-content: space-between;
+    padding: 10px 100px;
+  }
+
+  .main-menu {
+    display: flex;
+  }
+
+  .main-menu__link {
+    color: var(--primary-color);
+    font-size: 0.85em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjust sidebar width for smaller screens */
+  .sidebar {
+    width: 160px;
+  }
+
+  /* Adjust margin for main content */
+  .main_content {
+    margin-left: 160px; /* Same as sidebar width */
+  }
+
+  /* Adjust profile circle size for smaller screens */
+  .profile-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+  }
+
+  /* Adjust width of search input for smaller screens */
+  .search-input {
+    width: 200px;
+  }
+
+  /* Adjust padding for header */
+  .header {
+    padding: 10px;
+  }
+
+  /* Adjust font size for demo title */
+  .demo_title {
+    font-size: large;
+  }
+
+  /* Adjust margin for search bar */
+  .search-bar {
+    margin: 10px auto;
+  }
+
+  /* Adjust padding for cards */
+  .flip-card,
+  .flip-card-click {
+    width: calc(50% - 24px); /* Adjust card width for smaller screens */
+    margin: 10px; /* Add margin between cards */
+  }
+}
