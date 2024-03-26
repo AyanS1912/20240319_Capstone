@@ -84,9 +84,10 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 20px;
+  gap: 10px;
   margin-top: 5rem;
 }
+
 
 @media (min-width: 768px) {
   .custom-flex-container {
