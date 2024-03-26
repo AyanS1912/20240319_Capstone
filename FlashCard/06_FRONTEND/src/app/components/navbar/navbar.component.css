@@ -1,115 +1,106 @@
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; /* Aligns content horizontally at the center */
-  align-items: center;
-  padding: 10px 20px;
-  color: #717171;
-  background: #fff;
-  border-bottom: 1px solid #e0e4e8;
-  height: 90.8px;
-}
-
-.demo_title {
-  flex: 1;
-  margin-right: auto; /* Push "Home" text to the left */
-  font-size: xx-large;
-  color: black;
-}
-
-.nav-title {
-  font-size: 2rem; /* Set initial font size */
-  color: black;
-}
-
-.search-bar {
-  flex: 2;
-  display: flex;
-  justify-content: center;
-  margin-left: auto; /* Push search bar to the right */
-  margin-right: auto; /* Push search bar to the left */
-}
-
-.search-input {
-  width: 100%;
-  max-width: 300px;
-  padding: 8px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  background-color: #f9f9f9;
-}
-
-.search-btn {
-  padding: 8px;
-  margin-left: 10px;
-  border: none;
-  border-radius: 50%;
-  color: #000;
-  cursor: pointer;
-}
-
-.user-profile {
-  flex: 1; /* Take up available space */
-  display: flex;
-  justify-content: flex-end; /* Align items to the right */
-  align-items: center;
-}
-profile-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative; /* Added position relative */
-  font-size: 35px;
-}
-
-.profile-dropdown {
-  position: absolute;
-  top: 50px;
-  right: -80px; /* Adjust as needed */
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  display: none;
-}
-
-/* Adjust the hover behavior */
-.profile-circle:hover .profile-dropdown {
-  display: block;
-}
-
-/* Adjust the dropdown link style */
-.profile-dropdown a {
-  display: block;
-  padding: 10px;
-  color: #000;
-  text-decoration: none;
-}
-
-/* Adjust the hover effect */
-.profile-dropdown a:hover {
-  background-color: #f3f3f3;
-}
-
-/* For smaller screen sizes */
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Aligns content horizontally at the center */
+    align-items: center;
+    padding: 10px 20px;
+    /* background-color: #181818; */
+    color: #fff;
+  }
+  
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    margin-left: auto; /* Push search bar to the right */
+    margin-right: auto; /* Push search bar to the left */
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #f9f9f9;
+  }
+  
+  .search-btn {
+    padding: 8px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 50%;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .user-profile {
+    margin-left: auto;
+  }
+  
+  .profile-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative; /* Added position relative */
+    font-size: 35px
+  }
+  
+  .profile-dropdown {
+    position: absolute;
+    top: 50px;
+    right: -80px; /* Adjust as needed */
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  
+  /* Adjust the hover behavior */
+  .profile-circle:hover .profile-dropdown {
+    display: block;
+  }
+  
+  /* Adjust the dropdown link style */
+  .profile-dropdown a {
+    display: block;
+    padding: 10px;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  /* Adjust the hover effect */
+  .profile-dropdown a:hover {
+    background-color: #f3f3f3;
+  }
+  
+  .demo_title {
+    margin-right: auto; /* Push "Home" text to the left */
+    font-size: xx-large;
+    color: black;
+  }
+  
+  /* For smaller screen sizes */
 @media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column; /* Change to a column layout on smaller screens */
+  }
+  .wrapper .main_content {
+    width: 100%;
+    margin-left: 0; /* Remove left margin on smaller screens */
+  }
+
   .header {
     flex-direction: column; /* Align header content in a column on smaller screens */
     align-items: center; /* Center align items */
   }
 
-  .nav-title {
-    font-size: 0.5rem; /* Adjust font size for smaller screens */
-  }
-
   .search-bar {
-    flex: 1; /* Take up full width */
-    margin: 10px 0; /* Add margin for spacing */
+    margin: 10px auto; /* Center the search bar */
   }
 
   .search-input {
@@ -117,12 +108,7 @@ profile-circle {
   }
 
   .user-profile {
-    flex: 1; /* Take up full width */
-    margin: 10px 0; /* Add margin for spacing */
+    margin: 10px auto; /* Center the user profile */
   }
 
-  .profile-dropdown {
-    top: 70px; /* Adjust position of dropdown */
-    right: 0; /* Align dropdown with profile icon */
-  }
 }

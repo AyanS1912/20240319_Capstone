@@ -1,0 +1,114 @@
+.sidebar {
+  /* width: 200px;
+   */
+   flex: 0 0 200px; /* Add this line */
+  height: 100%;
+  background: #181818;
+  padding: 30px 0px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar ul li a {
+  color: #bdb8d7;
+  display: block;
+}
+
+.sidebar ul li a .fas {
+  width: 25px;
+}
+
+.sidebar ul li:hover {
+  background-color: #fff; /* Change background color to white on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.sidebar ul li:hover a {
+  color: #000;
+}
+
+.sidebar .sign_out {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.sidebar .sign_out a {
+  display: block;
+  width: 40px;
+  background: #594f8d;
+  height: 40px;
+  line-height: 45px;
+  text-align: center;
+  margin: 0 5px;
+  color: #bdb8d7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.sidebar-hr {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #bdb8d7; /* Color of the horizontal line */
+  margin-bottom: 3px;
+}
+
+.log_out {
+  position: absolute;
+  bottom: 2px;
+  left: 4px;
+  width: calc(100%);
+  text-align: left; /* Align the text to the left */
+  font-size: 16px;
+}
+
+.log_out a {
+  display: block;
+  padding: 5px 0;
+  color: #bdb8d7;
+  margin-left: 8px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.log_out a .material-symbols-outlined {
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-bottom: 5px; /* Adjust as needed */
+}
+
+.log_out:hover {
+  background-color: #fff; /* Change background color to white on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.log_out a:hover {
+  color: #000;
+}
+
+/* For smaller screen sizes */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column; 
+  }
+
+  .wrapper .sidebar {
+    width: 100%;
+    position: static; 
+  }
+
+}
