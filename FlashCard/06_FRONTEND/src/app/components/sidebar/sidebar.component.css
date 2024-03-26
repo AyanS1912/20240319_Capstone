@@ -22,12 +22,18 @@
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.sidebar ul li a {
+.sidebar ul li button {
+  padding: 15px;
+  border: none;
+  background: none;
   color: #bdb8d7;
   display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
 
-.sidebar ul li a .fas {
+.sidebar ul li button i {
   width: 25px;
 }
 
@@ -36,8 +42,9 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
 }
 
-.sidebar ul li:hover a {
+.sidebar ul li button:hover {
   color: #000;
+  background-color: #fff;
 }
 
 .sidebar .sign_out {

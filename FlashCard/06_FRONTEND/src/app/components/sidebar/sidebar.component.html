@@ -1,13 +1,11 @@
 <div class="sidebar">
     <h2>Sidebar</h2>
     <ul>
-        <li><a href="#"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-                Home</a></li>
-        <li><a href="#"><i class="material-icons">view_compact_alt</i> View Decks</a></li>
-        <li><a href="#"><i class="material-icons">add_box</i> Create Deck</a></li>
-        <li><a href="#"><i class="material-icons">view_list</i> View FlashCard</a></li>
-        <li><a href="#"><i class="material-icons">add_box</i> Create FlashCard</a></li>
-
+        <li><button (click)="handleClick('deck-card')"><i class="material-icons">home</i> Home</button></li>
+        <li><button (click)="handleClick('view-decks')"><i class="material-icons">view_compact_alt</i> View My Decks</button></li>
+        <li><button (click)="handleClick('create-deck')"><i class="material-icons">add_box</i> Create Deck</button></li>
+        <li><button (click)="handleClick('view-flashcards')"><i class="material-icons">add_box</i> View My Flashcard</button></li>
+        <li><button (click)="handleClick('create-flashcard')"><i class="material-icons">add_box</i> Create Flashcard</button></li>
     </ul>
     <div class="log_out">
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  selectedComponent: string = 'deck-card'; // Default component
 
+  onButtonClicked(component: string) {
+    this.selectedComponent = component;
+    console.log(this.selectedComponent);
+    
+  }
 }

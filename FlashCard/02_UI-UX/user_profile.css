@@ -245,12 +245,11 @@
   padding: 20px;
 }
 
-    .details-container {
+.details-container {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  
 }
 
 .detail {
@@ -259,15 +258,14 @@
   border-radius: 8px;
   padding: 10px;
   background-color: #fff;
-  
 }
 
 .detail-label {
   font-weight: bold;
   margin-left: 10px;
 }
-.detail-value{
-    margin-left: 10px;
+.detail-value {
+  margin-left: 10px;
 }
 
 .button-container {

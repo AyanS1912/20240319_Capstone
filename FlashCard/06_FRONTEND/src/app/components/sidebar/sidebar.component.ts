@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Output, EventEmitter, Component } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
 
+  // Function to handle button clicks
+  handleClick(componentName: string) {
+    this.buttonClicked.emit(componentName);    
+  }
 }

@@ -1,9 +1,26 @@
 <div class="wrapper">
-        <app-sidebar></app-sidebar>
-        <div class="main_content">
-            <app-navbar></app-navbar>
-            <div class="info">
+    <app-sidebar (buttonClicked)="onButtonClicked($event)"></app-sidebar>
+    <div class="main_content">
+        <app-navbar></app-navbar>
+        <div class="info">
+            <ng-container *ngIf="selectedComponent === 'deck-card'">
                 <app-deck-card></app-deck-card>
-            </div>
+            </ng-container>
+            <ng-container *ngIf="selectedComponent === 'view-decks'">
+                <app-view-decks></app-view-decks>
+            </ng-container>
+            <ng-container *ngIf="selectedComponent === 'create-deck'">
+                <app-create-decks></app-create-decks>
+            </ng-container>
+            <ng-container *ngIf="selectedComponent === 'view-flashcards'">
+                <app-view-flashcards></app-view-flashcards>
+            </ng-container>
+            <ng-container *ngIf="selectedComponent === 'create-flashcard'">
+                <app-create-flashcard></app-create-flashcard>
+            </ng-container>
+            <ng-container *ngIf="selectedComponent === 'deck-card'">
+                <app-deck-card></app-deck-card>
+            </ng-container>
         </div>
     </div>
+</div>

@@ -12,6 +12,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeckCardComponent } from './components/deck-card/deck-card.component';
+import { ViewFlashcardsComponent } from './components/view-flashcards/view-flashcards.component';
+import { ViewDecksComponent } from './components/view-decks/view-decks.component';
+import { CreateFlashcardComponent } from './components/create-flashcard/create-flashcard.component';
+import { CreateDecksComponent } from './components/create-decks/create-decks.component';
 
 
 @NgModule({
@@ -24,6 +28,10 @@ import { DeckCardComponent } from './components/deck-card/deck-card.component';
     SidebarComponent,
     HomeComponent,
     DeckCardComponent,
+    ViewFlashcardsComponent,
+    ViewDecksComponent,
+    CreateFlashcardComponent,
+    CreateDecksComponent,
   ],
   imports: [
     BrowserModule,
