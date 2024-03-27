@@ -97,6 +97,16 @@
   color :#000
 }
 
+.visibility-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 768px) {
   /* Adjust padding for cards */
   .flip-card,

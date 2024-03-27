@@ -55,7 +55,7 @@ export class RegisterService {
   getUserDetails(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       const token = localStorage.getItem('Authorization');
-      console.log(token)
+      // console.log(token)
       if (!token) {
         reject('No token found');
         return;

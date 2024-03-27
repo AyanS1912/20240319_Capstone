@@ -26,8 +26,8 @@ const flashcardSchema = new mongoose.Schema({
     },
     tags: [{
         type: String,
-        minlength: 2,
-        maxlength: 20,
+        minlength: 1,
+        maxlength: 10,
         required: true,
     }],
     createdAt: {

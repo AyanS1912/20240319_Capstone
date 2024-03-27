@@ -235,7 +235,7 @@ const deleteDeck = async (req, res) => {
     try {
         // Verify token and extract user ID
         const token = req.headers.authorization
-
+        
         if (!token_provided(token)) {
             return res
                 .status(401)
@@ -246,6 +246,7 @@ const deleteDeck = async (req, res) => {
         if (!decodedToken) {
             return res.status(403).send({ message: "Forbidden. Invalid token." })
         }
+        
         const userId = decodedToken.userId
         // Extract deck ID from request parameters
         const deckId = req.params.id
@@ -260,12 +261,12 @@ const deleteDeck = async (req, res) => {
         if (!deck.owner || deck.userId.toString() !== userId.toString()) {
             return res.status(403).send({ message: "Forbidden. You are not authorized to delete this deck." })
         }
-
+        // console.log("Iddhar")
         // Check if the deck visibility is public
         if (deck.visibility === "public") {
             return res.status(400).send({ message: "Cannot delete a publicly available deck" })
         }
-
+        // console.log("Iddhar")
         // Delete the deck
         await Deck.findByIdAndDelete(deckId)
 

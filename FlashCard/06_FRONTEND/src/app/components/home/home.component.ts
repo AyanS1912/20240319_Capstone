@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit{
     this.deckService.getAllDecks().then(
       (decks : Deck[]) => {
         this.decks = decks;
-        console.log(this.decks)
+        // console.log(this.decks)
       },
       (error) => {
         console.error('Failed to fetch decks:', error);

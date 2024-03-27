@@ -1,22 +1,25 @@
 <div class="info">
+    
     <div id="card-container2">
-        <div class="flip-card-click">
+        
+        <div class="flip-card-click" *ngFor="let flashcard of flashcards">
             <div class="flip-card-inner" tab-index="0">
                 <div class="flip-card-front">
-                    <h2>Card 1 Front</h2>
+                    <div class="visibility-tag">{{ flashcard.visibility }}</div>
+                    <h2>{{flashcard.frontText}}</h2>
                     <div class="card-actions">
                         <button class="edit-btn"><i class="material-icons">edit</i></button>
-                        <button class="delete-btn"><i class="material-icons">delete</i></button>
+                        <button class="delete-btn" (click)="deleteFlashcard(flashcard._id)"><i class="material-icons">delete</i></button>
                     </div>
                 </div>
                 <div class="flip-card-back">
-                    <p>Card 1 Back</p>
+                    <p>{{flashcard.backText}}</p>
                 </div>
                 
             </div>
         </div>
 
-        <div class="flip-card-click">
+        <!-- <div class="flip-card-click">
             <div class="flip-card-inner" tab-index="0">
                 <div class="flip-card-front">
                     <h2>Card 1 Front</h2>
@@ -25,21 +28,9 @@
                     <p>Card 1 Back</p>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="flip-card-click">
-            <div class="flip-card-inner" tab-index="0">
-                <div class="flip-card-front">
-                    <h2>Card 1 Front</h2>
-                </div>
-                <div class="flip-card-back">
-                    <p>Card 1 Back</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flip-card-click">
+        <!-- <div class="flip-card-click">
             <div class="flip-card-inner" tab-index="0">
                 <div class="flip-card-front">
                     <h2>Card 1 Front</h2>
@@ -61,6 +52,18 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="flip-card-click">
+            <div class="flip-card-inner" tab-index="0">
+                <div class="flip-card-front">
+                    <h2>Card 1 Front</h2>
+                </div>
+                <div class="flip-card-back">
+                    <p>Card 1 Back</p>
+                </div>
+            </div>
+        </div> -->
 
     
     </div>

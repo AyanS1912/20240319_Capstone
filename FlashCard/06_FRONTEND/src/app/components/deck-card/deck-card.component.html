@@ -17,8 +17,9 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">
-                <span class="card-count">Cards</span>
+            <div class="footer" *ngIf="userDetails && userDetails._id === deck.userId">
+                <button class="edit-button">Edit</button>
+                <button class="delete-button" (click)="deleteDeck(deck._id)">Delete</button>
             </div>
         </div>
 

@@ -9,7 +9,9 @@ body {
     background-image: url("https://i.postimg.cc/KjGrXx98/pexels-lukas-317356.jpg");
 }
 
-
+.error-message{
+    color : red
+}
 .page-title {
     color: #292c44;
     font-size: 20px;

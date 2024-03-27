@@ -26,6 +26,7 @@ export class DeckService {
       this.http.post<any>(`${this.Url}/post`, deckData, { headers: { Authorization: token } }).subscribe(
         (res: any) => {
           this.snackBar.open('Deck created successfully', '', { duration: 3000 });
+          this.router.navigate(['home'])
           resolve(res);
         },
         (error) => {
@@ -96,11 +97,13 @@ export class DeckService {
   }
 
   deleteDeck(id: string): Promise<any> {
+    // console.log(id)
     const token = localStorage.getItem('Authorization');
+    // console.log(token);
     if (!token) {
       return Promise.reject('No token found');
     }
-
+    
     return new Promise<any>((resolve, reject) => {
       this.http.delete<any>(`${this.Url}/delete/${id}`, { headers: { Authorization: token } }).subscribe(
         (res: any) => {
@@ -117,6 +120,6 @@ export class DeckService {
 
   private handleError(error: any): void {
     console.error(error);
-    this.snackBar.open('An error occurred. Please try again.', '', { duration: 3000 });
+    this.snackBar.open('An error occurred. Please try again. Note : You Cannot delete a publicly available deck', '', { duration: 3000 });
   }
 }
