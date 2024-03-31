@@ -166,7 +166,7 @@ const postFlashcard = async (req, res) => {
  */
 const updateFlashcard = async (req, res) => {
     try {
-
+        // console.log("aaya")
         const { frontText, backText, visibility } = req.body
 
         // Validate front text

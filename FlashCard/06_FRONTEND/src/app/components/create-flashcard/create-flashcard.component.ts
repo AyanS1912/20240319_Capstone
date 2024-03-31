@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
 import { Deck } from "../../interface/deckInterface";
 import { RegisterService } from "../../services/auth/user.service";
+import { Flashcard } from "../../interface/flashcardInterface";
 
 @Component({
   selector: "app-create-flashcard",
@@ -14,6 +15,8 @@ import { RegisterService } from "../../services/auth/user.service";
 })
 export class CreateFlashcardComponent {
   userId: string = "";
+  flashcardId: string = "";
+  // flashcard: Flashcard;
   decks: Deck[] = [];
   constructor(
     private userService: RegisterService,
@@ -87,11 +90,11 @@ export class CreateFlashcardComponent {
     this.deckService.getAllDecks().then(
       (data: any) => {
         this.decks = data.data;
-        console.log("1",this.decks)
+        // console.log("1",this.decks)
 
         this.decks = this.decks.filter(
           (deck: Deck) => deck.userId.toString() === this.userId.toString());
-        console.log("2",this.decks)
+        // console.log("2",this.decks)
       },
       (error) => {
         console.error("Failed to fetch decks:", error);
@@ -111,7 +114,6 @@ export class CreateFlashcardComponent {
         deckId: this.flashcardForm.value.deckName,
         userId : this.userId
       };
-      console.log("Ninja",flashcardData.deckId)
 
       // Check if deckId is provided and is a non-empty string
       if (

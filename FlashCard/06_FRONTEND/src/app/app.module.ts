@@ -20,6 +20,7 @@ import { MyprofileComponent } from "./components/myprofile/myprofile.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
+import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
     CreateDecksComponent,
     MyprofileComponent,
     EditDeckComponent,
+    EditFlashcardComponent,
   ],
   imports: [
     BrowserModule,

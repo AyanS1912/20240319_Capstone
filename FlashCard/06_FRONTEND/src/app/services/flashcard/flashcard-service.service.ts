@@ -29,7 +29,7 @@ export class FlashcardServiceService {
   
     createFlashcard(deckId: string, flashcardData: any): Promise<any> {
       return new Promise<any>((resolve, reject) => {
-        this.http.post<any>(`${this.Url}/${deckId}`, flashcardData, { headers: this.getHeaders() }).subscribe(
+        this.http.post<any>(`${this.Url}/ ${deckId}`, flashcardData, { headers: this.getHeaders() }).subscribe(
           (res: any) => {
             this.snackBar.open('Flashcard created successfully', '', { duration: 3000 });
             resolve(res);
@@ -58,7 +58,7 @@ export class FlashcardServiceService {
   
     getFlashcardById(id: string): Promise<any> {
       return new Promise<any>((resolve, reject) => {
-        this.http.get<any>(`${this.Url}/${id}`, { headers: this.getHeaders() }).subscribe(
+        this.http.get<any>(`${this.Url}/get/${id}`, { headers: this.getHeaders() }).subscribe(
           (data: any) => {
             resolve(data);
           },
@@ -72,7 +72,7 @@ export class FlashcardServiceService {
   
     updateFlashcard(id: string, flashcardData: any): Promise<any> {
       return new Promise<any>((resolve, reject) => {
-        this.http.put<any>(`${this.Url}/${id}`, flashcardData, { headers: this.getHeaders() }).subscribe(
+        this.http.put<any>(`${this.Url}/update/${id}`, flashcardData, { headers: this.getHeaders() }).subscribe(
           (res: any) => {
             this.snackBar.open('Flashcard updated successfully', '', { duration: 3000 });
             resolve(res);
