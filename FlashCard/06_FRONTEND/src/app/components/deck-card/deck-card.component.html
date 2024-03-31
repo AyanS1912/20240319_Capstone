@@ -18,8 +18,8 @@
                 </div>
             </div>
             <div class="footer" *ngIf="userDetails && userDetails._id === deck.userId">
-                <button class="edit-button">Edit</button>
-                <button class="delete-button" (click)="deleteDeck(deck._id)">Delete</button>
+                <button class="edit-button" (click)="editDeck(deck._id)"><i class="material-icons">edit</i></button>
+                <button class="delete-button" (click)="deleteDeck(deck._id)"><i class="material-icons">delete</i></button>
             </div>
         </div>
 

@@ -2,6 +2,7 @@ import { Component , Input, OnInit} from '@angular/core';
 import { Deck } from '../../interface/deckInterface';
 import { DeckService } from '../../services/auth/deck.service';
 import { RegisterService } from '../../services/auth/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-deck-card',
@@ -15,7 +16,9 @@ export class DeckCardComponent implements OnInit {
   userDetails : any;
 
   constructor( private deckService : DeckService,
-    private userService : RegisterService) {}
+    private userService : RegisterService,
+    private router: Router
+    ) {}
   
   ngOnInit(): void {
     this.getUserDetails();
@@ -45,21 +48,10 @@ export class DeckCardComponent implements OnInit {
       }
     );
   }
-  // editDeck(deckId : string) {
-  //   // Call the updateDeck() API method
-  //   this.deckService.updateDeck(deckId).then(
-  //     (res) => {
-  //       // Handle success
-  //       console.log('Deck updated successfully:', res);
-  //       // Reload decks after update
-  //       this.loadDecks();
-  //     },
-  //     (error) => {
-  //       // Handle error
-  //       console.error('Failed to update deck:', error);
-  //     }
-  //   );
-  // }
+
+  editDeck(deckId: string) {
+    this.router.navigate(['/edit-deck', deckId]);
+  }
 
   deleteDeck(deckId: string) {
     // Call the deleteDeck() API method

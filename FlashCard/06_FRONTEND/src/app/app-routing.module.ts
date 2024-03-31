@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
 import { DeckCardComponent } from './components/deck-card/deck-card.component';
+import { EditDeckComponent } from './components/edit-deck/edit-deck.component';
 
 const routes: Routes = [
   {path: 'login', component : LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path : 'nav', component :NavbarComponent},
   { path :'side', component : SidebarComponent},
   { path : 'home', component : HomeComponent},
-  { path : 'deck', component : DeckCardComponent}
+  { path : 'deck', component : DeckCardComponent},
+  { path: 'edit-deck/:id', component: EditDeckComponent },
 ];
 
 @NgModule({
