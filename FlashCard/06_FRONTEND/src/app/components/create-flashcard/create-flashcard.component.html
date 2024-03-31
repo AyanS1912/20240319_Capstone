@@ -19,52 +19,57 @@
             Create your Flashcard
         </h3>
         <br>
-        <form [formGroup]="deckForm" (submit)="onSubmit()">
-            <input type="text" class="customInputField" formControlName="tags" placeholder="Add Tags" />
-            <div *ngIf="deckForm.controls.tags.invalid && (deckForm.controls.tags.dirty || deckForm.controls.tags.touched)"
+        <form [formGroup]="flashcardForm" (submit)="onSubmit()">
+            <input type="text" class="customInputField" formControlName="tags" placeholder="Add Tags" (blur)="onBlur('tags')"
+            (focus)="onFocus('tags')"/>
+            <div *ngIf="flashcardForm.controls.tags.invalid && (flashcardForm.controls.tags.dirty || flashcardForm.controls.tags.touched)"
                 class="error-msg">
-                <div *ngIf="deckForm.controls.tags.errors?.['required']">Tags are required.</div>
-                <div *ngIf="deckForm.controls.tags.errors?.['minlength']">Tags must be at least 1 character long.</div>
-                <div *ngIf="deckForm.controls.tags.errors?.['maxlength']">Tags cannot exceed 10 characters.</div>
-                <div *ngIf="deckForm.controls.tags.errors?.['pattern']">Tags can only contain alphanumeric characters and commas.</div>
+                <div *ngIf="flashcardForm.controls.tags.errors?.['required']">Tags are required.</div>
+                <div *ngIf="flashcardForm.controls.tags.errors?.['minlength']">Tags must be at least 1 character long.</div>
+                <div *ngIf="flashcardForm.controls.tags.errors?.['maxlength']">Tags cannot exceed 10 characters.</div>
+                <div *ngIf="flashcardForm.controls.tags.errors?.['pattern']">Tags can only contain alphanumeric characters and commas.</div>
             </div>
             
-            <input type="text" class="customInputField" formControlName="frontText" placeholder="Front Text Content" />
-            <div *ngIf="deckForm.controls.frontText.invalid && (deckForm.controls. frontText.dirty || deckForm.controls. frontText.touched)"
+            <input type="text" class="customInputField" formControlName="frontText" placeholder="Front Text Content" (blur)="onBlur('frontText')"
+            (focus)="onFocus('frontText')" />
+            <div *ngIf="flashcardForm.controls.frontText.invalid && (flashcardForm.controls. frontText.dirty || flashcardForm.controls. frontText.touched)"
                 class="error-msg">
-                <div *ngIf="deckForm.controls.frontText.errors?.['required']">Front text is required.</div>
-                <div *ngIf="deckForm.controls.frontText.errors?.['minlength']">Front text must be at least 3 characters long.</div>
-                <div *ngIf="deckForm.controls.frontText.errors?.['maxlength']">Front text cannot exceed 200 characters.</div>
+                <div *ngIf="flashcardForm.controls.frontText.errors?.['required']">Front text is required.</div>
+                <div *ngIf="flashcardForm.controls.frontText.errors?.['minlength']">Front text must be at least 3 characters long.</div>
+                <div *ngIf="flashcardForm.controls.frontText.errors?.['maxlength']">Front text cannot exceed 200 characters.</div>
             </div>
             
-            <input type="text" class="customInputField" formControlName="backText" placeholder="Back Text Content" />
-            <div *ngIf="deckForm.controls.backText.invalid && (deckForm.controls.backText.dirty || deckForm.controls.backText.touched)"
+            <input type="text" class="customInputField" formControlName="backText" placeholder="Back Text Content" (blur)="onBlur('backText')"
+            (focus)="onFocus('backText')" />
+            <div *ngIf="flashcardForm.controls.backText.invalid && (flashcardForm.controls.backText.dirty || flashcardForm.controls.backText.touched)"
                 class="error-msg">
-                <div *ngIf="deckForm.controls.backText.errors?.['required']">Back text is required.</div>
-                <div *ngIf="deckForm.controls.backText.errors?.['minlength']">Back text must be at least 3 characters long.</div>
-                <div *ngIf="deckForm.controls.backText.errors?.['maxlength']">Back text cannot exceed 500 characters.</div>
+                <div *ngIf="flashcardForm.controls.backText.errors?.['required']">Back text is required.</div>
+                <div *ngIf="flashcardForm.controls.backText.errors?.['minlength']">Back text must be at least 3 characters long.</div>
+                <div *ngIf="flashcardForm.controls.backText.errors?.['maxlength']">Back text cannot exceed 500 characters.</div>
             </div>
             
-            <select class="dropdown" formControlName="visibility">
+            <select class="dropdown" formControlName="visibility" (blur)="onBlur('visibility')"
+            (focus)="onFocus('visibility')">
                 <option value="" disabled selected>Select Visibility State</option>
                 <option value="public">Public</option>
                 <option value="private">Private</option>
             </select>
-            <div *ngIf="deckForm.controls.visibility.invalid && (deckForm.controls.visibility.dirty || deckForm.controls.visibility.touched)"
+            <div *ngIf="flashcardForm.controls.visibility.invalid && (flashcardForm.controls.visibility.dirty || flashcardForm.controls.visibility.touched)"
                 class="error-msg">
-                <div *ngIf="deckForm.controls.visibility.errors?.['required']">Visibility state is required.</div>
+                <div *ngIf="flashcardForm.controls.visibility.errors?.['required']">Visibility state is required.</div>
             </div>
             
-            <select class="dropdown" formControlName="selectedDeck">
+            <select class="dropdown" formControlName="deckName" (blur)="onBlur('deckName')"
+            (focus)="onFocus('deckName')">
                 <option value="" disabled selected>Select Deck to Add</option>
                 <option *ngFor="let deck of decks" [value]="deck._id">{{ deck.name }}</option>
             </select>
-            <div *ngIf="deckForm.controls.visibility.invalid && (deckForm.controls.visibility.dirty || deckForm.controls.visibility.touched)"
+            <div *ngIf="flashcardForm.controls.deckName.invalid && (flashcardForm.controls.deckName.dirty || flashcardForm.controls.deckName.touched)"
                 class="error-msg">
-                <div *ngIf="deckForm.controls.visibility.errors?.['required']">Please select a deck to add.</div>
+                <div *ngIf="flashcardForm.controls.deckName.errors?.['required']">Please select a deck to add.</div>
             </div>
             
-            <button type="submit" class="shadow-button">Create and Save</button>
+            <button type="submit" class="shadow-button" >Create and Save</button>
         </form>
     </div>
 

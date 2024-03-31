@@ -8,6 +8,7 @@ const schema = require('../schema')
 const { Flashcard } = schema.Flashcard
 const validator = require('../validators')
 const { token_provided, verifyToken } = validator.tokenValidator
+const { validateFrontText, validateBackText, validateTags, validateVisibility} = validator.flashcardValidator
 
 /**
  * Retrieves all flashcards owned by the token owner and public flashcards.
