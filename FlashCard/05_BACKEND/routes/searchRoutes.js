@@ -3,6 +3,6 @@ const router = express.Router()
 const searchController  = require('../controllers/searchControllers')
 
 // Router to search
-router.post('/q',searchController)
+router.get('/q',searchController)
 
 module.exports = router

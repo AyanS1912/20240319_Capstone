@@ -1,7 +1,7 @@
 <div class="wrapper">
     <app-sidebar (buttonClicked)="onButtonClicked($event)"></app-sidebar>
     <div class="main_content">
-        <app-navbar (profileClicked)="openMyProfile($event)"></app-navbar>
+        <app-navbar (profileClicked)="openMyProfile($event)" (searchResults)="handleSearchResults($event)"></app-navbar>
         <div class="info">
             <ng-container *ngIf="selectedComponent === 'deck-card'">
                 <app-deck-card [decks]="deckCardDecks"></app-deck-card>

@@ -39,9 +39,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // editDeck(deckId: string) {
-  //   this.router.navigate(["/edit-deck", deckId]);
-  // }
+  handleSearchResults(results: any[]): void {
+    this.deckCardDecks = results;
+  }
 
   onButtonClicked(component: string) {
     this.isProfileOpen = false;

@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { MatIconModule } from "@angular/material/icon";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -18,9 +19,9 @@ import { CreateFlashcardComponent } from "./components/create-flashcard/create-f
 import { CreateDecksComponent } from "./components/create-decks/create-decks.component";
 import { MyprofileComponent } from "./components/myprofile/myprofile.component";
 import { HttpClientModule } from "@angular/common/http";
-import { ReactiveFormsModule } from "@angular/forms";
 import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
 import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashca
     MyprofileComponent,
     EditDeckComponent,
     EditFlashcardComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

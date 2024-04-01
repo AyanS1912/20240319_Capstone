@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap"); */
 
 * {
   margin: 0;
@@ -9,11 +9,9 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
-
-
 .wrapper {
   display: flex;
-  min-height: 100vh; 
+  min-height: 100vh;
   overflow-y: auto;
 }
 
