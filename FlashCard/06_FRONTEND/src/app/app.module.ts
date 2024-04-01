@@ -22,6 +22,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
 import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
 import { SearchComponent } from './components/search/search.component';
+import { DeckFlashcardsComponent } from './components/deck-flashcards/deck-flashcards.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SearchComponent } from './components/search/search.component';
     EditDeckComponent,
     EditFlashcardComponent,
     SearchComponent,
+    DeckFlashcardsComponent,
   ],
   imports: [
     BrowserModule,

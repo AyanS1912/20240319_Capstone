@@ -58,4 +58,9 @@ export class DeckCardComponent implements OnInit {
       }
     );
   }
+
+  showFlashcards(deckId: string) {
+    // Navigate to the component that displays flashcards for the selected deck
+    this.router.navigate(['/deck-flashcards', deckId]);
+  }
 }
