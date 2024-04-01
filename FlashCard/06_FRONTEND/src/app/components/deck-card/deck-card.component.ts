@@ -10,10 +10,9 @@ import { Router } from '@angular/router';
   styleUrl: './deck-card.component.css'
 })
 export class DeckCardComponent implements OnInit {
-  // @Input() deck!: Deck;
-  decks: Deck[] = []; 
-  mydecks : Deck[] = []
-  userDetails : any;
+
+  @Input() decks: Deck[] = [];
+  @Input() userDetails : any;
 
   constructor( private deckService : DeckService,
     private userService : RegisterService,
@@ -22,20 +21,9 @@ export class DeckCardComponent implements OnInit {
   
   ngOnInit(): void {
     this.getUserDetails();
-    this.loadDecks();
   }
 
-  loadDecks() {
-    this.deckService.getAllDecks().then(
-      (decks : any) => {
-        this.decks = decks.data;
-        console.log(this.decks)
-      },
-      (error) => {
-        console.error('Failed to fetch decks:', error);
-      }
-    );
-  }
+
 
   getUserDetails() {
     this.userService.getUserDetails().then(
@@ -55,12 +43,14 @@ export class DeckCardComponent implements OnInit {
 
   deleteDeck(deckId: string) {
     // Call the deleteDeck() API method
+    console.log("Delete button clicked for deck ID:", deckId);
+    
     this.deckService.deleteDeck(deckId).then(
       (res) => {
         // Handle success
         console.log('Deck deleted successfully:', res);
         // Reload decks after deletion
-        this.loadDecks();
+        // this.loadDecks();
       },
       (error) => {
         // Handle error

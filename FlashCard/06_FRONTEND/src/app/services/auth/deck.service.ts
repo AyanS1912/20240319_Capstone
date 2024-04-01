@@ -46,7 +46,7 @@ export class DeckService {
     return new Promise<any>((resolve, reject) => {
       this.http.get<any>(`${this.Url}/getAll`, { headers: { Authorization: token } }).subscribe(
         (data: any) => {
-          // console.log("Yokoso",data)
+          console.log("Yokoso",data)
           resolve(data);
         },
         (error) => {
