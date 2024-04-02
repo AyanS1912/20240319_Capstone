@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { MatIconModule } from "@angular/material/icon";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -21,8 +21,10 @@ import { MyprofileComponent } from "./components/myprofile/myprofile.component";
 import { HttpClientModule } from "@angular/common/http";
 import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
 import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
-import { SearchComponent } from './components/search/search.component';
-import { DeckFlashcardsComponent } from './components/deck-flashcards/deck-flashcards.component';
+import { SearchComponent } from "./components/search/search.component";
+import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flashcards.component";
+import { MarkdownModule } from "ngx-markdown";
+import { QuillModule } from "ngx-quill";
 
 @NgModule({
   declarations: [
@@ -49,7 +51,10 @@ import { DeckFlashcardsComponent } from './components/deck-flashcards/deck-flash
     AppRoutingModule,
     MatIconModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
+    MarkdownModule.forRoot(),
+    QuillModule.forRoot()
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

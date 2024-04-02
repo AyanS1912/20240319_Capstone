@@ -17,16 +17,16 @@
 .tpn_card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
+  align-items :center ;
+  justify-content : space-around;
+  padding: 40px;
   border: solid #ccc 1px;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin : 0px 10px 20px 0px;
   position: relative;
   min-height: 300px;
-  min-width: 500px;
-  max-width: 500px;
+  min-width: 600px;
+  max-width: 600px;
 }
 
 .card-content {
@@ -51,11 +51,22 @@
   margin-top: 20px;
 }
 
-.privacy {
+.privacy-public {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(83, 169, 84, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.privacy-private{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(199, 243, 4, 0.8);
+  color :black ;
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -67,8 +78,43 @@
 .footer {
   position: absolute;
   bottom: 10px;
+  right: 20px;
+}
+
+.edit-button,
+.delete-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.edit-button {
+    color: green;
+}
+
+.delete-button {
+    color: red;
+}
+
+.voting-section {
+  position: absolute;
+  bottom: 10px;
   left: 20px;
-  text-align: right;
+}
+
+.upvote-button,
+.downvote-button {
+  background-color: white;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.material-icons {
+  vertical-align: middle;
 }
 
 .card-count {
@@ -81,8 +127,8 @@
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-  gap: 20px;
+  /* align-items: space-around; */
+  gap: 30px;
   margin-top: 5rem;
 }
 

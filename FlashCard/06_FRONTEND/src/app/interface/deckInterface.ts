@@ -5,5 +5,6 @@ export interface Deck {
   userId :string
   visibility: string;
   upvotes: number; 
-  downvotes: number; 
+  downvotes: number;
+  userVoteType?: 'upvote' | 'downvote' | '';
 }

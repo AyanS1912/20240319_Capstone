@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   upvotes: number = 0;
   downvotes: number = 0;
   userVote: string = '';
-  // userDetails: any;
+  userData: any;
 
   constructor(
     private deckService: DeckService,
@@ -28,8 +28,20 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.getUserDetails();
+    this.getUserDetails();
     this.loadDecks();
+  }
+
+  getUserDetails() {
+    this.userService.getUserDetails().then(
+      (data) => {
+        this.userData = data;
+        // console.log(this.userDetails)
+      },
+      (error) => {
+        console.error("Failed to fetch user details:", error);
+      }
+    );
   }
 
   loadDecks() {
@@ -37,6 +49,7 @@ export class HomeComponent implements OnInit {
       (decks: any) => {
         this.deckCardDecks = decks.data;
         console.log(this.deckCardDecks);
+        this.fetchUserVotes()
       },
       (error) => {
         console.error("Failed to fetch decks:", error);
@@ -44,8 +57,45 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  fetchUserVotes(): void {
+    console.log(this.deckCardDecks)
+    for (const deck of this.deckCardDecks) {
+      this.voteService
+        .getVotesForDeck(deck._id)
+        .then((votes: any[]) => {
+          const userVote = votes.find(
+            (vote) => vote.userId === this.userData._id
+          );
+          if (userVote) {
+            deck.userVoteType = userVote.voteType;
+          } else {
+            deck.userVoteType = "";
+          }
+          deck.upvotes = votes.filter(
+            (vote) => vote.voteType === "upvote"
+          ).length;
+          deck.downvotes = votes.filter(
+            (vote) => vote.voteType === "downvote"
+          ).length;
+          console.log("Votes fetched successfully for deck:", deck._id);
+          console.log("User vote type:", deck.userVoteType);
+          console.log("Total upvotes:", deck.upvotes);
+          console.log("Total downvotes:", deck.downvotes);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch votes for deck:", error);
+        });
+    }
+  }
+  
+  reloadDecks() {
+    this.loadDecks();
+  }
+  
   handleSearchResults(results: any[]): void {
     this.deckCardDecks = results;
+    this.selectedComponent = 'deck-card'
+    this.fetchUserVotes()
   }
 
   onButtonClicked(component: string) {

@@ -70,8 +70,9 @@ const upvoteFlashcard = async (req, res) => {
                 await existingVote.save()
                 return res.status(200).send({ message: "Your downvote has been changed to an upvote." })
             }
-            // If the user has already upvoted the flashcard, return a message
-            return res.status(200).send({ message: "You have already upvoted this flashcard." })
+            // If the user has already upvoted the flashcard, then remove the vote and return a message
+            await existingVote.deleteOne()
+            return res.status(200).send({ message: "Your vote has been removed." })
         }
 
         // Create a new upvote for the flashcard
@@ -124,8 +125,9 @@ const downvoteFlashcard = async (req, res) => {
                 await existingVote.save()
                 return res.status(200).send({ message: "Your upvote has been changed to a downvote." })
             }
-            // If the user has already downvoted the flashcard, return a message
-            return res.status(400).send({ message: "You have already downvoted this flashcard." })
+            // If the user has already downvoted the flashcard, then remove the vote and return a message
+            await existingVote.deleteOne()
+            return res.status(200).send({ message: "Your vote has been removed." })
         }
 
         // Create a new downvote for the flashcard

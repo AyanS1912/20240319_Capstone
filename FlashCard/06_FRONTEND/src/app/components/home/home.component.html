@@ -4,7 +4,7 @@
         <app-navbar (profileClicked)="openMyProfile($event)" (searchResults)="handleSearchResults($event)"></app-navbar>
         <div class="info">
             <ng-container *ngIf="selectedComponent === 'deck-card'">
-                <app-deck-card [decks]="deckCardDecks"></app-deck-card>
+                <app-deck-card [decks]="deckCardDecks" (reloadDecks)="loadDecks()"></app-deck-card>
             </ng-container>
             <ng-container *ngIf="selectedComponent === 'view-decks'">
                 <app-view-decks></app-view-decks>

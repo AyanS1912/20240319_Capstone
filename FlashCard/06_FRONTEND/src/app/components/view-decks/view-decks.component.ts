@@ -3,6 +3,7 @@ import { Deck } from '../../interface/deckInterface';
 import { DeckService } from '../../services/auth/deck.service';
 import { RegisterService } from '../../services/auth/user.service';
 import { Router } from '@angular/router';
+import { VoteService } from '../../services/vote/vote.service';
 
 @Component({
   selector: 'app-view-decks',
@@ -12,12 +13,13 @@ import { Router } from '@angular/router';
 export class ViewDecksComponent {
    // @Input() deck!: Deck;
    mydeckCardDecks : Deck[] = []
-   userDetails :any
+   userData :any
  
    constructor(
     private deckService: DeckService,
     private userService: RegisterService,
-    private router: Router
+    private router: Router,
+    private voteService : VoteService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class ViewDecksComponent {
   getUserDetails() {
     this.userService.getUserDetails().then(
       (data) => {
-        this.userDetails = data;
+        this.userData = data;
         this.loadDecks();
       },
       (error) => {
@@ -41,13 +43,51 @@ export class ViewDecksComponent {
     this.deckService.getAllDecks().then(
       (decks: any) => {
         this.mydeckCardDecks = decks.data;
-        this.mydeckCardDecks = this.mydeckCardDecks.filter(deck => deck.userId.toString() === this.userDetails._id.toString())
+        this.mydeckCardDecks = this.mydeckCardDecks.filter(deck => deck.userId.toString() === this.userData._id.toString())
         console.log(this.mydeckCardDecks)
+        this.fetchUserVotes()
       },
       (error) => {
         console.error("Failed to fetch decks:", error);
       }
     );
+  }
+
+  fetchUserVotes(): void {
+    console.log(this.mydeckCardDecks)
+    for (const deck of this.mydeckCardDecks) {
+      this.voteService
+        .getVotesForDeck(deck._id)
+        .then((votes: any[]) => {
+          const userVote = votes.find(
+            (vote) => vote.userId === this.userData._id
+          );
+          if (userVote) {
+            deck.userVoteType = userVote.voteType;
+          } else {
+            deck.userVoteType = "";
+          }
+          deck.upvotes = votes.filter(
+            (vote) => vote.voteType === "upvote"
+          ).length;
+          deck.downvotes = votes.filter(
+            (vote) => vote.voteType === "downvote"
+          ).length;
+          console.log("Votes fetched successfully for deck:", deck._id);
+          console.log("User vote type:", deck.userVoteType);
+          console.log("Total upvotes:", deck.upvotes);
+          console.log("Total downvotes:", deck.downvotes);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch votes for deck:", error);
+        });
+    }
+
+    
+  }
+
+  reloadDecks() {
+    this.loadDecks();
   }
 
   

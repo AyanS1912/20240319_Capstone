@@ -3,6 +3,7 @@ import { FlashcardServiceService } from "../../services/flashcard/flashcard-serv
 import { Flashcard } from "../../interface/flashcardInterface";
 import { Router } from "@angular/router";
 import { VoteService } from "../../services/vote/vote.service";
+import { RegisterService } from "../../services/auth/user.service";
 
 @Component({
   selector: "app-view-flashcards",
@@ -11,15 +12,31 @@ import { VoteService } from "../../services/vote/vote.service";
 })
 export class ViewFlashcardsComponent implements OnInit {
   flashcards: Flashcard[] = [];
+  userDetails : any;
+
   constructor(
     private flashcardService: FlashcardServiceService,
     private router: Router,
-    private voteService : VoteService
+    private voteService : VoteService,
+    private userService : RegisterService
   ) {}
 
   ngOnInit(): void {
+    this.getUserDetails();
     this.initializeFlipCards();
     this.fetchFlashcards();
+  }
+
+  getUserDetails() {
+    this.userService.getUserDetails().then(
+      (data) => {
+        this.userDetails = data;
+        // console.log(this.userDetails)
+      },
+      (error) => {
+        console.error("Failed to fetch user details:", error);
+      }
+    );
   }
 
   initializeFlipCards(): void {
@@ -36,11 +53,32 @@ export class ViewFlashcardsComponent implements OnInit {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
         this.flashcards = data.data;
+        this.fetchUserVotes();
       },
       (error) => {
         console.error(error);
       }
     );
+  }
+
+  fetchUserVotes(): void {
+    for (const flashcard of this.flashcards) {
+      this.voteService.getVotesForFlashcard(flashcard._id).then(
+        (votes: any[]) => {
+          const userVote = votes.find((vote) => vote.userId === this.userDetails._id);
+          if (userVote) {
+            flashcard.userVoteType = userVote.voteType;
+          } else {
+            flashcard.userVoteType = "";
+          }
+          flashcard.upvotes = votes.filter((vote) => vote.voteType === "upvote").length;
+          flashcard.downvotes = votes.filter((vote) => vote.voteType === "downvote").length;
+        },
+        (error) => {
+          console.error("Failed to fetch votes for flashcard:", error);
+        }
+      );
+    }
   }
 
   editFlashcard(flashcardId: string) {

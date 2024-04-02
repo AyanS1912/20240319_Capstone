@@ -23,13 +23,13 @@
         </div>
 
         <div class=" home-main__split--right">
-            <div class="details-container">
-                <div class="detail">
-                    <span class="detail-label">Detail 1:</span>
-                    <span class="detail-value">Value 1</span>
+                <div class="detail" *ngFor="let deck of userDecks">
+                    <div class="details-container" >
+                    <span class="detail-label">Deck Name: {{deck.name}}</span>
+                    <span class="detail-value">Description : {{deck.description}}</span>
                     <div class="button-container">
-                        <button class="edit-button"><i class="material-icons">edit</i></button>
-                        <button class="delete-button"><i class="material-icons">delete</i></button>
+                        <button class="edit-button" (click)="editDeck(deck._id)"><i class="material-icons">edit</i></button>
+                        <button class="delete-button" (click)="deleteDeck(deck._id)"><i class="material-icons">delete</i></button>
                     </div>
                 </div>
             </div>

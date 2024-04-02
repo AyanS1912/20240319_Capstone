@@ -18,8 +18,8 @@
                         class="material-icons">edit</i></button>
                 <button class="delete-btn" (click)="deleteFlashcard(flashcard._id)"><i
                         class="material-icons">delete</i></button>
-                <button class="vote-button"><i class="material-icons" (click)="upvoteFlashcard(flashcard._id)">thumb_up</i></button>
-                <button class="vote-button"><i class="material-icons" (click)="downvoteFlashcard(flashcard._id)">thumb_down</i></button>
+                <button class="vote-button"><i class="material-icons" (click)="upvoteFlashcard(flashcard._id)">thumb_up</i>{{ flashcard.upvotes }}</button>
+                <button class="vote-button"><i class="material-icons" (click)="downvoteFlashcard(flashcard._id)">thumb_down</i>{{ flashcard.downvotes }}</button>
             </div>
         </div>
         

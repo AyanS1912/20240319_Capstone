@@ -4,7 +4,8 @@
         <div class="tpn_card" *ngFor="let deck of decks">
             <div class="card-content">
                 <div class="image-container">
-                    <img (click)="showFlashcards(deck._id)" src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
+                    <img (click)="showFlashcards(deck._id)"
+                        src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
                         class="w-100 mb-4" />
                 </div>
                 <div class="details">
@@ -12,8 +13,12 @@
                         <p>Deck Name : {{deck.name}}</p>
                         <p>Description : {{deck.description}}</p>
                     </div>
-                    <div class="privacy">
-                        <span class="privacy-status">{{deck.visibility}}</span>
+                    <div class="privacy-public" *ngIf="deck.visibility === 'public'">
+                        <span class="public">Public</span>
+                    </div>
+                    <div class="privacy-private" *ngIf="deck.visibility === 'private'">
+                        <span class="public">Private</span>
+
                     </div>
                     <div class="footer" *ngIf="userDetails && userDetails._id === deck.userId">
                         <button class="edit-button" (click)="editDeck(deck._id)"><i
@@ -26,10 +31,12 @@
                             <i class="material-icons">thumb_up</i>
                             {{ deck.upvotes }}
                         </button>
-                        <button class="downvote-button" (click)="downvoteDeck(deck._id)">
-                            <i class="material-icons">thumb_down</i>
+                        <button class="downvote-button">
+                            <i class="material-icons" (click)="downvoteDeck(deck._id)">thumb_down</i>
+                            <!-- <i class="material-icons" *ngIf="deck.userVoteType !== 'upvote'">thumb-down-off-alt</i>  -->
                             {{ deck.downvotes }}
                         </button>
+                        
                     </div>
                 </div>
             </div>

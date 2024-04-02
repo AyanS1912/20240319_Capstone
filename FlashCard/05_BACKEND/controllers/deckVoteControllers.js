@@ -72,9 +72,9 @@ const upvoteDeck = async (req, res) => {
                 await existingVote.save()
                 return res.status(200).send({ message: "Your downvote has been changed to an upvote." , data : existingVote})
             }
-            // If the user has already upvoted the deck, return a message
-            // console.log(existingVote+"yyooo")
-            return res.status(200).send({ message: "You have already upvoted this deck.", data : existingVote })
+            // If the user has already upvoted the deck, then remove the vote return a message
+            await existingVote.deleteOne()
+            return res.status(200).send({ message: "Your vote has been removed.", data : existingVote })
         }
         
 
@@ -126,8 +126,9 @@ const downvoteDeck = async (req, res) => {
                 await existingVote.save()
                 return res.status(200).send({ message: "Your upvote has been changed to a downvote.", data : existingVote })
             }
-            // If the user has already downvoted the deck, return a message
-            return res.status(200).send({ message: "You have already downvoted this deck.", data : existingVote})
+            // If the user has already downvoted the deck, then remove the vote return a message
+            await existingVote.deleteOne()
+            return res.status(200).send({ message: "Your vote has been removed.", data : existingVote})
         }
 
         // Create a new downvote for the deck
