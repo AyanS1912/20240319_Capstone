@@ -3,6 +3,7 @@ import { Deck } from "../../interface/deckInterface";
 import { DeckService } from "../../services/auth/deck.service";
 import { RegisterService } from "../../services/auth/user.service";
 import { Router } from "@angular/router";
+import { VoteService } from '../../services/vote/vote.service';
 
 @Component({
   selector: "app-home",
@@ -13,12 +14,17 @@ export class HomeComponent implements OnInit {
   selectedComponent: string = "deck-card";
   isProfileOpen: boolean = false;
   deckCardDecks: Deck[] = [];
+
+  upvotes: number = 0;
+  downvotes: number = 0;
+  userVote: string = '';
   // userDetails: any;
 
   constructor(
     private deckService: DeckService,
     private userService: RegisterService,
-    private router: Router
+    private router: Router,
+    private voteService : VoteService
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +43,6 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
 
   handleSearchResults(results: any[]): void {
     this.deckCardDecks = results;

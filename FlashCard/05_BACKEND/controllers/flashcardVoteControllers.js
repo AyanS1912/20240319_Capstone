@@ -9,6 +9,34 @@ const { FlashcardVote } = schema.FlashcardVote
 const validator = require('../validators')
 const { token_provided, verifyToken } = validator.tokenValidator
 
+
+/**
+ * Get all votes or search by deck ID.
+ * @param {Object} req - The request object.
+ * @param {string} req.params.deckId - (Optional) The ID of the deck to search votes for.
+ * @param {Object} res - The response object.
+ * @returns {Object} Returns a response containing all votes or votes for the specified deck.
+ */
+const getAllVotes = async (req, res) => {
+    try {
+        const flashcardId = req.params.deckId;
+        let votes;
+
+        if (flashcardId) {
+            // If deck ID is provided, search votes by deck ID
+            votes = await FlashcardVote.find({ flashcardId : flashcardId });
+        } else {
+            // If no deck ID provided, fetch all votes
+            votes = await FlashcardVote.find();
+        }
+
+        return res.status(200).json({ data: votes });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Failed to get votes.' });
+    }
+}
+
 /**
  * Upvotes a flashcard.
  * @param {Object} req - The request object.
@@ -43,7 +71,7 @@ const upvoteFlashcard = async (req, res) => {
                 return res.status(200).send({ message: "Your downvote has been changed to an upvote." })
             }
             // If the user has already upvoted the flashcard, return a message
-            return res.status(400).send({ message: "You have already upvoted this flashcard." })
+            return res.status(200).send({ message: "You have already upvoted this flashcard." })
         }
 
         // Create a new upvote for the flashcard
@@ -118,4 +146,4 @@ const downvoteFlashcard = async (req, res) => {
 
 
 
-module.exports = { upvoteFlashcard, downvoteFlashcard }
+module.exports = { getAllVotes,upvoteFlashcard, downvoteFlashcard }

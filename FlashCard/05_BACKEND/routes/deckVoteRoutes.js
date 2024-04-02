@@ -3,6 +3,7 @@ const router = express.Router()
 const controllers = require('../controllers');
 // Routes for deck voting
 
+router.get('/:deckId', controllers.deckVoteController.getAllVotes);
 // Route to upvote a deck by deck ID
 router.post('/:deckId/upvote', controllers.deckVoteController.upvoteDeck);
 // Route to downvote a deck by deck ID

@@ -1,10 +1,10 @@
 <div class="info">
-    <div class="custom-flex-container" >
+    <div class="custom-flex-container">
 
-        <div class="tpn_card" *ngFor="let deck of decks">  
-            <div class="card-content" (click)="showFlashcards(deck._id)">
+        <div class="tpn_card" *ngFor="let deck of decks">
+            <div class="card-content">
                 <div class="image-container">
-                    <img src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
+                    <img (click)="showFlashcards(deck._id)" src="https://img.freepik.com/free-photo/adorable-baby-anime-dragon-illustration_23-2151117668.jpg?t=st=1710619863~exp=1710623463~hmac=879c41cd460efdada3c5c185b7e7615c343a50a498f02b18050947f6b032ca8f&w=1800"
                         class="w-100 mb-4" />
                 </div>
                 <div class="details">
@@ -16,13 +16,27 @@
                         <span class="privacy-status">{{deck.visibility}}</span>
                     </div>
                     <div class="footer" *ngIf="userDetails && userDetails._id === deck.userId">
-                        <button class="edit-button" (click)="editDeck(deck._id)"><i class="material-icons">edit</i></button>
-                        <button class="delete-button" (click)="deleteDeck(deck._id)"><i class="material-icons">delete</i></button>
+                        <button class="edit-button" (click)="editDeck(deck._id)"><i
+                                class="material-icons">edit</i></button>
+                        <button class="delete-button" (click)="deleteDeck(deck._id)"><i
+                                class="material-icons">delete</i></button>
+                    </div>
+                    <div class="voting-section">
+                        <button class="upvote-button" (click)="upvoteDeck(deck._id)">
+                            <i class="material-icons">thumb_up</i>
+                            {{ deck.upvotes }}
+                        </button>
+                        <button class="downvote-button" (click)="downvoteDeck(deck._id)">
+                            <i class="material-icons">thumb_down</i>
+                            {{ deck.downvotes }}
+                        </button>
                     </div>
                 </div>
             </div>
-            
+
+
         </div>
+
 
     </div>
 </div>

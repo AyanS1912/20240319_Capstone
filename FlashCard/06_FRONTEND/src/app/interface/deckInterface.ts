@@ -4,4 +4,6 @@ export interface Deck {
   description: string;
   userId :string
   visibility: string;
+  upvotes: number; 
+  downvotes: number; 
 }

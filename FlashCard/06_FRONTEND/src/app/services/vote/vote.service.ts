@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { FlashcardVote } from "../../interface/flashcardvote";
+import { DeckVote } from "../../interface/deckvote";
 
 @Injectable({
   providedIn: "root",
@@ -7,16 +9,30 @@ import { HttpClient } from "@angular/common/http";
 export class VoteService {
   private Url = "http://localhost:8080"; // Update with your API base URL
   private token : string | null =''
+
+
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('Authorization');
   }
 
+  getVotesForFlashcard(flashcardId: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(`http://localhost:8080/flashcardsvote/${flashcardId}`)
+        .toPromise()
+        .then((response) => {
+          resolve(response.data); // Resolve with the data from the response
+        })
+        .catch((error) => {
+          reject(error); // Reject with the error
+        });
+    });
+  }
   // Upvote a flashcard
-  upvoteFlashcard(flashcardId: string, token: string): Promise<any> {
-    const url = `${this.Url}/flashcardsvote/upvote`;
-    return new Promise<any>((resolve, reject) => {
+  upvoteFlashcard(flashcardId: string): Promise<any> {
+    const url = `${this.Url}/flashcardsvote/${flashcardId}/upvote`;
+    return new Promise<FlashcardVote>((resolve, reject) => {
       this.http
-        .post<any>(url, {flashcardId}, { headers: this.getHeaders(token) })
+        .post<any>(url, {flashcardId}, { headers: this.getHeaders() })
         .subscribe(
           (data: any) => {
             resolve(data);
@@ -29,11 +45,11 @@ export class VoteService {
   }
 
   // Downvote a flashcard
-  downvoteFlashcard(flashcardId: string, token: string): Promise<any> {
-    const url = `${this.Url}/flashcardsvote/downvote`;
-    return new Promise<any>((resolve, reject) => {
+  downvoteFlashcard(flashcardId: string): Promise<any> {
+    const url = `${this.Url}/flashcardsvote/${flashcardId}/downvote`;
+    return new Promise<FlashcardVote>((resolve, reject) => {
       this.http
-        .post<any>(url, {flashcardId}, { headers: this.getHeaders(token) })
+        .post<any>(url, {flashcardId}, { headers: this.getHeaders() })
         .subscribe(
           (data: any) => {
             resolve(data);
@@ -45,12 +61,25 @@ export class VoteService {
     });
   }
 
+
+  getVotesForDeck(deckId: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(`http://localhost:8080/decksvote/${deckId}`)
+        .toPromise()
+        .then((response) => {
+          resolve(response.data); // Resolve with the data from the response
+        })
+        .catch((error) => {
+          reject(error); // Reject with the error
+        });
+    });
+  }
   // Upvote a deck
-  upvoteDeck(deckId: string, token: string): Promise<any> {
-    const url = `${this.Url}/decksvote/upvote`;
+  upvoteDeck(deckId: string): Promise<any> {
+    const url = `${this.Url}/decksvote/${deckId}/upvote`;
     return new Promise<any>((resolve, reject) => {
       this.http
-        .post<any>(url, {deckId}, { headers: this.getHeaders(token) })
+        .post<any>(url, {deckId}, { headers: this.getHeaders() })
         .subscribe(
           (data: any) => {
             resolve(data);
@@ -63,11 +92,11 @@ export class VoteService {
   }
 
   // Downvote a deck
-  downvoteDeck(deckId: string, token: string): Promise<any> {
-    const url = `${this.Url}/decksvote/downvote`;
+  downvoteDeck(deckId: string): Promise<any> {
+    const url = `${this.Url}/decksvote/${deckId}/downvote`;
     return new Promise<any>((resolve, reject) => {
       this.http
-        .post<any>(url, {deckId}, { headers: this.getHeaders(token) })
+        .post<any>(url,{}, { headers: this.getHeaders() })
         .subscribe(
           (data: any) => {
             resolve(data);
@@ -79,8 +108,8 @@ export class VoteService {
     });
   }
 
-  // Helper function to get HTTP headers with authorization token
-  private getHeaders(token: string): { [header: string]: string } {
+  // Helper function to get HTTP headers with authorization this.token
+  private getHeaders(): { [header: string]: string } {
     return this.token ? { 'Authorization': this.token } : {};
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
 import { Flashcard } from "../../interface/flashcardInterface";
 import { Router } from "@angular/router";
+import { VoteService } from "../../services/vote/vote.service";
 
 @Component({
   selector: "app-view-flashcards",
@@ -12,7 +13,8 @@ export class ViewFlashcardsComponent implements OnInit {
   flashcards: Flashcard[] = [];
   constructor(
     private flashcardService: FlashcardServiceService,
-    private router: Router
+    private router: Router,
+    private voteService : VoteService
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +61,34 @@ export class ViewFlashcardsComponent implements OnInit {
       (error) => {
         // Handle error
         console.error("Failed to delete Flashcard :", error);
+      }
+    );
+  }
+
+  upvoteFlashcard(flashcardId: string): void {
+    // Call the upvoteFlashcard() API method
+    this.voteService.upvoteFlashcard(flashcardId).then(
+      (res) => {
+        console.log("Flashcard upvoted successfully:", res);
+        // Reload flashcards after upvote
+        this.fetchFlashcards();
+      },
+      (error) => {
+        console.error("Failed to upvote Flashcard:", error);
+      }
+    );
+  }
+
+  downvoteFlashcard(flashcardId: string): void {
+    // Call the downvoteFlashcard() API method
+    this.voteService.downvoteFlashcard(flashcardId).then(
+      (res) => {
+        console.log("Flashcard downvoted successfully:", res);
+        // Reload flashcards after downvote
+        this.fetchFlashcards();
+      },
+      (error) => {
+        console.error("Failed to downvote Flashcard:", error);
       }
     );
   }

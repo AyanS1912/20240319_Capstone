@@ -1,24 +1,28 @@
 <div class="info">
-    
+
     <div id="card-container2">
-        
+
         <div class="flip-card-click" *ngFor="let flashcard of flashcards">
             <div class="flip-card-inner" tab-index="0">
                 <div class="flip-card-front">
                     <div class="visibility-tag">{{ flashcard.visibility }}</div>
                     <h2>{{flashcard.frontText}}</h2>
-                    
+
                 </div>
                 <div class="flip-card-back">
                     <p>{{flashcard.backText}}</p>
                 </div>
-                <div class="card-actions">
-                    <button class="edit-btn" (click)="editFlashcard(flashcard._id)"><i class="material-icons">edit</i></button>
-                    <button class="delete-btn" (click)="deleteFlashcard(flashcard._id)"><i class="material-icons">delete</i></button>
-                </div>
-                
+            </div>
+            <div class="card-actions">
+                <button class="edit-btn" (click)="editFlashcard(flashcard._id)"><i
+                        class="material-icons">edit</i></button>
+                <button class="delete-btn" (click)="deleteFlashcard(flashcard._id)"><i
+                        class="material-icons">delete</i></button>
+                <button class="vote-button"><i class="material-icons" (click)="upvoteFlashcard(flashcard._id)">thumb_up</i></button>
+                <button class="vote-button"><i class="material-icons" (click)="downvoteFlashcard(flashcard._id)">thumb_down</i></button>
             </div>
         </div>
-    
+        
+
     </div>
 </div>
