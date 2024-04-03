@@ -24,7 +24,7 @@ export class EditDeckComponent implements OnInit {
     private router: Router
   ) {}
   
-
+  // Initialize deckForm with form controls and validators
   deckForm = new FormGroup({
     name: new FormControl("", [
       Validators.required,
@@ -41,9 +41,11 @@ export class EditDeckComponent implements OnInit {
     visibility: new FormControl("", [Validators.required]),
   });
 
+   // Track input focus states
   nameInputFocused: boolean = false;
   descInputFocused: boolean = false;
 
+  // Method to handle input focus
   onFocus(controlName: string) {
     if (controlName === "name") {
       this.nameInputFocused = true;
@@ -52,6 +54,7 @@ export class EditDeckComponent implements OnInit {
     }
   }
 
+  // Method to handle input blur
   onBlur(controlName: string) {
     if (controlName === "name") {
       this.nameInputFocused = false;
@@ -67,6 +70,7 @@ export class EditDeckComponent implements OnInit {
     });
   }
 
+   // Method to load deck data for editing
   loadDeckData() {
     this.deckService.getDecks(this.deckId).then(
       (data) => {
@@ -83,6 +87,7 @@ export class EditDeckComponent implements OnInit {
     );
   }
 
+  // Method to populate form with loaded deck data
   populateForm() {
     this.deckForm.patchValue({
       name: this.deckData.name,
@@ -91,6 +96,7 @@ export class EditDeckComponent implements OnInit {
     });
   }
 
+  // Method to handle form submission for updating deck
   onSubmit() {
     if (this.deckForm.invalid) {
       return;

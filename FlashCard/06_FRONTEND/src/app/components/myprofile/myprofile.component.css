@@ -12,7 +12,6 @@
 }
 
 .home-main__split--left {
-
   display: flex;
   min-height: 100vh;
   width: 50%;
@@ -24,15 +23,14 @@
   width: 100%;
   position: relative;
   margin-bottom: auto;
-  overflow : hidden; 
+  overflow: hidden;
   display: flex;
-} 
+}
 
 .button-container {
   display: flex;
   margin-left: 10px;
-  height : 5vh
-  
+  height: 5vh;
 }
 
 .top-left::before {
@@ -111,7 +109,7 @@
 }
 
 .detail {
-  min-width: 100% ;
+  min-width: 100%;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -133,7 +131,6 @@ form {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-  
 }
 
 label {
@@ -157,13 +154,11 @@ button[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  
 }
 
 button[type="submit"]:hover {
   background-color: #45a049;
 }
-
 
 .edit-button,
 .delete-button {
@@ -192,7 +187,6 @@ button[type="submit"]:hover {
 }
 
 .privacy-public {
-
   background-color: rgba(83, 169, 84, 0.8);
   padding: 5px 10px;
   border-radius: 5px;
@@ -286,6 +280,9 @@ button[type="submit"]:hover {
     min-width: auto; /* Reset min-width */
   }
 
+  .error-message {
+    color: red;
+  }
   .user-icon {
     width: 40px; /* Decrease user icon size for smaller screens */
     height: 40px;

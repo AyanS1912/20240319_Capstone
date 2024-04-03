@@ -25,6 +25,7 @@ export class EditFlashcardComponent implements OnInit {
     private deckService: DeckService
   ) {}
 
+  // Initialize flashcardForm with form controls and validators
   flashcardForm = new FormGroup({
     tags: new FormControl("", [
       Validators.required,
@@ -55,6 +56,7 @@ export class EditFlashcardComponent implements OnInit {
     this.loadFlashcardData();
   }
 
+  // Track input focus states
   inputFocus: { [key: string]: boolean } = {
     tags: false,
     frontText: false,
@@ -63,13 +65,16 @@ export class EditFlashcardComponent implements OnInit {
     deckName: false,
   };
 
+  // Method to handle input focus
   onFocus(controlName: string) {
     this.inputFocus[controlName] = true;
   }
 
+  // Method to handle input blur
   onBlur(controlName: string) {
     this.inputFocus[controlName] = false;
   }
+  // Method to load flashcard data for editing
   loadFlashcardData() {
     this.flashcardService.getFlashcardById(this.flashcardId).then(
       (data: any) => {
@@ -91,16 +96,18 @@ export class EditFlashcardComponent implements OnInit {
     );
   }
 
+  // Method to populate form with loaded flashcard data
   populateForm(flashcardData: Flashcard) {
     this.flashcardForm.patchValue({
       tags: flashcardData.tags.join(", "),
       frontText: flashcardData.frontText,
       backText: flashcardData.backText,
       visibility: flashcardData.visibility,
-      deckName: flashcardData.deckId, // Assuming deckId is the correct field name
+      deckName: flashcardData.deckId,
     });
   }
 
+  // Method to load decks for dropdown selection
   loadDecks() {
     this.deckService.getAllDecks().then(
       (data: any) => {
@@ -117,6 +124,7 @@ export class EditFlashcardComponent implements OnInit {
     );
   }
 
+  // Method to handle form submission for updating flashcard
   onSubmit() {
     const updatedFlashcardData = {
       tags: this.flashcardForm.value.tags

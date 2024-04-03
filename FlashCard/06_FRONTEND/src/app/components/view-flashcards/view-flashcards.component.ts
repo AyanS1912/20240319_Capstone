@@ -4,6 +4,7 @@ import { Flashcard } from "../../interface/flashcardInterface";
 import { Router } from "@angular/router";
 import { VoteService } from "../../services/vote/vote.service";
 import { RegisterService } from "../../services/auth/user.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-view-flashcards",
@@ -12,13 +13,14 @@ import { RegisterService } from "../../services/auth/user.service";
 })
 export class ViewFlashcardsComponent implements OnInit {
   flashcards: Flashcard[] = [];
-  userDetails : any;
+  userDetails: any;
 
   constructor(
     private flashcardService: FlashcardServiceService,
     private router: Router,
-    private voteService : VoteService,
-    private userService : RegisterService
+    private voteService: VoteService,
+    private userService: RegisterService,
+    private snackBar : MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +29,7 @@ export class ViewFlashcardsComponent implements OnInit {
     this.fetchFlashcards();
   }
 
+  // Method to fetch user details
   getUserDetails() {
     this.userService.getUserDetails().then(
       (data) => {
@@ -39,6 +42,7 @@ export class ViewFlashcardsComponent implements OnInit {
     );
   }
 
+  // Method to initialize flip cards
   initializeFlipCards(): void {
     const flipCards = document.querySelectorAll(".flip-card-click");
 
@@ -49,6 +53,7 @@ export class ViewFlashcardsComponent implements OnInit {
     });
   }
 
+  // Method to fetch flashcards
   fetchFlashcards() {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
@@ -61,18 +66,25 @@ export class ViewFlashcardsComponent implements OnInit {
     );
   }
 
+  // Method to fetch user votes for flashcards
   fetchUserVotes(): void {
     for (const flashcard of this.flashcards) {
       this.voteService.getVotesForFlashcard(flashcard._id).then(
         (votes: any[]) => {
-          const userVote = votes.find((vote) => vote.userId === this.userDetails._id);
+          const userVote = votes.find(
+            (vote) => vote.userId === this.userDetails._id
+          );
           if (userVote) {
             flashcard.userVoteType = userVote.voteType;
           } else {
             flashcard.userVoteType = "";
           }
-          flashcard.upvotes = votes.filter((vote) => vote.voteType === "upvote").length;
-          flashcard.downvotes = votes.filter((vote) => vote.voteType === "downvote").length;
+          flashcard.upvotes = votes.filter(
+            (vote) => vote.voteType === "upvote"
+          ).length;
+          flashcard.downvotes = votes.filter(
+            (vote) => vote.voteType === "downvote"
+          ).length;
         },
         (error) => {
           console.error("Failed to fetch votes for flashcard:", error);
@@ -81,18 +93,22 @@ export class ViewFlashcardsComponent implements OnInit {
     }
   }
 
-
+  // Method to navigate to edit flashcard page
   editFlashcard(flashcardId: string) {
     console.log("clicked");
-    
+
     // Navigate to the edit page with the flashcard ID as a parameter
     this.router.navigate(["/edit-flashcard", flashcardId]);
   }
 
+  // Method to delete a flashcard
   deleteFlashcard(flashcardId: string) {
     // Call the deleteDeck() API method
     this.flashcardService.deleteFlashcard(flashcardId).then(
       (res) => {
+        this.snackBar.open("Flashcard deleted successfully", "", {
+          duration: 3000,
+        });
         console.log("Flashcard deleted successfully:", res);
         // Reload decks after deletion
         this.fetchFlashcards();
@@ -100,20 +116,30 @@ export class ViewFlashcardsComponent implements OnInit {
       (error) => {
         // Handle error
         console.error("Failed to delete Flashcard :", error);
+        this.snackBar.open("Failed to delete Flashcard", "", {
+          duration: 3000,
+        });
       }
     );
   }
 
+  // Method to upvote a flashcard
   upvoteFlashcard(flashcardId: string): void {
     // Call the upvoteFlashcard() API method
     this.voteService.upvoteFlashcard(flashcardId).then(
       (res) => {
         console.log("Flashcard upvoted successfully:", res);
+        this.snackBar.open("Flashcard upvoted successfully", "", {
+          duration: 3000,
+        });
         // Reload flashcards after upvote
         this.fetchFlashcards();
       },
       (error) => {
         console.error("Failed to upvote Flashcard:", error);
+        this.snackBar.open("Failed to upvote Flashcard", "", {
+          duration: 3000,
+        });
       }
     );
   }
@@ -123,11 +149,17 @@ export class ViewFlashcardsComponent implements OnInit {
     this.voteService.downvoteFlashcard(flashcardId).then(
       (res) => {
         console.log("Flashcard downvoted successfully:", res);
+        this.snackBar.open("Flashcard downvoted successfully", "", {
+          duration: 3000,
+        });
         // Reload flashcards after downvote
         this.fetchFlashcards();
       },
       (error) => {
         console.error("Failed to downvote Flashcard:", error);
+        this.snackBar.open("Failed to downvote Flashcard", "", {
+          duration: 3000,
+        });
       }
     );
   }

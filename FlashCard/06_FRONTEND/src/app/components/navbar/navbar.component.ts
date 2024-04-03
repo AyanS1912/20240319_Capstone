@@ -7,21 +7,25 @@ import { SearchService } from "../../services/search.service";
   styleUrl: "./navbar.component.css",
 })
 export class NavbarComponent {
+  // Define output event emitters for profile click and search results
   @Output() profileClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() searchResults: EventEmitter<any[]> = new EventEmitter<any[]>();
 
   constructor(private searchService: SearchService) {}
 
+  // Method to emit profile click event
   openProfile(): void {
     this.profileClicked.emit(true);
     // console.log("Clicked");
   }
 
+  // Method to perform search and emit search results
   async search(query: string): Promise<void> {
     try {
       const response = await this.searchService.search(query);
       // Emit search results
       this.searchResults.emit(response);
+      this.profileClicked.emit(false);
     } catch (error) {
       console.error('Failed to search:', error);
     }

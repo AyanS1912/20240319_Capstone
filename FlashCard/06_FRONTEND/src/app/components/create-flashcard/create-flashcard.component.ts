@@ -8,16 +8,12 @@ import { Deck } from "../../interface/deckInterface";
 import { RegisterService } from "../../services/auth/user.service";
 import { MarkdownService } from "ngx-markdown";
 
-
-
 @Component({
   selector: "app-create-flashcard",
   templateUrl: "./create-flashcard.component.html",
   styleUrl: "./create-flashcard.component.css",
 })
 export class CreateFlashcardComponent {
-
-
   frontContent: string = "";
   userId: string = "";
   flashcardId: string = "";
@@ -32,49 +28,33 @@ export class CreateFlashcardComponent {
     private markdownService: MarkdownService
   ) {}
 
-  
-
   ngOnInit(): void {
-    // Fetch user's decks
-    // this.loadDecks();
+    // Fetch user's details and decks when component initializes
     this.getUserDetails();
   }
 
-  format = 'html';
+  format = "html";
   // quillForm;
-  quillConfig={
+  quillConfig = {
     toolbar: {
       container: [
-        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-        ['code-block'],
-        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        ['clean'],                                         // remove formatting button
-        ['link'],
-        ['source'], 
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        ["code-block"],
+        [{ header: 1 }, { header: 2 }], // custom button values
+        [{ list: "ordered" }, { list: "bullet" }],
+        ["clean"], // remove formatting button
+        ["link"],
+        ["source"],
       ],
-      handlers: {'source': () =>  {
-        // this.formatChange();
-      }}
+      handlers: {
+        source: () => {
+          // this.formatChange();
+        },
+      },
     },
-  }
-  // quillConfig={
-  //   toolbar: {
-  //     container: [
-  //       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  //       ['code-block'],
-  //       [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-  //       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  //       [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-  //       ['clean'],                                         // remove formatting button
-  //       ['link'],
-  //       ['link', 'image', 'video']  
-  //     ],
-      
-  //   },
+  };
 
-  // }
-
+  // FormGroup to manage form controls and their validations
   flashcardForm = new FormGroup({
     tags: new FormControl("", [
       Validators.required,
@@ -101,6 +81,7 @@ export class CreateFlashcardComponent {
     ]),
   });
 
+  // Object to track focus state of input fields
   inputFocus: { [key: string]: boolean } = {
     tags: false,
     frontText: false,
@@ -109,14 +90,17 @@ export class CreateFlashcardComponent {
     deckName: false,
   };
 
+  // Method to handle input focus event
   onFocus(controlName: string) {
     this.inputFocus[controlName] = true;
   }
 
+  // Method to handle input blur event
   onBlur(controlName: string) {
     this.inputFocus[controlName] = false;
   }
 
+  // Method to fetch user details
   getUserDetails() {
     this.userService.getUserDetails().then(
       (data) => {
@@ -129,6 +113,7 @@ export class CreateFlashcardComponent {
       }
     );
   }
+  // Method to load decks associated with the user
   loadDecks() {
     this.deckService.getAllDecks().then(
       (data: any) => {
@@ -146,8 +131,9 @@ export class CreateFlashcardComponent {
     );
   }
 
+  // Method to insert Markdown into textarea
   insertMarkdown(prefix: string, helperText: string, suffix: string) {
-    const textareaEl = document.querySelector('textarea');
+    const textareaEl = document.querySelector("textarea");
 
     if (textareaEl) {
       const textarea = textareaEl as HTMLTextAreaElement;
@@ -155,7 +141,6 @@ export class CreateFlashcardComponent {
       const start = textarea.selectionStart;
       // End represents the index of textarea after selection
       const end = textarea.selectionEnd;
-
 
       const selectedText = this.frontContent.substring(start, end);
 
@@ -167,7 +152,7 @@ export class CreateFlashcardComponent {
           newText +
           this.frontContent.substring(end);
       }
-      // Else add Helper 
+      // Else add Helper
       else {
         this.frontContent =
           this.frontContent.substring(0, start) +
@@ -181,6 +166,7 @@ export class CreateFlashcardComponent {
       textarea.focus();
     }
   }
+  // Method to handle form submission
   onSubmit(): void {
     if (this.flashcardForm) {
       // Form is valid, continue with flashcard creation

@@ -1,32 +1,32 @@
-import { Component , Input, OnInit} from '@angular/core';
-import { Deck } from '../../interface/deckInterface';
-import { DeckService } from '../../services/auth/deck.service';
-import { RegisterService } from '../../services/auth/user.service';
-import { Router } from '@angular/router';
-import { VoteService } from '../../services/vote/vote.service';
+import { Component, Input, OnInit } from "@angular/core";
+import { Deck } from "../../interface/deckInterface";
+import { DeckService } from "../../services/auth/deck.service";
+import { RegisterService } from "../../services/auth/user.service";
+import { Router } from "@angular/router";
+import { VoteService } from "../../services/vote/vote.service";
 
 @Component({
-  selector: 'app-view-decks',
-  templateUrl: './view-decks.component.html',
-  styleUrl: './view-decks.component.css'
+  selector: "app-view-decks",
+  templateUrl: "./view-decks.component.html",
+  styleUrl: "./view-decks.component.css",
 })
 export class ViewDecksComponent {
-   // @Input() deck!: Deck;
-   mydeckCardDecks : Deck[] = []
-   userData :any
- 
-   constructor(
+  // @Input() deck!: Deck;
+  mydeckCardDecks: Deck[] = [];
+  userData: any;
+
+  constructor(
     private deckService: DeckService,
     private userService: RegisterService,
     private router: Router,
-    private voteService : VoteService
+    private voteService: VoteService
   ) {}
 
   ngOnInit(): void {
     this.getUserDetails();
-    
   }
 
+  // Method to fetch user details and load decks
   getUserDetails() {
     this.userService.getUserDetails().then(
       (data) => {
@@ -39,13 +39,16 @@ export class ViewDecksComponent {
     );
   }
 
+  // Method to load decks associated with the current user
   loadDecks() {
     this.deckService.getAllDecks().then(
       (decks: any) => {
         this.mydeckCardDecks = decks.data;
-        this.mydeckCardDecks = this.mydeckCardDecks.filter(deck => deck.userId.toString() === this.userData._id.toString())
-        console.log(this.mydeckCardDecks)
-        this.fetchUserVotes()
+        this.mydeckCardDecks = this.mydeckCardDecks.filter(
+          (deck) => deck.userId.toString() === this.userData._id.toString()
+        );
+        console.log(this.mydeckCardDecks);
+        this.fetchUserVotes();
       },
       (error) => {
         console.error("Failed to fetch decks:", error);
@@ -53,8 +56,9 @@ export class ViewDecksComponent {
     );
   }
 
+  // Method to fetch votes for each deck
   fetchUserVotes(): void {
-    console.log(this.mydeckCardDecks)
+    console.log(this.mydeckCardDecks);
     for (const deck of this.mydeckCardDecks) {
       this.voteService
         .getVotesForDeck(deck._id)
@@ -82,15 +86,10 @@ export class ViewDecksComponent {
           console.error("Failed to fetch votes for deck:", error);
         });
     }
-
-    
   }
 
+  // Method to reload decks
   reloadDecks() {
     this.loadDecks();
   }
-
-  
-
-
 }

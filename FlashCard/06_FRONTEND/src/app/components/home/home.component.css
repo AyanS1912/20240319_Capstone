@@ -8,7 +8,11 @@
   text-decoration: none;
   font-family: "Josefin Sans", sans-serif;
 }
-
+.selected {
+  background-color: #f0f0f0; /* Add your desired background color */
+  color: #333; /* Add your desired text color */
+  /* Add any other styles to indicate the selected option */
+}
 .wrapper {
   display: flex;
   min-height: 100vh;

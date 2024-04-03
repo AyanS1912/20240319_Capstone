@@ -17,6 +17,7 @@ export class CreateDecksComponent {
     private router: Router
   ){}
 
+  // Define FormGroup to manage form controls and their validations
   deckForm = new FormGroup({
     name: new FormControl("", [
       Validators.required,
@@ -35,9 +36,11 @@ export class CreateDecksComponent {
     ]),
   });
 
+  // Properties to track focus state of input fields
   nameInputFocused: boolean = false;
   descInputFocused: boolean = false;
 
+   // Method to handle input focus event
   onFocus(controlName: string) {
     if (controlName === "name") {
       this.nameInputFocused = true;
@@ -46,6 +49,7 @@ export class CreateDecksComponent {
     }
   }
 
+  // Method to handle form submission
   onBlur(controlName: string) {
     if (controlName === "name") {
       this.nameInputFocused = false;
@@ -57,10 +61,13 @@ export class CreateDecksComponent {
 
   onSubmit() {
     if (this.deckForm.invalid) {
-      return;
+      return; // If form is invalid, do not proceed
     }
 
+    // Extract form data
     const deckData = this.deckForm.value;
+
+    // Call deck service to create deck
     this.deckService.createDeck(deckData).then(
       (response) => {
         console.log('Deck created successfully:', response);

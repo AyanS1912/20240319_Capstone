@@ -4,6 +4,7 @@ import { DeckService } from "../../services/auth/deck.service";
 import { RegisterService } from "../../services/auth/user.service";
 import { Router } from "@angular/router";
 import { VoteService } from '../../services/vote/vote.service';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-home",
@@ -24,7 +25,8 @@ export class HomeComponent implements OnInit {
     private deckService: DeckService,
     private userService: RegisterService,
     private router: Router,
-    private voteService : VoteService
+    private voteService : VoteService,
+    private snackBar : MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
     this.loadDecks();
   }
 
+  // Fetch user details
   getUserDetails() {
     this.userService.getUserDetails().then(
       (data) => {
@@ -40,10 +43,12 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         console.error("Failed to fetch user details:", error);
+        this.snackBar.open("Failed to fetch user details. Please try again.", "", { duration: 3000 });
       }
     );
   }
 
+  // Load decks for display
   loadDecks() {
     this.deckService.getAllDecks().then(
       (decks: any) => {
@@ -53,10 +58,12 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         console.error("Failed to fetch decks:", error);
+        this.snackBar.open("Failed to fetch decks. Please try again.", "", { duration: 3000 });
       }
     );
   }
 
+  // Fetch user votes for decks
   fetchUserVotes(): void {
     console.log(this.deckCardDecks)
     for (const deck of this.deckCardDecks) {
@@ -77,33 +84,34 @@ export class HomeComponent implements OnInit {
           deck.downvotes = votes.filter(
             (vote) => vote.voteType === "downvote"
           ).length;
-          console.log("Votes fetched successfully for deck:", deck._id);
-          console.log("User vote type:", deck.userVoteType);
-          console.log("Total upvotes:", deck.upvotes);
-          console.log("Total downvotes:", deck.downvotes);
         })
         .catch((error) => {
           console.error("Failed to fetch votes for deck:", error);
+          this.snackBar.open("Failed to fetch votes for deck. Please try again.", "", { duration: 3000 });
         });
     }
   }
   
+   // Reload decks
   reloadDecks() {
     this.loadDecks();
   }
   
+  // Handle search results
   handleSearchResults(results: any[]): void {
     this.deckCardDecks = results;
     this.selectedComponent = 'deck-card'
     this.fetchUserVotes()
   }
 
+  // Handle button clicks
   onButtonClicked(component: string) {
     this.isProfileOpen = false;
     this.selectedComponent = component;
     // console.log(this.selectedComponent);
   }
 
+  // Open user profile
   openMyProfile(open: boolean): void {
     // console.log("Profile Clocked");
     this.isProfileOpen = open;
