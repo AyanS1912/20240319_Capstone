@@ -1,15 +1,15 @@
-.info {
+/* .info {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-}
+} */
 
 .tpn_card .image-container img {
   border-radius: 23px;
   min-height: 150px;
   object-fit: cover;
-  min-width: 250px;
-  width: 250px;
+  /* min-width: 250px; */
+  width: 100%;
   margin: 5px;
 }
 
@@ -24,7 +24,7 @@
   margin: 0px 10px 20px 0px;
   position: relative;
   min-height: 300px;
-  min-width: 600px;
+  /* min-width: 600px; */
   max-width: 600px;
 }
 
@@ -146,40 +146,11 @@
   }
 }
 
-/* For smaller screen sizes */
 @media (max-width: 768px) {
-  .wrapper {
-    flex-direction: column; /* Change to a column layout on smaller screens */
-  }
-
-  .wrapper .sidebar {
-    width: 100%; /* Occupy the full width on smaller screens */
-    position: static; /* Remove fixed positioning */
-  }
-
-  .wrapper .main_content {
-    width: 100%;
-    margin-left: 0; /* Remove left margin on smaller screens */
-  }
-
-  .search-bar {
-    margin: 10px auto; /* Center the search bar */
-  }
-
-  .search-input {
-    width: 80%; /* Make search input wider */
-  }
-
-  .user-profile {
-    margin: 10px auto; /* Center the user profile */
-  }
-
-  .custom-flex-container {
-    justify-content: center; /* Center the card container */
-  }
-
+  /* Add now: New CSS rules for smaller screen sizes */
   .tpn_card {
-    width: 90%; /* Make cards wider */
+    width: 90%; 
+    max-width: none;
   }
 
   .tpn_card img {

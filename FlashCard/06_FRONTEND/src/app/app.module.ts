@@ -21,7 +21,6 @@ import { MyprofileComponent } from "./components/myprofile/myprofile.component";
 import { HttpClientModule } from "@angular/common/http";
 import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
 import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
-import { SearchComponent } from "./components/search/search.component";
 import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flashcards.component";
 import { MarkdownModule } from "ngx-markdown";
 import { QuillModule } from "ngx-quill";
@@ -43,7 +42,6 @@ import { QuillModule } from "ngx-quill";
     MyprofileComponent,
     EditDeckComponent,
     EditFlashcardComponent,
-    SearchComponent,
     DeckFlashcardsComponent,
   ],
   imports: [

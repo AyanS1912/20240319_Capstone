@@ -275,4 +275,44 @@ button[type="submit"]:hover {
     width: calc(50% - 24px); /* Adjust card width for smaller screens */
     margin: 10px; /* Add margin between cards */
   }
+
+  .home-main {
+    flex-direction: column; /* Change to a single column layout for smaller screens */
+  }
+
+  .home-main__split--left,
+  .home-main__split--right {
+    width: 100%; /* Set width to full for smaller screens */
+    min-width: auto; /* Reset min-width */
+  }
+
+  .user-icon {
+    width: 40px; /* Decrease user icon size for smaller screens */
+    height: 40px;
+  }
+
+  .user-info {
+    margin: 10px; /* Decrease margin for user info */
+  }
+
+  .edit-button,
+  .delete-button {
+    margin: 5px; /* Adjust margin for edit and delete buttons */
+    font-size: 12px; /* Decrease font size for edit and delete buttons */
+  }
+
+  form {
+    width: 90%; /* Set form width to 90% for smaller screens */
+    margin: 20px auto; /* Center the form and add margin */
+  }
+
+  input {
+    width: calc(100% - 16px); /* Adjust input width for smaller screens */
+    margin-bottom: 10px; /* Decrease margin bottom for inputs */
+  }
+
+  button[type="submit"] {
+    width: 100%; /* Set button width to full for smaller screens */
+    font-size: 14px; /* Decrease font size for submit button */
+  }
 }
