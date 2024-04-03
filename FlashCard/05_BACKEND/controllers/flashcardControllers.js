@@ -95,10 +95,11 @@ const getSingleFlashcard = async (req, res) => {
  */
 const postFlashcard = async (req, res) => {
     try {
-        const deckId = req.params.deckid
+        const deckId = req.params.deckid.trim();
         // Extract flashcard information from request body
         const { frontText, backText, tags, visibility } = req.body
 
+        
         // Validate front text
         if (!validateFrontText(frontText)) {
             return res.status(400).json({ error: "Invalid front text format. Front text can be alphanumeric or in HTML format." });
@@ -116,7 +117,7 @@ const postFlashcard = async (req, res) => {
         if (!validateVisibility(visibility)) {
             return res.status(400).json({ error: "Invalid visibility value. Visibility should be 'private' or 'public'." });
         }
-
+        
         // Verify token and extract user ID
         const token = req.headers.authorization
         if (!token_provided(token)) {
@@ -127,7 +128,8 @@ const postFlashcard = async (req, res) => {
             return res.status(403).send({ message: "Forbidden. Invalid token." })
         }
         const userId = decodedToken.userId
-
+        
+        
         // Create new flashcard instance
         const newFlashcard = new Flashcard({
             deckId: deckId,
@@ -138,9 +140,12 @@ const postFlashcard = async (req, res) => {
             owner: true,
             visibility: visibility || "private", // Set default visibility to private if not provided
         })
+        console.log(newFlashcard)
 
+        
         // Save the new flashcard to the database
         const savedFlashcard = await newFlashcard.save()
+        
 
         // Return the saved flashcard in the response
         return res.status(201).send({ message: "New flashcard created", data: savedFlashcard })

@@ -102,6 +102,31 @@ export class DeckFlashcardsComponent implements OnInit {
     });
   }
 
+  fetchUserVotes(): void {
+    for (const flashcard of this.flashcards) {
+      this.voteService.getVotesForFlashcard(flashcard._id).then(
+        (votes: any[]) => {
+          const userVote = votes.find(
+            (vote) => vote.userId === this.userDetails._id
+          );
+          if (userVote) {
+            flashcard.userVoteType = userVote.voteType;
+          } else {
+            flashcard.userVoteType = "";
+          }
+          flashcard.upvotes = votes.filter(
+            (vote) => vote.voteType === "upvote"
+          ).length;
+          flashcard.downvotes = votes.filter(
+            (vote) => vote.voteType === "downvote"
+          ).length;
+        },
+        (error) => {
+          console.error("Failed to fetch votes for flashcard:", error);
+        }
+      );
+    }
+  }
   // Method to fetch flashcards based on deckId
   fetchFlashcards(deckId: string) {
     this.flashcardService.getAllFlashcards().then(
@@ -113,6 +138,7 @@ export class DeckFlashcardsComponent implements OnInit {
           (card) => card.deckId.toString() === deckId
         );
         console.log(this.flashcards);
+        this.fetchUserVotes()
       },
       (error) => {
         console.error(error);
