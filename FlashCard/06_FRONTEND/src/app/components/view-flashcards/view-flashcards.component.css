@@ -1,3 +1,16 @@
+.visibility-tag .public {
+  background-color: rgba(83, 169, 84, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.visibility-tag .private {
+  background-color: rgba(199, 243, 4, 0.8);
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 /* Cards */
 .flip-card,
 .flip-card-click {
@@ -59,6 +72,7 @@
 }
 .flip-card-front {
   background-color: #fff;
+  /* margin : 20px */
 }
 .flip-card-back {
   background-color: #fff;
@@ -67,41 +81,74 @@
 
 #card-container2 {
   display: flex;
-  flex-wrap: wrap; /* Enable wrapping */
-  justify-content: center; /* Adjust spacing between cards */
-  background-color: #f9f9f9;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.card-actions {
+.footer {
   position: absolute;
   bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
+  right: 20px;
+  
 }
 
-.edit-btn,
-.delete-btn {
-  padding: 8px 16px;
+.edit-button,
+.delete-button {
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
-  background-color: white; /* Green */
-  color: black;
+  padding: 0;
   cursor: pointer;
+  margin-left: 5px;
+  padding : 4px;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
-.edit-btn:hover,
-.delete-btn:hover {
-  background-color:#f9f9f9;
-  color :#000
+.edit-button {
+  background-color: green;
+  color : white
+}
+
+.delete-button {
+  background-color: red;
+  color : white
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.voting-section {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+}
+
+.upvote-button,
+.downvote-button {
+  background-color: white;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+.vote-button:hover {
+  background-color: #f9f9f9;
+  color: #000;
 }
 
 .visibility-tag {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   color: white;
   padding: 5px;
   border-radius: 5px;

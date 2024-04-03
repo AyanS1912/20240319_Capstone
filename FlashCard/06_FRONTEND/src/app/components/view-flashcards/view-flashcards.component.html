@@ -1,11 +1,14 @@
 <div class="info">
 
     <div id="card-container2">
-
-        <div class="flip-card-click" *ngFor="let flashcard of flashcards">
+        <div *ngFor="let flashcard of flashcards">
+        <div class="flip-card-click" >
             <div class="flip-card-inner" tab-index="0">
                 <div class="flip-card-front">
-                    <div class="visibility-tag">{{ flashcard.visibility }}</div>
+                    <div class="visibility-tag" *ngIf="flashcard.visibility === 'public'"><span
+                            class="public">Public</span></div>
+                    <div class="visibility-tag" *ngIf="flashcard.visibility === 'private'"><span
+                            class="private">Private</span></div>
                     <h2>{{flashcard.frontText}}</h2>
 
                 </div>
@@ -13,16 +16,25 @@
                     <p>{{flashcard.backText}}</p>
                 </div>
             </div>
-            <div class="card-actions">
-                <button class="edit-btn" (click)="editFlashcard(flashcard._id)"><i
+            <div class="footer" *ngIf="userDetails && userDetails._id === flashcard.userId">
+                <button class="edit-button" (click)="editFlashcard(flashcard._id)"><i
                         class="material-icons">edit</i></button>
-                <button class="delete-btn" (click)="deleteFlashcard(flashcard._id)"><i
+                <button class="delete-button" (click)="deleteFlashcard(flashcard._id)"><i
                         class="material-icons">delete</i></button>
-                <button class="vote-button"><i class="material-icons" (click)="upvoteFlashcard(flashcard._id)">thumb_up</i>{{ flashcard.upvotes }}</button>
-                <button class="vote-button"><i class="material-icons" (click)="downvoteFlashcard(flashcard._id)">thumb_down</i>{{ flashcard.downvotes }}</button>
+            </div>
+            <div class="voting-section">
+                <button class="upvote-button" (click)="upvoteFlashcard(flashcard._id)">
+                    <i class="material-icons">thumb_up</i>
+                    {{ flashcard.upvotes }}
+                </button>
+                <button class="downvote-button">
+                    <i class="material-icons" (click)="downvoteFlashcard(flashcard._id)">thumb_down</i>
+                    {{ flashcard.downvotes }}
+                </button>
+                
             </div>
         </div>
-        
+
 
     </div>
 </div>

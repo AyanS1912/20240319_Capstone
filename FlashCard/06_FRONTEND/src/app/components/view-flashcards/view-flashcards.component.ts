@@ -81,6 +81,7 @@ export class ViewFlashcardsComponent implements OnInit {
     }
   }
 
+
   editFlashcard(flashcardId: string) {
     console.log("clicked");
     

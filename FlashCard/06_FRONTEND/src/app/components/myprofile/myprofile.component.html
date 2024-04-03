@@ -1,7 +1,7 @@
 <div class="info">
     <div class="home-main">
         <div class=" home-main__split--left">
-            <div class="top-left">
+            <div  style="display: flex; flex-direction: column; height: 300px; width: 300px; ">
                 <div class="user-details">
                     <div class="user-icon">
                     </div>
@@ -9,27 +9,45 @@
                         <h2>{{userDetails.username}}</h2>
                         <p>{{userDetails.email}}</p>
                     </div>
-                    
-                </div>
-            </div>
-            <div class="button-container" >
-                <button class="edit-button"><i class="material-icons" >edit</i></button>
-                <button class="delete-button" (click)="confirmDelete(userDetails._id)"><i class="material-icons" >delete</i></button>
-            </div>
-            
-            <div class="bottom-left">
+                    <div class="button-container">
+                        <button class="edit-button" (click)="openEditForm()"><i class="material-icons">edit</i></button>
+                        <button class="delete-button" (click)="confirmDelete(userDetails._id)"><i
+                                class="material-icons">delete</i></button>
+                    </div>
 
+                </div>
+                <div>
+                <form *ngIf="showEditForm" (ngSubmit)="updateUserDetails()">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" [(ngModel)]="editedUser.username" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" [(ngModel)]="editedUser.email" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" [(ngModel)]="editedUser.password" required>
+                    <button type="submit" >Update</button>
+                </form>
+            </div>
             </div>
         </div>
 
         <div class=" home-main__split--right">
-                <div class="detail" *ngFor="let deck of userDecks">
-                    <div class="details-container" >
+            <div class="detail" *ngFor="let deck of userDecks">
+                <div class="privacy-public" *ngIf="deck.visibility === 'public'">
+                    <span class="public">Public</span>
+                </div>
+                <div class="privacy-private" *ngIf="deck.visibility === 'private'">
+                    <span class="public">Private</span>
+                </div>
+                <div class="details-container">
+                    
                     <span class="detail-label">Deck Name: {{deck.name}}</span>
                     <span class="detail-value">Description : {{deck.description}}</span>
+                    
                     <div class="button-container">
-                        <button class="edit-button" (click)="editDeck(deck._id)"><i class="material-icons">edit</i></button>
-                        <button class="delete-button" (click)="deleteDeck(deck._id)"><i class="material-icons">delete</i></button>
+                        <button class="edit-button" (click)="editDeck(deck._id)"><i
+                                class="material-icons">edit</i></button>
+                        <button class="delete-button" (click)="deleteDeck(deck._id)"><i
+                                class="material-icons">delete</i></button>
                     </div>
                 </div>
             </div>

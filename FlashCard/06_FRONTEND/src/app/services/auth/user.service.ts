@@ -73,13 +73,14 @@ export class RegisterService {
   }
 
   updateUser(id: string, userData: any): Promise<any> {
+    // console.log("aaagay")
     const token = localStorage.getItem("Authorization");
     if (!token) {
       return Promise.reject("No token found in localStorage");
     }
     return new Promise<any>((resolve, reject) => {
       this.http
-        .put<any>(`${this.Url}/user/${id}`, userData, {
+        .put<any>(`${this.Url}/users/update/${id}`, userData, {
           headers: { Authorization: `${token}` },
         })
         .subscribe(

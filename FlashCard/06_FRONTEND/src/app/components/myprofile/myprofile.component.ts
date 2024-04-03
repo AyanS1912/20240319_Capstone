@@ -13,6 +13,8 @@ import { Deck } from "../../interface/deckInterface";
 export class MyprofileComponent implements OnInit {
   userDetails: any;
   userDecks: Deck[] = [];
+  showEditForm: boolean = false;
+  editedUser: any = {};
 
   constructor(
     private userService: RegisterService,
@@ -58,6 +60,24 @@ export class MyprofileComponent implements OnInit {
     );
   }
 
+  openEditForm() {
+    this.showEditForm = !this.showEditForm;
+    this.editedUser = { ...this.userDetails };
+  }
+
+  updateUserDetails() {
+    this.userService.updateUser(this.userDetails._id, this.editedUser).then(
+      (res) => {
+        this.snackBar.open('User details updated successfully', '', { duration: 3000 });
+        this.showEditForm = false;
+        this.getUserDetails();
+      },
+      (error) => {
+        console.error('Failed to update user details:', error);
+      }
+    );
+  }
+  
   deleteUser(userId : string) {
     console.log("Clicked")
     this.userService.deleteUser(userId).then(

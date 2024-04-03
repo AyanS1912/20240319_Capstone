@@ -49,15 +49,15 @@
   background-color: #fff;
 }
 
-.sidebar .sign_out {
+/* .sidebar .sign_out {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-}
+} */
 
-.sidebar .sign_out a {
+/* .sidebar .sign_out a {
   display: block;
   width: 40px;
   background: #594f8d;
@@ -68,13 +68,26 @@
   color: #bdb8d7;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-}
+} */
 
 .sidebar-hr {
   margin: 0;
   border: none;
   border-top: 1px solid #bdb8d7; /* Color of the horizontal line */
   margin-bottom: 3px;
+}
+
+
+.sidebar .sign_out a {
+  display: block;
+  width: 40px;
+  background: #594f8d;
+  height: 40px;
+  line-height: 40px; /* Adjust line height */
+  text-align: center;
+  margin: 0 5px;
+  color: #bdb8d7;
+  border-radius: 5px;
 }
 
 .log_out {
@@ -109,14 +122,23 @@
   color: #000;
 }
 
+
 /* For smaller screen sizes */
 @media (max-width: 768px) {
   .wrapper {
     flex-direction: column;
   }
 
-  .wrapper .sidebar {
-    width: 100%;
-    position: static;
+  .sidebar {
+    flex: 0 0 100%; /* Adjust sidebar width for smaller screens */
+    position: static; /* Remove fixed positioning */
+  }
+
+  .sidebar ul li {
+    padding: 10px; /* Decrease padding for smaller screens */
+  }
+
+  .sidebar .sign_out {
+    bottom: 60px; /* Adjust the sign out button position for smaller screens */
   }
 }

@@ -12,7 +12,7 @@
 }
 
 .home-main__split--left {
-  justify-content: flex-end;
+
   display: flex;
   min-height: 100vh;
   width: 50%;
@@ -24,9 +24,9 @@
   width: 100%;
   position: relative;
   margin-bottom: auto;
-  overflow: hidden; /* Clip any overflow content */
+  overflow : hidden; 
   display: flex;
-}
+} 
 
 .button-container {
   display: flex;
@@ -39,9 +39,8 @@
   content: "";
   position: absolute;
   width: 100%;
-  max-height: 20vh;
+  max-height: 100vh;
   margin-top: 10px;
-  /* background-image: url("https://i.postimg.cc/7Y5yjX3T/wallpaperflare-com-wallpaper.jpg"); */
   background-size: 500px 450px;
   background-repeat: no-repeat;
   background-position: center;
@@ -128,6 +127,42 @@
   margin-left: 10px;
 }
 
+form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure that padding and border are included in the element's total width and height */
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
 
 
 .edit-button,
@@ -139,6 +174,45 @@
   cursor: pointer; /* Change cursor to pointer on hover */
 }
 
+.visibility-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.visibility-tag.public {
+  background-color: rgba(83, 169, 84, 0.8); /* Green for public */
+}
+
+.visibility-tag.private {
+  background-color: rgba(199, 243, 4, 0.8); /* Yellow for private */
+}
+
+.privacy-public {
+
+  background-color: rgba(83, 169, 84, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.privacy-private {
+  top: 10px;
+  right: 10px;
+  background-color: rgba(199, 243, 4, 0.8);
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.privacy-status {
+  font-weight: bold;
+}
 /** Media Querys */
 
 @media screen and (min-width: 64em) {
