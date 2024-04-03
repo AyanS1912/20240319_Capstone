@@ -7,6 +7,8 @@ import { FlashcardServiceService } from "../../services/flashcard/flashcard-serv
 import { Deck } from "../../interface/deckInterface";
 import { RegisterService } from "../../services/auth/user.service";
 import { MarkdownService } from "ngx-markdown";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: "app-create-flashcard",
@@ -25,7 +27,8 @@ export class CreateFlashcardComponent {
     private deckService: DeckService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private markdownService: MarkdownService
+    private markdownService: MarkdownService,
+    private dialog : MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -207,9 +210,9 @@ export class CreateFlashcardComponent {
           duration: 3000,
         });
       }
-    } else {
+    } 
+    else {
       // Form is invalid, display error message or handle as needed
-      console.log("Kabvera sararara", this.flashcardForm);
       this.snackBar.open("Please fill out all required fields correctly.", "", {
         duration: 3000,
       });

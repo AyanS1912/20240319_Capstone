@@ -1,0 +1,35 @@
+.dialog-container {
+    padding: 20px;
+  }
+  
+  .dialog-title {
+    margin-bottom: 10px;
+  }
+  
+  .dialog-message {
+    margin-bottom: 20px;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Add gap between buttons */
+  }
+  
+  .confirm-button {
+    padding: 10px 20px; /* Add padding to the buttons */
+    border-radius: 5px; /* Add border radius for a rounded appearance */
+    background-color: #007bff; /* Add background color */
+    color: #fff; /* Add text color */
+    border: none; /* Remove border */
+    cursor: pointer;
+  }
+  
+  .cancel-button {
+    padding: 10px 20px; /* Add padding to the buttons */
+    border-radius: 5px; /* Add border radius for a rounded appearance */
+    background-color: #dc3545; /* Add background color */
+    color: #fff; /* Add text color */
+    border: none; /* Remove border */
+    cursor: pointer;
+  }

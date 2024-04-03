@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { VoteService } from "../../services/vote/vote.service";
 import { RegisterService } from "../../services/auth/user.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: "app-view-flashcards",
@@ -20,7 +22,8 @@ export class ViewFlashcardsComponent implements OnInit {
     private router: Router,
     private voteService: VoteService,
     private userService: RegisterService,
-    private snackBar : MatSnackBar
+    private snackBar : MatSnackBar,
+    private dialog : MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -103,24 +106,33 @@ export class ViewFlashcardsComponent implements OnInit {
 
   // Method to delete a flashcard
   deleteFlashcard(flashcardId: string) {
-    // Call the deleteDeck() API method
-    this.flashcardService.deleteFlashcard(flashcardId).then(
-      (res) => {
-        this.snackBar.open("Flashcard deleted successfully", "", {
-          duration: 3000,
-        });
-        console.log("Flashcard deleted successfully:", res);
-        // Reload decks after deletion
-        this.fetchFlashcards();
-      },
-      (error) => {
-        // Handle error
-        console.error("Failed to delete Flashcard :", error);
-        this.snackBar.open("Failed to delete Flashcard", "", {
-          duration: 3000,
-        });
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '250px',
+      data: { title: 'Confirm Deletion', message: 'Are you sure you want to delete this flashcard?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // User confirmed deletion
+        this.flashcardService.deleteFlashcard(flashcardId).then(
+          (res) => {
+            this.snackBar.open("Flashcard deleted successfully", "", {
+              duration: 3000,
+            });
+            console.log("Flashcard deleted successfully:", res);
+            // Reload flashcards after deletion
+            this.fetchFlashcards();
+          },
+          (error) => {
+            // Handle error
+            console.error("Failed to delete Flashcard :", error);
+            this.snackBar.open("Failed to delete Flashcard", "", {
+              duration: 3000,
+            });
+          }
+        );
       }
-    );
+    });
   }
 
   // Method to upvote a flashcard

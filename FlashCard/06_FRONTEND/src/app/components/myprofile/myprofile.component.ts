@@ -4,6 +4,8 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { DeckService } from "../../services/auth/deck.service";
 import { Deck } from "../../interface/deckInterface";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: "app-myprofile",
@@ -20,7 +22,8 @@ export class MyprofileComponent implements OnInit {
     private userService: RegisterService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private deckService: DeckService
+    private deckService: DeckService,
+    private dialog : MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -29,9 +32,17 @@ export class MyprofileComponent implements OnInit {
 
   // Confirm user account deletion
   confirmDelete(userId: string) {
-    if (window.confirm("Are you sure you want to delete your account?")) {
-      this.deleteUser(userId);
-    }
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '250px',
+      data: { title: 'Confirm Deletion', message: 'Are you sure you want to delete your account?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // User confirmed deletion
+        this.deleteUser(userId);
+      }
+    });
   }
 
   // Fetch user details
@@ -108,20 +119,30 @@ export class MyprofileComponent implements OnInit {
 
   // Delete a deck
   deleteDeck(deckId: string) {
-    // Call the deleteDeck() API method
-    console.log("Delete button clicked for deck ID:", deckId);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '250px',
+      data: { title: 'Confirm Deletion', message: 'Are you sure you want to delete this deck?' }
+    });
 
-    this.deckService.deleteDeck(deckId).then(
-      (res) => {
-        // Handle success
-        console.log("Deck deleted successfully:", res);
-        // Reload decks after deletion
-        this.getUserDecks();
-      },
-      (error) => {
-        // Handle error
-        console.error("Failed to delete deck:", error);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // User confirmed deletion
+        // Call the deleteDeck() API method
+        console.log("Delete button clicked for deck ID:", deckId);
+
+        this.deckService.deleteDeck(deckId).then(
+          (res) => {
+            // Handle success
+            console.log("Deck deleted successfully:", res);
+            // Reload decks after deletion
+            this.getUserDecks();
+          },
+          (error) => {
+            // Handle error
+            console.error("Failed to delete deck:", error);
+          }
+        );
       }
-    );
+    });
   }
 }

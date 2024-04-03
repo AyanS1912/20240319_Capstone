@@ -5,6 +5,8 @@ import { RegisterService } from "../../services/auth/user.service";
 import { Router } from "@angular/router";
 import { VoteService } from "../../services/vote/vote.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: "app-deck-card",
@@ -21,7 +23,8 @@ export class DeckCardComponent implements OnInit {
     private userService: RegisterService,
     private router: Router,
     private voteService: VoteService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog 
   ) {}
 
   ngOnInit(): void {
@@ -48,22 +51,27 @@ export class DeckCardComponent implements OnInit {
 
   // Method to delete a deck
   deleteDeck(deckId: string) {
-    // Call the deleteDeck() API method
-    console.log("Delete button clicked for deck ID:", deckId);
-
-    this.deckService.deleteDeck(deckId).then(
-      (res) => {
-        // Handle success
-        console.log("Deck deleted successfully:", res);
-        this.reloadDecks.emit(); // Reload decks after deletion
-        this.snackBar.open("Deck deleted successfully", "", { duration: 3000 }); // Display success message
-      },
-      (error) => {
-        // Handle error
-        console.error("Failed to delete deck:", error);
-        this.snackBar.open("Failed to delete deck. Please try again.", "", { duration: 3000 }); // Display error message
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '400px',
+      data: { title: 'Confirm Deletion', message: 'Are you sure you want to delete this deck?' }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // User confirmed deletion
+        this.deckService.deleteDeck(deckId).then(
+          (res) => {
+            console.log("Deck deleted successfully:", res);
+            this.reloadDecks.emit();
+            this.snackBar.open("Deck deleted successfully", "", { duration: 3000 });
+          },
+          (error) => {
+            console.error("Failed to delete deck:", error);
+            this.snackBar.open("Failed to delete deck. Please try again.", "", { duration: 3000 });
+          }
+        );
       }
-    );
+    });
   }
 
   // Method to navigate to flashcards of a deck
@@ -101,5 +109,18 @@ export class DeckCardComponent implements OnInit {
         console.error("Failed to downvote deck:", error);
         this.snackBar.open("Failed to downvote deck. Please try again.", "", { duration: 3000 });
       });
+  }
+
+  openConfirmationDialog(deckId: string): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: "300px",
+      data: "Are you sure you want to delete this deck?",
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteDeck(deckId);
+      }
+    });
   }
 }

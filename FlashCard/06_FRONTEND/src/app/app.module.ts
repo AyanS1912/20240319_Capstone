@@ -24,6 +24,7 @@ import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashca
 import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flashcards.component";
 import { MarkdownModule } from "ngx-markdown";
 import { QuillModule } from "ngx-quill";
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { QuillModule } from "ngx-quill";
     EditDeckComponent,
     EditFlashcardComponent,
     DeckFlashcardsComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
