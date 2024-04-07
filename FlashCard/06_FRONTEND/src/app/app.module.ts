@@ -22,8 +22,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
 import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
 import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flashcards.component";
-import { MarkdownModule } from "ngx-markdown";
-import { QuillModule } from "ngx-quill";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
@@ -35,10 +33,10 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     NavbarComponent,
     SidebarComponent,
     HomeComponent,
+    CreateFlashcardComponent,
     DeckCardComponent,
     ViewFlashcardsComponent,
     ViewDecksComponent,
-    CreateFlashcardComponent,
     CreateDecksComponent,
     MyprofileComponent,
     EditDeckComponent,
@@ -53,8 +51,6 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MarkdownModule.forRoot(),
-    QuillModule.forRoot()
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

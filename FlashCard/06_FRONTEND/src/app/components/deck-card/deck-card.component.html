@@ -23,7 +23,7 @@
                     <div class="footer" *ngIf="userDetails && userDetails._id === deck.userId">
                         <button class="edit-button" (click)="editDeck(deck._id)"><i
                                 class="material-icons">edit</i></button>
-                        <button class="delete-button" (click)="deleteDeck(deck._id)"><i
+                        <button *ngIf ="deck.visibility !== 'public'  "class="delete-button" (click)="deleteDeck(deck._id)"><i
                                 class="material-icons">delete</i></button>
                     </div>
                     <div class="voting-section">

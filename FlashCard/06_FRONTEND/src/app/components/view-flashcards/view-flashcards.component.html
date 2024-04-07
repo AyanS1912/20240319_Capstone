@@ -19,7 +19,7 @@
             <div class="footer" *ngIf="userDetails && userDetails._id === flashcard.userId">
                 <button class="edit-button" (click)="editFlashcard(flashcard._id)"><i
                         class="material-icons">edit</i></button>
-                <button class="delete-button" (click)="deleteFlashcard(flashcard._id)"><i
+                <button *ngIf="flashcard.visibility ==='private'" class="delete-button" (click)="deleteFlashcard(flashcard._id)"><i
                         class="material-icons">delete</i></button>
             </div>
             <div class="voting-section">

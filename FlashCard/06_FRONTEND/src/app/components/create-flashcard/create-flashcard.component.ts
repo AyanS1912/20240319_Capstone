@@ -6,7 +6,6 @@ import { Router } from "@angular/router";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
 import { Deck } from "../../interface/deckInterface";
 import { RegisterService } from "../../services/auth/user.service";
-import { MarkdownService } from "ngx-markdown";
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
@@ -27,7 +26,6 @@ export class CreateFlashcardComponent {
     private deckService: DeckService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private markdownService: MarkdownService,
     private dialog : MatDialog
   ) {}
 
