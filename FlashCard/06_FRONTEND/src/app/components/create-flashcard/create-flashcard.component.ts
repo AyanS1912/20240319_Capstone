@@ -15,7 +15,8 @@ import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation
   styleUrl: "./create-flashcard.component.css",
 })
 export class CreateFlashcardComponent {
-  frontContent: string = "";
+  frontText: string = "";
+  backText: string = "";
   userId: string = "";
   flashcardId: string = "";
 
@@ -34,27 +35,6 @@ export class CreateFlashcardComponent {
     this.getUserDetails();
   }
 
-  format = "html";
-  // quillForm;
-  quillConfig = {
-    toolbar: {
-      container: [
-        ["bold", "italic", "underline", "strike"], // toggled buttons
-        ["code-block"],
-        [{ header: 1 }, { header: 2 }], // custom button values
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["clean"], // remove formatting button
-        ["link"],
-        ["source"],
-      ],
-      handlers: {
-        source: () => {
-          // this.formatChange();
-        },
-      },
-    },
-  };
-
   // FormGroup to manage form controls and their validations
   flashcardForm = new FormGroup({
     tags: new FormControl("", [
@@ -62,16 +42,6 @@ export class CreateFlashcardComponent {
       Validators.minLength(1),
       Validators.maxLength(10),
       Validators.pattern(/^[a-zA-Z0-9\s,]*$/),
-    ]),
-    frontText: new FormControl("", [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(200),
-    ]),
-    backText: new FormControl("", [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(500),
     ]),
     visibility: new FormControl("", [Validators.required]),
     deckName: new FormControl("", [
@@ -132,55 +102,24 @@ export class CreateFlashcardComponent {
     );
   }
 
-  // Method to insert Markdown into textarea
-  insertMarkdown(prefix: string, helperText: string, suffix: string) {
-    const textareaEl = document.querySelector("textarea");
 
-    if (textareaEl) {
-      const textarea = textareaEl as HTMLTextAreaElement;
-      // Start represents the index of textarea before selection
-      const start = textarea.selectionStart;
-      // End represents the index of textarea after selection
-      const end = textarea.selectionEnd;
-
-      const selectedText = this.frontContent.substring(start, end);
-
-      // If some text is selected, ignore helper
-      if (selectedText) {
-        const newText = `${prefix}${selectedText}${suffix}`;
-        this.frontContent =
-          this.frontContent.substring(0, start) +
-          newText +
-          this.frontContent.substring(end);
-      }
-      // Else add Helper
-      else {
-        this.frontContent =
-          this.frontContent.substring(0, start) +
-          prefix +
-          helperText +
-          suffix +
-          this.frontContent.substring(end);
-      }
-
-      textarea.selectionStart = textarea.selectionEnd = start + prefix.length;
-      textarea.focus();
-    }
-  }
   // Method to handle form submission
   onSubmit(): void {
+    
     if (this.flashcardForm) {
       // Form is valid, continue with flashcard creation
       const flashcardData = {
         tags: this.flashcardForm.value.tags
           ?.split(",")
           .map((tag: string) => tag.trim()), // Split tags by comma and trim whitespace
-        frontText: this.flashcardForm.value.frontText,
-        backText: this.flashcardForm.value.backText,
+        frontText: this.frontText,
+        backText: this.backText,
         visibility: this.flashcardForm.value.visibility,
         deckId: this.flashcardForm.value.deckName,
         userId: this.userId,
       };
+      
+      console.log(this.frontText, this.backText);
 
       // Check if deckId is provided and is a non-empty string
       if (flashcardData.deckId) {

@@ -9,11 +9,11 @@
                             class="public">Public</span></div>
                     <div class="visibility-tag" *ngIf="flashcard.visibility === 'private'"><span
                             class="private">Private</span></div>
-                    <h2>{{flashcard.frontText}}</h2>
+                    <h2 [innerHTML]="flashcard.frontText"></h2>
 
                 </div>
                 <div class="flip-card-back">
-                    <p>{{flashcard.backText}}</p>
+                    <p [innerHTML]="flashcard.backText"></p>
                 </div>
             </div>
             <div class="footer" *ngIf="userDetails && userDetails._id === flashcard.userId">

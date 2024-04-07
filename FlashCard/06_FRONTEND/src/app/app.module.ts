@@ -23,6 +23,8 @@ import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
 import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
 import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flashcards.component";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { EditorModule } from "@tinymce/tinymce-angular";
+import { RichtextComponent } from "./components/richtext/richtext.component";
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     EditFlashcardComponent,
     DeckFlashcardsComponent,
     ConfirmationDialogComponent,
+    RichtextComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    EditorModule
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

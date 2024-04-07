@@ -10,6 +10,7 @@ import { DeckCardComponent } from "./components/deck-card/deck-card.component";
 import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
 import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
 import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flashcards.component";
+import { RichtextComponent } from "./components/richtext/richtext.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: "deck", component: DeckCardComponent },
   { path: "edit-deck/:id", component: EditDeckComponent },
   { path: "edit-flashcard/:id", component: EditFlashcardComponent },
-  { path: 'deck-flashcards/:id', component: DeckFlashcardsComponent }
+  { path: 'deck-flashcards/:id', component: DeckFlashcardsComponent },
+  { path : "rich", component : RichtextComponent }
 ];
 
 @NgModule({
