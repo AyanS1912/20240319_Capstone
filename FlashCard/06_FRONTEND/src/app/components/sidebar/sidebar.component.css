@@ -61,17 +61,17 @@
   font-size: 16px;
 }
 
-.log_out a {
-  display: flex; 
-  align-items: center; 
+.log_out button {
+  border: none;
+  background: none;
   color: #bdb8d7;
-  margin-left: 8px;
-  font-family: "Josefin Sans", sans-serif;
+  display: flex; /* Align icon and text in a row */
+  align-items: center; /* Vertically center items */
+  cursor: pointer;
 }
 
-.log_out a .material-symbols-outlined {
-  margin: 5px;
-  padding: 5px;
+.log_out button i {
+  margin-right: 10px; /* Adjust margin between icon and text */
 }
 
 .log_out:hover {
@@ -79,8 +79,9 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
 }
 
-.log_out a:hover {
+.log_out button:hover {
   color: #000;
+  background-color: #fff;
 }
 
 
@@ -91,7 +92,7 @@
   }
 
   .sidebar {
-    flex: 0 0 100%; /* Adjust sidebar width for smaller screens */
+    flex: 0 0 100%; 
     position: static; /* Remove fixed positioning */
   }
 
@@ -101,5 +102,12 @@
 
   .sidebar .sign_out {
     bottom: 60px; /* Adjust the sign out button position for smaller screens */
+  }
+
+  .log_out {
+    position:relative;
+    padding: 10px; 
+    text-align: left; 
+    font-size: 16px;
   }
 }

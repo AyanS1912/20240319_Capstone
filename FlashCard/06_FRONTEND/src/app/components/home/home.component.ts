@@ -110,6 +110,9 @@ export class HomeComponent implements OnInit {
     this.selectedComponent = component;
     // console.log(this.selectedComponent);
   }
+  onSearchClicked(): void {
+    this.selectedComponent = 'deck-card';
+  }
 
   // Open user profile
   openMyProfile(open: boolean): void {

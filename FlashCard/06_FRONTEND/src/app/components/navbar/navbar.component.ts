@@ -10,12 +10,14 @@ export class NavbarComponent {
   // Define output event emitters for profile click and search results
   @Output() profileClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() searchResults: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() searchClicked: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private searchService: SearchService) {}
 
   // Method to emit profile click event
   openProfile(): void {
     this.profileClicked.emit(true);
+    this.searchClicked.emit();
     // console.log("Clicked");
   }
 
