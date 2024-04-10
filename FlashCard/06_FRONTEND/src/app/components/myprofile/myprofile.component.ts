@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RegisterService } from "../../services/auth/user.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
-import { DeckService } from "../../services/auth/deck.service";
+import { DeckService } from "../../services/deck/deck.service";
 import { Deck } from "../../interface/deckInterface";
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";

@@ -2,7 +2,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DeckService } from "../../services/auth/deck.service";
+import { DeckService } from "../../services/deck/deck.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({

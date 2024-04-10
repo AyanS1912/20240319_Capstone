@@ -8,7 +8,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 import { FlashcardVote } from "../../interface/flashcardvote";
-import { DeckService } from "../../services/auth/deck.service";
+import { DeckService } from "../../services/deck/deck.service";
 
 @Component({
   selector: "app-deck-flashcards",

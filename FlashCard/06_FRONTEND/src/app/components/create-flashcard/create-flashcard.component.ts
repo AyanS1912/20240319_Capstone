@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { DeckService } from "../../services/auth/deck.service";
+import { DeckService } from "../../services/deck/deck.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";

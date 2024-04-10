@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Deck } from "../../interface/deckInterface";
-import { DeckService } from "../../services/auth/deck.service";
+import { DeckService } from "../../services/deck/deck.service";
 import { RegisterService } from "../../services/auth/user.service";
 import { Router } from "@angular/router";
 import { VoteService } from "../../services/vote/vote.service";

@@ -11,8 +11,7 @@
 .search-bar {
   display: flex;
   justify-content: center;
-  margin-left: auto; /* Push search bar to the right */
-  margin-right: auto; /* Push search bar to the left */
+  margin: 10px auto; /* Center the search bar */
 }
 
 .search-input {
@@ -26,7 +25,6 @@
 
 .search-btn {
   padding: 8px;
-  margin-left: 10px;
   border: none;
   border-radius: 50%;
   color: #000;
@@ -34,12 +32,12 @@
 }
 
 .user-profile {
-  margin-left: auto;
+  margin-left: 10px auto;
 }
 
 .profile-circle {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: #050505;
   display: flex;
@@ -47,7 +45,7 @@
   align-items: center;
   cursor: pointer;
   position: relative; /* Added position relative */
-  font-size: 35px;
+  font-size: 25px;
 }
 
 .profile-dropdown {
@@ -86,7 +84,7 @@
 
 @media (max-width: 768px) {
   .header {
-    flex-direction: column; /* Align header content in a column on smaller screens */
+    flex-direction: row; /* Align header content in a column on smaller screens */
     align-items: center; /* Center align items */
   }
 
@@ -95,7 +93,7 @@
   }
 
   .search-input {
-    width: 80%; /* Make search input wider */
+    width: 50%; /* Make search input wider */
   }
 
   .user-profile {
@@ -104,6 +102,6 @@
 
   .demo_title {
     margin: 10px auto; /* Center the home text */
-    font-size: large; /* Adjust font size for smaller screens */
+    font-size: medium; /* Adjust font size for smaller screens */
   }
 }

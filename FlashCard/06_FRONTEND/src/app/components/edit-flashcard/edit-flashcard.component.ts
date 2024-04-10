@@ -5,7 +5,7 @@ import { FlashcardServiceService } from "../../services/flashcard/flashcard-serv
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Flashcard } from "../../interface/flashcardInterface";
 import { Deck } from "../../interface/deckInterface";
-import { DeckService } from "../../services/auth/deck.service";
+import { DeckService } from "../../services/deck/deck.service";
 
 @Component({
   selector: "app-edit-flashcard",
