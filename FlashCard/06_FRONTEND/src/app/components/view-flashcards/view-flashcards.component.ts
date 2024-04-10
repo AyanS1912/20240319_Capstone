@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input  } from "@angular/core";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
 import { Flashcard } from "../../interface/flashcardInterface";
 import { Router } from "@angular/router";
@@ -14,8 +14,8 @@ import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation
   styleUrl: "./view-flashcards.component.css",
 })
 export class ViewFlashcardsComponent implements OnInit {
-  flashcards: Flashcard[] = [];
-  userDetails: any;
+  @Input() flashcards: Flashcard[] = [];
+  @Input() userDetails: any;
 
   constructor(
     private flashcardService: FlashcardServiceService,

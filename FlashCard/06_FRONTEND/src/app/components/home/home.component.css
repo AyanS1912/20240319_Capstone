@@ -15,7 +15,7 @@
 }
 .wrapper {
   display: flex;
-  min-height: 100vh;
+  min-height: 100%;
   overflow-y: auto;
 }
 
@@ -27,11 +27,13 @@
   color: #717171;
   border-bottom: 1px solid #e0e4e8;
   flex-grow: 1;
+  height: 100%;
 }
 
 .wrapper .main_content .info {
   margin-left: 20px;
   color: #717171;
+  height: auto;
 }
 
 .wrapper .main_content .info div {

@@ -1,6 +1,5 @@
-<div class="sidebar">
+<div class="sidebar" [ngClass]="{'collapsed': isCollapsed}">
     <h2>FlashMastery</h2>
-    <!-- <img src="../../../assets/flashmastery-high-resolution-logo.png" alt="Logo"> -->
     <ul>
         <li><button  (click)="handleClick('deck-card')"><i class="material-icons">home</i> Home</button></li>
         <li><button (click)="handleClick('view-decks')"><i class="material-icons">view_compact_alt</i> View My Decks</button></li>
@@ -12,7 +11,8 @@
 
         <hr class="sidebar-hr"> <!-- Horizontal line -->
         <a href="#">
-            <span class="material-icons" (click)="signout()">logout</span>Sign Out
+            <span class="material-icons" (click)="signout()">logout</span>
+            <span class="logout-text">Sign Out</span>
         </a>
 
     </div>

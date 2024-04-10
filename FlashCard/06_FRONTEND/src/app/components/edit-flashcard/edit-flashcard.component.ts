@@ -17,6 +17,9 @@ export class EditFlashcardComponent implements OnInit {
   flashcardData: any = {};
   decks: Deck[] = [];
 
+  frontText : string ='';
+  backText : string = ''
+
   constructor(
     private flashcardService: FlashcardServiceService,
     private snackBar: MatSnackBar,
@@ -130,8 +133,8 @@ export class EditFlashcardComponent implements OnInit {
       tags: this.flashcardForm.value.tags
         ?.split(",")
         .map((tag: string) => tag.trim()), // Split tags by comma and trim whitespace
-      frontText: this.flashcardForm.value.frontText,
-      backText: this.flashcardForm.value.backText,
+      frontText: this.frontText,
+      backText: this.backText,
       visibility: this.flashcardForm.value.visibility,
       deckId: this.flashcardForm.value.deckName,
     };

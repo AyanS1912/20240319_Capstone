@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
   @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
+  isCollapsed: boolean = false;
+
 
   constructor (
     private router : Router,
@@ -23,5 +25,10 @@ export class SidebarComponent {
     localStorage.clear() // clear the localstorage
     this.router.navigate(['/login'])
 
+  }
+
+  // Method to toggle sidebar collapse/expand
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

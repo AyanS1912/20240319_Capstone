@@ -1,26 +1,12 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Josefin Sans", sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #ededed; /* Background color of the whole page */
-    background-image: url("https://i.postimg.cc/KjGrXx98/pexels-lukas-317356.jpg");
-}
-
-
 .page-title {
     color: #292c44;
     font-size: 20px;
     font-weight: 600;
     padding: auto;
-}
-.flashcardform {
+  }
+  .formData {
     background-color: #ffffff; /* Form page background color */
-    height: 75vh; /* Adjusted to accommodate dynamic content */
-    width: 500px;
-    margin: 50px auto; /* Centering the form horizontally */
+    height: auto; /* Adjusted to accommodate dynamic content */
     padding: 20px; /* Increased padding for better spacing */
     display: flex;
     flex-direction: column;
@@ -28,15 +14,18 @@ body {
     border-radius: 20px;
     box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2);
     position: relative; /* For absolute positioning */
-}
-
-.mainBody {
+    width: 90%;
+    max-width: 1200px; /* Limiting the maximum width */
+    /* margin: 50px auto; */
+  }
+  
+  .mainBody {
     height: 100vh;
     display: flex;
     justify-content: center;
-}
-
-.shadow-button {
+  }
+  
+  .shadow-button {
     position: relative;
     font-family: "Josefin Sans", sans-serif;
     background-color: #7664c7;
@@ -46,7 +35,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     font-weight: 300;
-    width: 80%;
+    width: calc(100% - 40px);
     height: 50px;
     border: none;
     margin-right: auto;
@@ -54,20 +43,21 @@ body {
     z-index: 1000;
     background-size: 100% 300%;
     transition: background-position 0.5s ease-in-out;
-}
-
-.shadow-button {
+  }
+  
+  .shadow-button {
     margin-top: auto;
-    left : 0px /* Aligning button at the bottom */
-}
-
-
-.customInputField {
+    left: 0px; /* Aligning button at the bottom */
+  }
+  
+  .customInputField {
     color: #1a1a1a;
     border-radius: 8px;
     border: none;
     margin-top: 10px;
-    width: calc(100% - 40px); /* Adjusting input width to cover most of the form box */
+    width: calc(
+      100% - 40px
+    ); /* Adjusting input width to cover most of the form box */
     margin-bottom: 20px;
     height: 40px;
     background-color: #fff;
@@ -75,12 +65,13 @@ body {
     font-size: 16px;
     color: black;
     padding-left: 10px;
-}
-
-.dropdown {
-    
+  }
+  
+  .dropdown {
     height: 40px;
-    width: calc(100% - 40px); /* Adjusting input width to cover most of the form box */
+    width: calc(
+      100% - 40px
+    ); /* Adjusting input width to cover most of the form box */
     margin-bottom: 20px;
     border-radius: 10px;
     background-color: #fff;
@@ -91,21 +82,21 @@ body {
     cursor: pointer;
     outline: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.error-message {
+  }
+  
+  .error-message {
     color: red;
-}
-
-
-@media (min-width: 768px) {
-    .propertyForm {
+  }
+  
+  @media (min-width: 768px) {
+      .formData {
         width: 70%; /* Adjusted width for larger screens */
+      }
     }
-}
-
-@media (min-width: 1024px) {
-    .propertyForm {
+    
+    @media (min-width: 1024px) {
+      .formData {
         width: 60%; /* Adjusted width for even larger screens */
+      }
     }
-}
+  

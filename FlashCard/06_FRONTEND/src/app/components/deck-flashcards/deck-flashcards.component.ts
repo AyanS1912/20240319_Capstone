@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit , Input} from "@angular/core";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
 import { Flashcard } from "../../interface/flashcardInterface";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -7,6 +7,8 @@ import { VoteService } from "../../services/vote/vote.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
+import { FlashcardVote } from "../../interface/flashcardvote";
+import { DeckService } from "../../services/auth/deck.service";
 
 @Component({
   selector: "app-deck-flashcards",
@@ -14,9 +16,10 @@ import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation
   styleUrl: "./deck-flashcards.component.css",
 })
 export class DeckFlashcardsComponent implements OnInit {
-  flashcards: Flashcard[] = [];
+  @Input() flashcards: Flashcard[] = [];
   deckId: string | null = "";
   userDetails: any;
+  deckTitle : string = ''
   constructor(
     private flashcardService: FlashcardServiceService,
     private router: Router,
@@ -24,7 +27,8 @@ export class DeckFlashcardsComponent implements OnInit {
     private userService: RegisterService,
     private voteService: VoteService,
     private snackBar: MatSnackBar,
-    private dialog : MatDialog
+    private dialog : MatDialog,
+    private deckService : DeckService
   ) {}
 
   ngOnInit(): void {
@@ -34,49 +38,21 @@ export class DeckFlashcardsComponent implements OnInit {
       this.deckId = params.get("id");
       if (this.deckId) {
         this.fetchFlashcards(this.deckId); // Fetch flashcards based on deckId
+        this.loaddecks(this.deckId)
       }
     });
   }
 
-  // Method to upvote a flashcard
-  upvoteFlashcard(flashcardId: string): void {
-    // Call the upvoteFlashcard() API method
-    this.voteService.upvoteFlashcard(flashcardId).then(
-      (res) => {
-        console.log("Flashcard upvoted successfully:", res);
-        // Reload flashcards after upvote
-        if (this.deckId) {
-          this.fetchFlashcards(this.deckId);
-        }
-        this.snackBar.open("Flashcard upvoted successfully", "", {
-          duration: 3000,
-        });
-      },
-      (error) => {
-        console.error("Failed to upvote Flashcard:", error);
-        this.snackBar.open(
-          "Failed to upvote Flashcard. Please try again.",
-          "",
-          { duration: 3000 }
-        );
-      }
-    );
-  }
+  loaddecks(deckId : string){
+    this.deckService.getDecks(deckId) .then(
+      (data: any) => {
+        this.deckTitle = data.data.name;
+        console.log(this.deckTitle);
+        
 
-  downvoteFlashcard(flashcardId: string): void {
-    // Call the downvoteFlashcard() API method
-    this.voteService.downvoteFlashcard(flashcardId).then(
-      (res) => {
-        console.log("Flashcard downvoted successfully:", res);
-        // Reload flashcards after downvote
-        if (this.deckId) {
-          this.fetchFlashcards(this.deckId);
-        }
-        this.snackBar.open("Flashcard downvoted successfully", "", { duration: 3000 });
       },
       (error) => {
-        console.error("Failed to downvote Flashcard:", error);
-        this.snackBar.open("Failed to downvote Flashcard. Please try again.", "", { duration: 3000 });
+        console.error("Failed to fetch decks:", error);
       }
     );
   }
@@ -102,10 +78,30 @@ export class DeckFlashcardsComponent implements OnInit {
     });
   }
 
+  
+  // Method to fetch flashcards based on deckId
+  fetchFlashcards(deckId: string) {
+    this.flashcardService.getAllFlashcards().then(
+      (data: any) => {
+        this.flashcards = data.data;
+        console.log(this.flashcards);
+
+        this.flashcards = this.flashcards.filter(
+          (card) => card.deckId.toString() === deckId
+        );
+        console.log(this.flashcards);
+        this.fetchUserVotes()
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
   fetchUserVotes(): void {
     for (const flashcard of this.flashcards) {
       this.voteService.getVotesForFlashcard(flashcard._id).then(
-        (votes: any[]) => {
+        (votes: FlashcardVote[]) => {
           const userVote = votes.find(
             (vote) => vote.userId === this.userDetails._id
           );
@@ -127,62 +123,5 @@ export class DeckFlashcardsComponent implements OnInit {
       );
     }
   }
-  // Method to fetch flashcards based on deckId
-  fetchFlashcards(deckId: string) {
-    this.flashcardService.getAllFlashcards().then(
-      (data: any) => {
-        this.flashcards = data.data;
-        console.log(this.flashcards);
 
-        this.flashcards = this.flashcards.filter(
-          (card) => card.deckId.toString() === deckId
-        );
-        console.log(this.flashcards);
-        this.fetchUserVotes()
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  // Method to navigate to edit flashcard page
-  editFlashcard(flashcardId: string) {
-    console.log("clicked");
-
-    // Navigate to the edit page with the flashcard ID as a parameter
-    this.router.navigate(["/edit-flashcard", flashcardId]);
-  }
-
-  // Method to delete a flashcard
-  deleteFlashcard(flashcardId: string) {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '250px',
-      data: { title: 'Confirm Deletion', message: 'Are you sure you want to delete this flashcard?' }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // User confirmed deletion
-        this.flashcardService.deleteFlashcard(flashcardId).then(
-          (res) => {
-            this.snackBar.open("Flashcard deleted successfully", "", {
-              duration: 3000,
-            });
-            console.log("Flashcard deleted successfully:", res);
-            // Reload flashcards after deletion
-            if(this.deckId)
-              this.fetchFlashcards(this.deckId);
-          },
-          (error) => {
-            // Handle error
-            console.error("Failed to delete Flashcard :", error);
-            this.snackBar.open("Failed to delete Flashcard", "", {
-              duration: 3000,
-            });
-          }
-        );
-      }
-    });
-  }
 }

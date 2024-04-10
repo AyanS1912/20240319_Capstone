@@ -226,16 +226,6 @@ button[type="submit"]:hover {
 }
 
 @media screen and (max-width: 768px) {
-  /* Adjust sidebar width for smaller screens */
-  .sidebar {
-    width: 160px;
-  }
-
-  /* Adjust margin for main content */
-  .main_content {
-    margin-left: 160px; /* Same as sidebar width */
-  }
-
   /* Adjust profile circle size for smaller screens */
   .profile-circle {
     width: 40px;

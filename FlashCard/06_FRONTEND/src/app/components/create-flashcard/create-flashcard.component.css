@@ -6,7 +6,7 @@
 }
 .formData {
   background-color: #ffffff; /* Form page background color */
-  height: 75vh; /* Adjusted to accommodate dynamic content */
+  height: auto; /* Adjusted to accommodate dynamic content */
   padding: 20px; /* Increased padding for better spacing */
   display: flex;
   flex-direction: column;
@@ -15,8 +15,8 @@
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2);
   position: relative; /* For absolute positioning */
   width: 90%;
-  max-width: 500px; /* Limiting the maximum width */
-  margin: 50px auto;
+  max-width: 1200px; /* Limiting the maximum width */
+  /* margin: 50px auto; */
 }
 
 .mainBody {
@@ -89,13 +89,13 @@
 }
 
 @media (min-width: 768px) {
-    .flashcardform {
+    .formData {
       width: 70%; /* Adjusted width for larger screens */
     }
   }
   
   @media (min-width: 1024px) {
-    .flashcardform {
+    .formData {
       width: 60%; /* Adjusted width for even larger screens */
     }
   }

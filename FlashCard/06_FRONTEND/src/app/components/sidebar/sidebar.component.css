@@ -1,13 +1,10 @@
 .sidebar {
-  /* width: 200px;
-   */
-  flex: 0 0 200px; /* Add this line */
+  flex: 0 0 200px;
   height: 100%;
   background: #181818;
   padding: 30px 0px;
   position: fixed;
 }
-
 
 
 .sidebar h2 {
@@ -25,18 +22,16 @@
 }
 
 .sidebar ul li button {
-  padding: 15px;
   border: none;
   background: none;
   color: #bdb8d7;
-  display: block;
-  width: 100%;
-  text-align: left;
+  display: flex; /* Align icon and text in a row */
+  align-items: center; /* Vertically center items */
   cursor: pointer;
 }
 
 .sidebar ul li button i {
-  width: 25px;
+  margin-right: 10px; /* Adjust margin between icon and text */
 }
 
 .sidebar ul li:hover {
@@ -49,45 +44,12 @@
   background-color: #fff;
 }
 
-/* .sidebar .sign_out {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-} */
-
-/* .sidebar .sign_out a {
-  display: block;
-  width: 40px;
-  background: #594f8d;
-  height: 40px;
-  line-height: 45px;
-  text-align: center;
-  margin: 0 5px;
-  color: #bdb8d7;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-} */
 
 .sidebar-hr {
   margin: 0;
   border: none;
-  border-top: 1px solid #bdb8d7; /* Color of the horizontal line */
+  border-top: 1px solid #bdb8d7; 
   margin-bottom: 3px;
-}
-
-
-.sidebar .sign_out a {
-  display: block;
-  width: 40px;
-  background: #594f8d;
-  height: 40px;
-  line-height: 40px; /* Adjust line height */
-  text-align: center;
-  margin: 0 5px;
-  color: #bdb8d7;
-  border-radius: 5px;
 }
 
 .log_out {
@@ -95,22 +57,21 @@
   bottom: 2px;
   left: 4px;
   width: calc(100%);
-  text-align: left; /* Align the text to the left */
+  text-align: left; 
   font-size: 16px;
 }
 
 .log_out a {
-  display: block;
-  padding: 5px 0;
+  display: flex; 
+  align-items: center; 
   color: #bdb8d7;
   margin-left: 8px;
   font-family: "Josefin Sans", sans-serif;
 }
 
 .log_out a .material-symbols-outlined {
-  vertical-align: middle;
-  margin-right: 5px;
-  margin-bottom: 5px; /* Adjust as needed */
+  margin: 5px;
+  padding: 5px;
 }
 
 .log_out:hover {

@@ -1,47 +1,45 @@
 <div style="text-align: center; margin-top: 20px">
     <h2 style="
-      color: #292c44;
-      font-size: 24px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 8px;
-      word-spacing: 10px;
-      margin-bottom: 5px;
-    ">
+        color: #292c44;
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        word-spacing: 10px;
+        margin-bottom: 5px;
+        ">
         FlashMastery
     </h2>
 </div>
 <!-- <form [formGroup]="flashcardForm">
-    <quill-editor #editor
-      formControlName="editor" 
-      placeholder="Enter Text"
-      [modules]="quillConfig">
-    </quill-editor>
-  </form> -->
+        <quill-editor #editor
+        formControlName="editor" 
+        placeholder="Enter Text"
+        [modules]="quillConfig">
+        </quill-editor>
+    </form> -->
 <main class="mainBody">
 
-    <div class="flashcardform">
-        <h3 class="page-title ">
-            Create your Flashcard
-        </h3>
-        <br>
-        <!-- <editor [init]="editorConfig"></editor> -->
-
-        <div class="formData">
-            <form [formGroup]="flashcardForm" >
+    <div class="formData">
+            <h3 class="page-title ">
+                Create your Flashcard
+            </h3>
+            <form [formGroup]="flashcardForm">
 
                 <input type="text" class="customInputField" formControlName="tags" placeholder="Add Tags"
                     (blur)="onBlur('tags')" (focus)="onFocus('tags')" />
                 <div *ngIf="flashcardForm.controls.tags.invalid && (flashcardForm.controls.tags.dirty || flashcardForm.controls.tags.touched)"
                     class="error-msg">
                     <div *ngIf="flashcardForm.controls.tags.errors?.['required']">Tags are required.</div>
-                    <div *ngIf="flashcardForm.controls.tags.errors?.['minlength']">Tags must be at least 1 character long.
+                    <div *ngIf="flashcardForm.controls.tags.errors?.['minlength']">Tags must be at least 1 character
+                        long.
                     </div>
-                    <div *ngIf="flashcardForm.controls.tags.errors?.['maxlength']">Tags cannot exceed 10 characters.</div>
+                    <div *ngIf="flashcardForm.controls.tags.errors?.['maxlength']">Tags cannot exceed 10 characters.
+                    </div>
                     <div *ngIf="flashcardForm.controls.tags.errors?.['pattern']">Tags can only contain alphanumeric
                         characters and commas.</div>
                 </div>
-    
+
                 <select class="dropdown" formControlName="visibility" (blur)="onBlur('visibility')"
                     (focus)="onFocus('visibility')">
                     <option value="" disabled selected>Select Visibility State</option>
@@ -50,9 +48,10 @@
                 </select>
                 <div *ngIf="flashcardForm.controls.visibility.invalid && (flashcardForm.controls.visibility.dirty || flashcardForm.controls.visibility.touched)"
                     class="error-msg">
-                    <div *ngIf="flashcardForm.controls.visibility.errors?.['required']">Visibility state is required.</div>
+                    <div *ngIf="flashcardForm.controls.visibility.errors?.['required']">Visibility state is required.
+                    </div>
                 </div>
-    
+
                 <select class="dropdown" formControlName="deckName" (blur)="onBlur('deckName')"
                     (focus)="onFocus('deckName')">
                     <option value="" disabled selected>Select Deck to Add</option>
@@ -62,41 +61,35 @@
                     class="error-msg">
                     <div *ngIf="flashcardForm.controls.deckName.errors?.['required']">Please select a deck to add.</div>
                 </div>
-    
-                
+
+
             </form>
-    
-            <editor
-                    apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea"
-                    [init]="{
-                        plugins: 'lists link image paste help wordcount',
-                        toolbar:
-                            'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
-                        skin: 'oxide-dark',
-                    content_css: 'dark'
-                    }"
-                    [(ngModel)]="frontText"
-                >
-                </editor>
-    
-    
-    
-    
-                <editor
-                    apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea"
-                    [init]="{
-                        plugins: 'lists link image paste help wordcount',
-                        toolbar:
-                            'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
-                        skin: 'oxide-dark',
-                    content_css: 'dark'
-                    }"
-                    [(ngModel)]="backText"
-                >
-                </editor>
-                <button type="submit" class="shadow-button" (click)="onSubmit()">Create and Save</button>
+            <br>
+            <h3><b>Enter the FrontText</b></h3>
+            <editor apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" [init]="{
+                            plugins: 'lists link image paste help wordcount',
+                            toolbar:
+                                'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+                            skin: 'oxide-dark',
+                        content_css: 'dark'
+                        }" [(ngModel)]="frontText">
+            </editor>
+
+
+
+            <br>
+            <h3><b>Enter the BackText</b></h3>
+            <editor apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" [init]="{
+                            plugins: 'lists link image paste help wordcount',
+                            toolbar:
+                                'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+                            skin: 'oxide-dark',
+                        content_css: 'dark'
+                        }" [(ngModel)]="backText">
+            </editor>
+            <br>
+            <button type="submit" class="shadow-button" (click)="onSubmit()">Create and Save</button>
         </div>
 
-    </div>
 
 </main>
