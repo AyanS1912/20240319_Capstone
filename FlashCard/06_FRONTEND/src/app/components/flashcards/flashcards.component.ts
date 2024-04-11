@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { FlashcardServiceService } from "../services/flashcard/flashcard-service.service";
-import { Flashcard } from "../interface/flashcardInterface";
+import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
+import { Flashcard } from "../../interface/flashcardInterface";
 import { Router } from "@angular/router";
-import { VoteService } from "../services/vote/vote.service";
-import { RegisterService } from "../services/auth/user.service";
+import { VoteService } from "../../services/vote/vote.service";
+import { RegisterService } from "../../services/auth/user.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
-import { ConfirmationDialogComponent } from "../components/confirmation-dialog/confirmation-dialog.component";
+import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: 'app-flashcards',
