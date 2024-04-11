@@ -16,9 +16,10 @@ export class NavbarComponent {
 
   // Method to emit profile click event
   openProfile(): void {
+    // Emit profile click event to open profile
     this.profileClicked.emit(true);
-    this.searchClicked.emit();
-    // console.log("Clicked");
+    // Emit search click event to turn off search results
+    // this.searchClicked.emit();
   }
 
   // Method to perform search and emit search results

@@ -1,0 +1,40 @@
+<div class="info">
+
+    <div id="card-container2">
+        <div *ngFor="let flashcard of flashcards">
+        <div class="flip-card-click" >
+            <div class="flip-card-inner" tab-index="0">
+                <div class="flip-card-front">
+                    <div class="visibility-tag" *ngIf="flashcard.visibility === 'public'"><span
+                            class="public">Public</span></div>
+                    <div class="visibility-tag" *ngIf="flashcard.visibility === 'private'"><span
+                            class="private">Private</span></div>
+                    <h2 [innerHTML]="flashcard.frontText"></h2>
+
+                </div>
+                <div class="flip-card-back">
+                    <p >{{flashcard.backText}}</p>
+                </div>
+            </div>
+            <div class="footer" *ngIf="userDetails && userDetails._id === flashcard.userId">
+                <button class="edit-button" (click)="editFlashcard(flashcard._id)"><i
+                        class="material-icons">edit</i></button>
+                <button *ngIf="flashcard.visibility ==='private'" class="delete-button" (click)="deleteFlashcard(flashcard._id)"><i
+                        class="material-icons">delete</i></button>
+            </div>
+            <div class="voting-section">
+                <button class="upvote-button" (click)="upvoteFlashcard(flashcard._id)">
+                    <i class="material-icons">thumb_up</i>
+                    {{ flashcard.upvotes }}
+                </button>
+                <button class="downvote-button">
+                    <i class="material-icons" (click)="downvoteFlashcard(flashcard._id)">thumb_down</i>
+                    {{ flashcard.downvotes }}
+                </button>
+                
+            </div>
+        </div>
+
+
+    </div>
+</div>

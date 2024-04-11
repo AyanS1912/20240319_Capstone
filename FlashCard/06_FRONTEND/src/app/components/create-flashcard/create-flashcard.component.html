@@ -77,16 +77,18 @@
         </editor>
         <br>
         <h3><b>Enter the BackText</b></h3>
-        <editor apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" [init]="{
+        <editor apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" 
+        [init]="{
                 plugins: 'lists link image paste help wordcount',
                 toolbar:
                     'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
                 skin: 'oxide-dark',
-            content_css: 'dark'
-            }" [(ngModel)]="backText">
-
+                content_css: 'dark',
+            }"
+            initialValue="Vlaja"
+            [disabled]=true
             
-
+        >
         </editor>
 
         <br>

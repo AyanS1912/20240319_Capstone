@@ -16,7 +16,7 @@ import { DeckService } from "../../services/deck/deck.service";
   styleUrl: "./deck-flashcards.component.css",
 })
 export class DeckFlashcardsComponent implements OnInit {
-  @Input() flashcards: Flashcard[] = [];
+  myflashcards: Flashcard[] = [];
   deckId: string | null = "";
   userDetails: any;
   deckTitle : string = ''
@@ -32,24 +32,22 @@ export class DeckFlashcardsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getUserDetails();
-    this.initializeFlipCards();
     this.route.paramMap.subscribe((params) => {
       this.deckId = params.get("id");
       if (this.deckId) {
-        this.fetchFlashcards(this.deckId); // Fetch flashcards based on deckId
         this.loaddecks(this.deckId)
+        this.fetchdecksFlashcards(this.deckId);
       }
     });
+    this.getUserDetails();
+    this.initializeFlipCards();
+    
   }
 
   loaddecks(deckId : string){
     this.deckService.getDecks(deckId) .then(
       (data: any) => {
         this.deckTitle = data.data.name;
-        console.log(this.deckTitle);
-        
-
       },
       (error) => {
         console.error("Failed to fetch decks:", error);
@@ -61,7 +59,6 @@ export class DeckFlashcardsComponent implements OnInit {
     this.userService.getUserDetails().then(
       (data) => {
         this.userDetails = data;
-        // console.log(this.userDetails)
       },
       (error) => {
         console.error("Failed to fetch user details:", error);
@@ -80,16 +77,16 @@ export class DeckFlashcardsComponent implements OnInit {
 
   
   // Method to fetch flashcards based on deckId
-  fetchFlashcards(deckId: string) {
+  fetchdecksFlashcards(deckId: string) {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
-        this.flashcards = data.data;
-        console.log(this.flashcards);
+        this.myflashcards = data.data;
+        console.log("All",this.myflashcards);
 
-        this.flashcards = this.flashcards.filter(
+        this.myflashcards = this.myflashcards.filter(
           (card) => card.deckId.toString() === deckId
         );
-        console.log(this.flashcards);
+        console.log("Mine",this.myflashcards);
         this.fetchUserVotes()
       },
       (error) => {
@@ -99,7 +96,7 @@ export class DeckFlashcardsComponent implements OnInit {
   }
 
   fetchUserVotes(): void {
-    for (const flashcard of this.flashcards) {
+    for (const flashcard of this.myflashcards) {
       this.voteService.getVotesForFlashcard(flashcard._id).then(
         (votes: FlashcardVote[]) => {
           const userVote = votes.find(

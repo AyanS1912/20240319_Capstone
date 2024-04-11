@@ -1,20 +1,20 @@
 import { Component, OnInit, Input  } from "@angular/core";
-import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
-import { Flashcard } from "../../interface/flashcardInterface";
+import { FlashcardServiceService } from "../services/flashcard/flashcard-service.service";
+import { Flashcard } from "../interface/flashcardInterface";
 import { Router } from "@angular/router";
-import { VoteService } from "../../services/vote/vote.service";
-import { RegisterService } from "../../services/auth/user.service";
+import { VoteService } from "../services/vote/vote.service";
+import { RegisterService } from "../services/auth/user.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
-import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
+import { ConfirmationDialogComponent } from "../components/confirmation-dialog/confirmation-dialog.component";
 
 @Component({
-  selector: "app-view-flashcards",
-  templateUrl: "./view-flashcards.component.html",
-  styleUrl: "./view-flashcards.component.css",
+  selector: 'app-flashcards',
+  templateUrl: './flashcards.component.html',
+  styleUrl: './flashcards.component.css'
 })
-export class ViewFlashcardsComponent implements OnInit {
-  allflashcards: Flashcard[] = [];
+export class FlashcardsComponent {
+  @Input() flashcards: Flashcard[] = [];
   @Input() userDetails: any;
 
   constructor(
@@ -60,7 +60,7 @@ export class ViewFlashcardsComponent implements OnInit {
   fetchFlashcards() {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
-        this.allflashcards = data.data;
+        this.flashcards = data.data;
         this.fetchUserVotes();
       },
       (error) => {
@@ -71,7 +71,7 @@ export class ViewFlashcardsComponent implements OnInit {
 
   // Method to fetch user votes for flashcards
   fetchUserVotes(): void {
-    for (const flashcard of this.allflashcards) {
+    for (const flashcard of this.flashcards) {
       this.voteService.getVotesForFlashcard(flashcard._id).then(
         (votes: any[]) => {
           const userVote = votes.find(

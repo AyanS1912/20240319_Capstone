@@ -47,7 +47,7 @@ export class ViewDecksComponent {
         this.mydeckCardDecks = this.mydeckCardDecks.filter(
           (deck) => deck.userId.toString() === this.userData._id.toString()
         );
-        console.log(this.mydeckCardDecks);
+        console.log("Personal Decks",this.mydeckCardDecks);
         this.fetchUserVotes();
       },
       (error) => {

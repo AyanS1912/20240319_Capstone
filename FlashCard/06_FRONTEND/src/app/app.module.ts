@@ -24,6 +24,7 @@ import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashca
 import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flashcards.component";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { EditorModule } from "@tinymce/tinymce-angular";
+import { FlashcardsComponent } from './flashcards/flashcards.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { EditorModule } from "@tinymce/tinymce-angular";
     EditFlashcardComponent,
     DeckFlashcardsComponent,
     ConfirmationDialogComponent,
+    FlashcardsComponent,
   ],
   imports: [
     BrowserModule,

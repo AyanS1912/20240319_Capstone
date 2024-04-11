@@ -1,9 +1,9 @@
-import { Component, Input ,Output, EventEmitter, OnInit } from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
 import { Deck } from "../../interface/deckInterface";
 import { DeckService } from "../../services/deck/deck.service";
 import { RegisterService } from "../../services/auth/user.service";
 import { Router } from "@angular/router";
-import { VoteService } from '../../services/vote/vote.service';
+import { VoteService } from "../../services/vote/vote.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
@@ -12,26 +12,27 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrl: "./home.component.css",
 })
 export class HomeComponent implements OnInit {
-  selectedComponent: string = "deck-card";
+  selectedComponent: string = "";
   isProfileOpen: boolean = false;
   deckCardDecks: Deck[] = [];
 
   upvotes: number = 0;
   downvotes: number = 0;
-  userVote: string = '';
+  userVote: string = "";
   userData: any;
 
   constructor(
     private deckService: DeckService,
     private userService: RegisterService,
     private router: Router,
-    private voteService : VoteService,
-    private snackBar : MatSnackBar
+    private voteService: VoteService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.getUserDetails();
     this.loadDecks();
+    this.selectedComponent = "deck-card";
   }
 
   // Fetch user details
@@ -43,7 +44,11 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         console.error("Failed to fetch user details:", error);
-        this.snackBar.open("Failed to fetch user details. Please try again.", "", { duration: 3000 });
+        this.snackBar.open(
+          "Failed to fetch user details. Please try again.",
+          "",
+          { duration: 3000 }
+        );
       }
     );
   }
@@ -54,18 +59,20 @@ export class HomeComponent implements OnInit {
       (decks: any) => {
         this.deckCardDecks = decks.data;
         console.log(this.deckCardDecks);
-        this.fetchUserVotes()
+        this.fetchUserVotes();
       },
       (error) => {
         console.error("Failed to fetch decks:", error);
-        this.snackBar.open("Failed to fetch decks. Please try again.", "", { duration: 3000 });
+        this.snackBar.open("Failed to fetch decks. Please try again.", "", {
+          duration: 3000,
+        });
       }
     );
   }
 
   // Fetch user votes for decks
   fetchUserVotes(): void {
-    console.log(this.deckCardDecks)
+    console.log(this.deckCardDecks);
     for (const deck of this.deckCardDecks) {
       this.voteService
         .getVotesForDeck(deck._id)
@@ -87,21 +94,25 @@ export class HomeComponent implements OnInit {
         })
         .catch((error) => {
           console.error("Failed to fetch votes for deck:", error);
-          this.snackBar.open("Failed to fetch votes for deck. Please try again.", "", { duration: 3000 });
+          this.snackBar.open(
+            "Failed to fetch votes for deck. Please try again.",
+            "",
+            { duration: 3000 }
+          );
         });
     }
   }
-  
-   // Reload decks
+
+  // Reload decks
   reloadDecks() {
     this.loadDecks();
   }
-  
+
   // Handle search results
   handleSearchResults(results: any[]): void {
+    this.selectedComponent = "deck-card";
     this.deckCardDecks = results;
-    this.selectedComponent = 'deck-card'
-    this.fetchUserVotes()
+    this.fetchUserVotes();
   }
 
   // Handle button clicks
@@ -111,13 +122,14 @@ export class HomeComponent implements OnInit {
     // console.log(this.selectedComponent);
   }
   onSearchClicked(): void {
-    this.selectedComponent = 'deck-card';
+    this.selectedComponent = "deck-card";
   }
 
   // Open user profile
   openMyProfile(open: boolean): void {
-    // console.log("Profile Clocked");
+    if (open) {
+      this.selectedComponent = "";
+    }
     this.isProfileOpen = open;
-    this.selectedComponent = "";
   }
 }
