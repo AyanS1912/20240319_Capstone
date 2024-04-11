@@ -3,5 +3,5 @@
     <h1>{{deckTitle}}</h1>
   </div>
 <div class="deck-container">
-    <app-flashcards [flashcards]="myflashcards"></app-flashcards>
+    <app-flashcards [flashcards]="myflashcards" (reloadCard)="recallCard()"></app-flashcards>
   </div>

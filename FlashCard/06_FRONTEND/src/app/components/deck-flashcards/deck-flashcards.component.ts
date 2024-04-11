@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
 import { Flashcard } from "../../interface/flashcardInterface";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -19,7 +19,7 @@ export class DeckFlashcardsComponent implements OnInit {
   myflashcards: Flashcard[] = [];
   deckId: string | null = "";
   userDetails: any;
-  deckTitle : string = ''
+  deckTitle: string = "";
   constructor(
     private flashcardService: FlashcardServiceService,
     private router: Router,
@@ -27,25 +27,24 @@ export class DeckFlashcardsComponent implements OnInit {
     private userService: RegisterService,
     private voteService: VoteService,
     private snackBar: MatSnackBar,
-    private dialog : MatDialog,
-    private deckService : DeckService
+    private dialog: MatDialog,
+    private deckService: DeckService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.deckId = params.get("id");
       if (this.deckId) {
-        this.loaddecks(this.deckId)
+        this.loaddecks(this.deckId);
         this.fetchdecksFlashcards(this.deckId);
       }
     });
     this.getUserDetails();
     this.initializeFlipCards();
-    
   }
 
-  loaddecks(deckId : string){
-    this.deckService.getDecks(deckId) .then(
+  loaddecks(deckId: string) {
+    this.deckService.getDecks(deckId).then(
       (data: any) => {
         this.deckTitle = data.data.name;
       },
@@ -75,24 +74,29 @@ export class DeckFlashcardsComponent implements OnInit {
     });
   }
 
-  
   // Method to fetch flashcards based on deckId
   fetchdecksFlashcards(deckId: string) {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
         this.myflashcards = data.data;
-        console.log("All",this.myflashcards);
+        console.log("All", this.myflashcards);
 
         this.myflashcards = this.myflashcards.filter(
           (card) => card.deckId.toString() === deckId
         );
-        console.log("Mine",this.myflashcards);
-        this.fetchUserVotes()
+        console.log("Mine", this.myflashcards);
+        this.fetchUserVotes();
       },
       (error) => {
         console.error(error);
       }
     );
+  }
+
+  recallCard() {
+    if (this.deckId) {
+      this.fetchdecksFlashcards(this.deckId);
+    }
   }
 
   fetchUserVotes(): void {
@@ -120,5 +124,4 @@ export class DeckFlashcardsComponent implements OnInit {
       );
     }
   }
-
 }

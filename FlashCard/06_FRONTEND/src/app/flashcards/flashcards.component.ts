@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FlashcardServiceService } from "../services/flashcard/flashcard-service.service";
 import { Flashcard } from "../interface/flashcardInterface";
 import { Router } from "@angular/router";
@@ -16,6 +16,7 @@ import { ConfirmationDialogComponent } from "../components/confirmation-dialog/c
 export class FlashcardsComponent {
   @Input() flashcards: Flashcard[] = [];
   @Input() userDetails: any;
+  @Output() reloadCard: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private flashcardService: FlashcardServiceService,
@@ -29,7 +30,6 @@ export class FlashcardsComponent {
   ngOnInit(): void {
     this.getUserDetails();
     this.initializeFlipCards();
-    this.fetchFlashcards();
   }
 
   // Method to fetch user details
@@ -56,18 +56,6 @@ export class FlashcardsComponent {
     });
   }
 
-  // Method to fetch flashcards
-  fetchFlashcards() {
-    this.flashcardService.getAllFlashcards().then(
-      (data: any) => {
-        this.flashcards = data.data;
-        this.fetchUserVotes();
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
 
   // Method to fetch user votes for flashcards
   fetchUserVotes(): void {
@@ -98,8 +86,6 @@ export class FlashcardsComponent {
 
   // Method to navigate to edit flashcard page
   editFlashcard(flashcardId: string) {
-    console.log("clicked");
-
     // Navigate to the edit page with the flashcard ID as a parameter
     this.router.navigate(["/edit-flashcard", flashcardId]);
   }
@@ -120,8 +106,8 @@ export class FlashcardsComponent {
               duration: 3000,
             });
             console.log("Flashcard deleted successfully:", res);
+            this.reloadCard.emit();
             // Reload flashcards after deletion
-            this.fetchFlashcards();
           },
           (error) => {
             // Handle error
@@ -144,8 +130,8 @@ export class FlashcardsComponent {
         this.snackBar.open("Flashcard upvoted successfully", "", {
           duration: 3000,
         });
+        this.reloadCard.emit();
         // Reload flashcards after upvote
-        this.fetchFlashcards();
       },
       (error) => {
         console.error("Failed to upvote Flashcard:", error);
@@ -164,8 +150,8 @@ export class FlashcardsComponent {
         this.snackBar.open("Flashcard downvoted successfully", "", {
           duration: 3000,
         });
+        this.reloadCard.emit();
         // Reload flashcards after downvote
-        this.fetchFlashcards();
       },
       (error) => {
         console.error("Failed to downvote Flashcard:", error);
