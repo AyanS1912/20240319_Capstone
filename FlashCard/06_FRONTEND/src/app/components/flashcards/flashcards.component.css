@@ -1,209 +1,238 @@
 .visibility-tag .public {
-    background-color: rgba(83, 169, 84, 0.8);
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: black;
-  }
+  background-color: rgba(83, 169, 84, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.visibility-tag .private {
+  background-color: rgba(199, 243, 4, 0.8);
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+/* Cards */
+.flip-card,
+.flip-card-click {
+  display: inline-block;
+  background-color: transparent;
+  width: 450px;
+  height: 450px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+  padding: 20px;
+  margin: 20px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-click:focus .flip-card-inner:focus,
+.flip-card-click:active .flip-card-inner:active,
+.flip-card-click.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-inner:focus {
+  outline: 5px solid #f7f7f7;
+  cursor: pointer;
+}
+.flip-card-inner:hover {
+  outline: 5px solid #f7f7f7;
+  cursor: pointer;
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  padding: 5px;
+  margin :5px
+}
+.flip-card-front h2 {
+  color: #000;
+  font-size: 16pt;
+  font-weight: 500;
+  padding: 10px;
+}
+.flip-card-front p,
+.flip-card-back p {
+  padding: 10px;
+  font-size: 16pt;
+  color: #000;
+}
+.flip-card-front {
+  background-color: #fff;
+  /* margin : 20px */
+}
+.flip-card-back {
+  background-color: #fff;
+  transform: rotateY(180deg);
+}
+
+#card-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  gap: 10px;
   
-  .visibility-tag .private {
-    background-color: rgba(199, 243, 4, 0.8);
-    color: black;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  /* Cards */
+}
+
+.edit-button,
+.delete-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 5px;
+  padding: 4px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 30px; /* Adjust button width */
+  height: 30px;
+}
+
+.edit-button {
+  background-color: green;
+  color: white;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.voting-section {
+  position: absolute;
+  /* bottom: 10px; */
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.upvote-button,
+.downvote-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 5px;
+  width: 30px; /* Adjust button width */
+  height: 30px;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+.vote-button:hover {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.visibility-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.add-flashcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.add-flashcard-icon {
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.add-flashcard-icon i {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  /* Add now: Adjust card width and margin for smaller screens */
   .flip-card,
   .flip-card-click {
-    display: inline-block;
-    background-color: transparent;
-    width: 300px;
-    height: 300px;
-    margin-right: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #f1f1f1;
-    perspective: 1000px;
-    padding: 20px;
-    margin: 20px;
+    width: calc(50% - 24px); /* Adjust card width for smaller screens */
+    margin: 10px; /* Add margin between cards */
   }
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  
-  .flip-card-click:focus .flip-card-inner:focus,
-  .flip-card-click:active .flip-card-inner:active,
-  .flip-card-click.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  .flip-card-inner:focus {
-    outline: 5px solid #f7f7f7;
-    cursor: pointer;
-  }
-  .flip-card-inner:hover {
-    outline: 5px solid #f7f7f7;
-    cursor: pointer;
-  }
-  .flip-card-front,
-  .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-  }
-  .flip-card-front h2 {
-    color: #000;
-    font-size: 16pt;
-    font-weight: 500;
-    padding: 10px;
-  }
-  .flip-card-front p,
-  .flip-card-back p {
-    padding: 10px;
-    font-size: 16pt;
-    color: #000;
-  }
-  .flip-card-front {
-    background-color: #fff;
-    /* margin : 20px */
-  }
-  .flip-card-back {
-    background-color: #fff;
-    transform: rotateY(180deg);
-  }
-  
+
   #card-container2 {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column; /* Change layout to stack cards vertically */
+    align-items: center; /* Center cards horizontally */
   }
-  
-  .footer {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    
+
+  .flip-card,
+  .flip-card-click {
+    width: calc(100% - 24px); /* Make cards full width with margin */
+    margin: 10px; /* Add margin between cards */
   }
-  
-  .edit-button,
-  .delete-button {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    margin-left: 5px;
-    padding : 4px;
-    border-radius: 5px;
-    margin-top: 20px;
-  }
-  
-  .edit-button {
-    background-color: green;
-    color : white
-  }
-  
-  .delete-button {
-    background-color: red;
-    color : white
-  }
-  
-  .edit-button:hover,
-  .delete-button:hover {
-    background-color: #f9f9f9;
-    color: #000;
-  }
-  
+
+  .footer,
   .voting-section {
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
+    position: relative; /* Reset position for responsiveness */
+    bottom: auto; /* Remove absolute positioning */
+    right: auto; /* Remove absolute positioning */
+    margin-top: 10px; /* Add margin for spacing */
+    display: flex; /* Ensure buttons are in a row */
+    justify-content: center; /* Center buttons horizontally */
   }
-  
+
+  .edit-button,
+  .delete-button,
   .upvote-button,
   .downvote-button {
-    background-color: white;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    margin-right: 5px;
+    width: 30px; /* Adjust button width for smaller screens */
+    height: 30px; /* Adjust button height for smaller screens */
+    font-size: 14px; /* Adjust button font size for smaller screens */
   }
-  
-  .material-icons {
-    vertical-align: middle;
+
+  .flip-card-front h2,
+  .flip-card-back p {
+    font-size: 14px; /* Decrease font size for smaller screens */
+    padding: 5px; /* Decrease padding for smaller screens */
   }
-  
-  .vote-button:hover {
-    background-color: #f9f9f9;
-    color: #000;
+
+  .edit-button,
+  .delete-button,
+  .upvote-button,
+  .downvote-button {
+    padding: 2px 4px; /* Decrease padding for smaller screens */
+    font-size: 5px; /* Decrease font size for smaller screens */
   }
-  
-  .visibility-tag {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    /* Add now: Adjust card width and margin for smaller screens */
-    .flip-card,
-    .flip-card-click {
-      width: calc(50% - 24px); /* Adjust card width for smaller screens */
-      margin: 10px; /* Add margin between cards */
-    }
-  
-    #card-container2 {
-      display: flex;
-      flex-direction: column; /* Change layout to stack cards vertically */
-      align-items: center; /* Center cards horizontally */
-    }
-  
-    .flip-card,
-    .flip-card-click {
-      width: calc(100% - 24px); /* Make cards full width with margin */
-      margin: 10px; /* Add margin between cards */
-    }
-  
-    .footer,
-    .voting-section {
-      position: relative; /* Reset position for responsiveness */
-      bottom: auto; /* Remove absolute positioning */
-      right: auto; /* Remove absolute positioning */
-      margin-top: 10px; /* Add margin for spacing */
-      display: flex; /* Ensure buttons are in a row */
-      justify-content: center; /* Center buttons horizontally */
-    }
-  
-    .edit-button,
-    .delete-button,
-    .upvote-button,
-    .downvote-button {
-      width: 30px; /* Adjust button width for smaller screens */
-      height: 30px; /* Adjust button height for smaller screens */
-      font-size: 14px; /* Adjust button font size for smaller screens */
-    }
-  
-    .flip-card-front h2,
-    .flip-card-back p {
-      font-size: 14px; /* Decrease font size for smaller screens */
-      padding: 5px; /* Decrease padding for smaller screens */
-    }
-  
-    .edit-button,
-    .delete-button,
-    .upvote-button,
-    .downvote-button {
-      padding: 2px 4px; /* Decrease padding for smaller screens */
-      font-size: 5px; /* Decrease font size for smaller screens */
-    }
-  }
+}

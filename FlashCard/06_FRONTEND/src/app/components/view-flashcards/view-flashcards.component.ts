@@ -7,6 +7,7 @@ import { RegisterService } from "../../services/auth/user.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: "app-view-flashcards",
@@ -24,7 +25,8 @@ export class ViewFlashcardsComponent implements OnInit {
     private voteService: VoteService,
     private userService: RegisterService,
     private snackBar : MatSnackBar,
-    private dialog : MatDialog
+    private dialog : MatDialog,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -57,11 +59,19 @@ export class ViewFlashcardsComponent implements OnInit {
     });
   }
 
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+  
   // Method to fetch flashcards
   fetchFlashcards() {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
         this.allflashcards = data.data;
+        // this.allflashcards.forEach((flashcard) => {
+        //   flashcard.frontText = this.sanitizeHtml(flashcard.frontText);
+        //   flashcard.backText = this.sanitizeHtml(flashcard.backText);
+        // })
         this.fetchUserVotes();
       },
       (error) => {
@@ -176,4 +186,6 @@ export class ViewFlashcardsComponent implements OnInit {
       }
     );
   }
+
+
 }

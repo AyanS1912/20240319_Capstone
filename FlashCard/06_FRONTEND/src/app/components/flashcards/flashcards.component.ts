@@ -7,29 +7,37 @@ import { RegisterService } from "../../services/auth/user.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-flashcards',
-  templateUrl: './flashcards.component.html',
-  styleUrl: './flashcards.component.css'
+  selector: "app-flashcards",
+  templateUrl: "./flashcards.component.html",
+  styleUrl: "./flashcards.component.css",
 })
 export class FlashcardsComponent {
   @Input() flashcards: Flashcard[] = [];
   @Input() userDetails: any;
   @Output() reloadCard: EventEmitter<any> = new EventEmitter();
+  @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private flashcardService: FlashcardServiceService,
     private router: Router,
     private voteService: VoteService,
     private userService: RegisterService,
-    private snackBar : MatSnackBar,
-    private dialog : MatDialog
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
     this.getUserDetails();
     this.initializeFlipCards();
+  }
+
+  //Method to clean your innerHtml code
+  sanitizeHtml(html: string): any {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   // Method to fetch user details
@@ -55,7 +63,6 @@ export class FlashcardsComponent {
       });
     });
   }
-
 
   // Method to fetch user votes for flashcards
   fetchUserVotes(): void {
@@ -93,11 +100,14 @@ export class FlashcardsComponent {
   // Method to delete a flashcard
   deleteFlashcard(flashcardId: string) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '250px',
-      data: { title: 'Confirm Deletion', message: 'Are you sure you want to delete this flashcard?' }
+      width: "250px",
+      data: {
+        title: "Confirm Deletion",
+        message: "Are you sure you want to delete this flashcard?",
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         // User confirmed deletion
         this.flashcardService.deleteFlashcard(flashcardId).then(
@@ -160,5 +170,10 @@ export class FlashcardsComponent {
         });
       }
     );
+  }
+
+  onClick(card: string) {
+    this.buttonClicked.emit(card);
+    this.router.navigate(["/home"]);
   }
 }

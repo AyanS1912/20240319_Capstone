@@ -2,8 +2,8 @@ export interface Flashcard {
   _id: string;
   deckId: string;
   userId: string;
-  frontText: string;
-  backText: string;
+  frontText: any;
+  backText: any;
   tags: [string];
   visibility: string;
   upvotes: number;
