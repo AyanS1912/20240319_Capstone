@@ -1,0 +1,63 @@
+<div style="text-align: center; margin-top: 20px">
+    <h2 class="page-detail">
+        FlashMastery
+    </h2>
+</div>
+
+<main class="mainBody">
+
+    <div class="deckform">
+        <h3 style="color: #292c44; font-size: 20px; font-weight: 600; padding: auto">
+            {{ formTitle }}
+        </h3>
+
+        <!-- Input -->
+        <form [formGroup]="deckForm" (submit)="onSubmit()">
+            <input type="text" formControlName="name" class="customInputField" placeholder="Deck Name" (blur)="onBlur('name')"
+            (focus)="onFocus('name')" />
+            <div *ngIf="!nameInputFocused && deckForm.controls.name.touched" class="error-message">
+                <div *ngIf="deckForm.controls.name.errors?.['required']">Name is required</div>
+                <div *ngIf="deckForm.controls.name.errors?.['pattern']">name should contain only letters</div>
+                <div *ngIf="deckForm.controls.name.errors?.['minlength']">Name should be at least 3
+                    characters long</div>
+                <div *ngIf="deckForm.controls.name.errors?.['maxlength']">Name cannot be longer than 50
+                    characters</div>
+            </div>
+
+            <input type="text" formControlName="description" class="customInputField" placeholder="Desk Description" (blur)="onBlur('description')"
+            (focus)="onFocus('description')" />
+            <div *ngIf="!descInputFocused && deckForm.controls.description.touched" class="error-message">
+                <div *ngIf="deckForm.controls.description.errors?.['required']">Desciption is required</div>
+                <div *ngIf="deckForm.controls.description.errors?.['pattern']">Desciption should contain only letters and numbers</div>
+                <div *ngIf="deckForm.controls.description.errors?.['minlength']">Name should be at least 10
+                    characters long</div>
+                <div *ngIf="deckForm.controls.description.errors?.['maxlength']">Desciption cannot be longer than 200
+                    characters</div>
+            </div>
+
+
+            <h3 style="
+            color: #292c44;
+            font-size: 20px;
+            font-weight: 600;
+            padding-top: 10px;
+            padding-bottom: 0px;
+            left : 0px;
+            ">
+                Visibility
+            </h3>
+            <!-- Visibility Dropdown -->
+            <select formControlName="visibility" class="dropdown" required>
+                <option value="" disabled selected>Select Visibility State</option>
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+            </select>
+            <div *ngIf="deckForm.controls.visibility.invalid && deckForm.controls.visibility.touched" class="error-message">
+                <div *ngIf="deckForm.controls.visibility.errors?.['required']">Visibility is required</div>
+            </div>
+
+            <button type="submit" class="shadow-button" [disabled]="deckForm.invalid">{{ submitButtonLabel }}</button>
+        </form>
+    </div>
+
+</main>

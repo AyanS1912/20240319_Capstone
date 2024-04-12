@@ -25,6 +25,8 @@ import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flash
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { EditorModule } from "@tinymce/tinymce-angular";
 import { FlashcardsComponent } from "./components/flashcards/flashcards.component";
+import { FlashcardFormComponent } from './components/flashcard-form/flashcard-form.component';
+import { DeckFormComponent } from './components/deck-form/deck-form.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { FlashcardsComponent } from "./components/flashcards/flashcards.componen
     DeckFlashcardsComponent,
     ConfirmationDialogComponent,
     FlashcardsComponent,
+    FlashcardFormComponent,
+    DeckFormComponent,
 
     
   ],

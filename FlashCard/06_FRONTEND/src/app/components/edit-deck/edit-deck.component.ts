@@ -14,9 +14,6 @@ export class EditDeckComponent implements OnInit {
   deckId: string = "";
   deckData: any;
 
-  // decks: Deck[] = [];
-  // deckForm: FormGroup;
-
   constructor(
     private deckService: DeckService,
     private activatedRoute: ActivatedRoute,
@@ -24,44 +21,6 @@ export class EditDeckComponent implements OnInit {
     private router: Router
   ) {}
   
-  // Initialize deckForm with form controls and validators
-  deckForm = new FormGroup({
-    name: new FormControl("", [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(50),
-      Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/),
-    ]),
-    description: new FormControl("", [
-      Validators.required,
-      Validators.minLength(10),
-      Validators.maxLength(200),
-      Validators.pattern(/^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$/),
-    ]),
-    visibility: new FormControl("", [Validators.required]),
-  });
-
-   // Track input focus states
-  nameInputFocused: boolean = false;
-  descInputFocused: boolean = false;
-
-  // Method to handle input focus
-  onFocus(controlName: string) {
-    if (controlName === "name") {
-      this.nameInputFocused = true;
-    } else if (controlName === "description") {
-      this.descInputFocused = true;
-    }
-  }
-
-  // Method to handle input blur
-  onBlur(controlName: string) {
-    if (controlName === "name") {
-      this.nameInputFocused = false;
-    } else if (controlName === "description") {
-      this.descInputFocused = false;
-    }
-  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -75,8 +34,7 @@ export class EditDeckComponent implements OnInit {
     this.deckService.getDecks(this.deckId).then(
       (data) => {
         this.deckData = data.data;
-        // console.log(this.deckData)
-        this.populateForm();
+        console.log(this.deckData,"Data")
       },
       (error) => {
         console.error("Failed to fetch deck data:", error);
@@ -87,23 +45,9 @@ export class EditDeckComponent implements OnInit {
     );
   }
 
-  // Method to populate form with loaded deck data
-  populateForm() {
-    this.deckForm.patchValue({
-      name: this.deckData.name,
-      description: this.deckData.description,
-      visibility: this.deckData.visibility,
-    });
-  }
-
   // Method to handle form submission for updating deck
-  onSubmit() {
-    if (this.deckForm.invalid) {
-      return;
-    }
-
-    const updatedDeckData = this.deckForm.value;
-    this.deckService.updateDeck(this.deckId, updatedDeckData).then(
+  onSubmit(formData: any) {
+    this.deckService.updateDeck(this.deckId, formData).then(
       (response) => {
         console.log("Deck updated successfully:", response);
         this.snackBar.open("Deck updated successfully", "", { duration: 3000 });
