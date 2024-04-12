@@ -121,6 +121,12 @@ export class HomeComponent implements OnInit {
     this.selectedComponent = component;
     // console.log(this.selectedComponent);
   }
+
+  onCreateFlashcardClicked() {
+    this.selectedComponent = "create-flashcard";
+    this.isProfileOpen = false;
+  }
+  
   onSearchClicked(): void {
     this.selectedComponent = "deck-card";
   }

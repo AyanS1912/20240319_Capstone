@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <app-sidebar (buttonClicked)="onButtonClicked($event)"></app-sidebar>
+    <app-sidebar (buttonClicked)="onButtonClicked($event)" (createFlashcardClicked)="onCreateFlashcardClicked()"></app-sidebar>
     <div class="main_content">
         <app-navbar (profileClicked)="openMyProfile($event)" (searchResults)="handleSearchResults($event)" (searchClicked)="onSearchClicked()"></app-navbar>
         <div class="info">

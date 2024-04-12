@@ -11,6 +11,7 @@ export class NavbarComponent {
   @Output() profileClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() searchResults: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Output() searchClicked: EventEmitter<void> = new EventEmitter<void>();
+  selectedComponent: string = 'Home';
 
   constructor(private searchService: SearchService) {}
 

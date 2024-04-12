@@ -83,8 +83,9 @@ export class EditFlashcardComponent implements OnInit {
       (data: any) => {
         this.flashcardData = data.data;
         this.populateForm(this.flashcardData);
-        console.log(this.flashcardData);
-        // console.log(this.flashcardData.id);
+        console.log("Data",this.flashcardData);
+        this.backText = this.flashcardData.backText
+        this.frontText = this.flashcardData.frontText
 
         this.loadDecks();
       },

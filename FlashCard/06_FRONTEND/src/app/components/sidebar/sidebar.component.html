@@ -1,13 +1,13 @@
 <div class="sidebar" [ngClass]="{'collapsed': isCollapsed}">
     <h2>FlashMastery</h2>
     <ul>
-        <li><button (click)="handleClick('deck-card')"><i class="material-icons">home</i> Home</button></li>
-        <li><button (click)="handleClick('view-decks')"><i class="material-icons">view_compact_alt</i> View My
+        <li [class.selected]="selectedComponent === 'deck-card'"><button (click)="handleClick('deck-card')"><i class="material-icons">home</i> Home</button></li>
+        <li [class.selected]="selectedComponent === 'view-decks'"><button (click)="handleClick('view-decks')"><i class="material-icons">view_compact_alt</i> View My
                 Decks</button></li>
-        <li><button (click)="handleClick('create-deck')"><i class="material-icons">add_box</i> Create Deck</button></li>
-        <li><button (click)="handleClick('view-flashcards')"><i class="material-icons">add_box</i> View My
+        <li [class.selected]="selectedComponent === 'create-deck'"><button (click)="handleClick('create-deck')"><i class="material-icons">add_box</i> Create Deck</button></li>
+        <li [class.selected]="selectedComponent === 'view-flashcards'" ><button (click)="handleClick('view-flashcards')"><i class="material-icons">add_box</i> View My
                 Flashcard</button></li>
-        <li><button (click)="handleClick('create-flashcard')"><i class="material-icons">add_box</i> Create
+        <li [class.selected]="selectedComponent === 'create-flashcard'" ><button (click)="handleClick('create-flashcard')"><i class="material-icons">add_box</i> Create
                 Flashcard</button></li>
     </ul>
   

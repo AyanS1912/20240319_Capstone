@@ -15,8 +15,8 @@ import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation
   styleUrl: "./create-flashcard.component.css",
 })
 export class CreateFlashcardComponent {
-  frontText: string = "";
-  backText: string = "";
+  frontText: string = "Please Enter the Front Text......";
+  backText: string = "Please Enter the Back Text......";
   userId: string = "";
   flashcardId: string = "";
 

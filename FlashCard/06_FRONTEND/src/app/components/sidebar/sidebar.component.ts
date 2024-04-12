@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
   @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
   isCollapsed: boolean = false;
+  selectedComponent: string = 'home';
 
 
   constructor (
@@ -17,6 +18,8 @@ export class SidebarComponent {
   ){}
   // Function to handle button clicks
   handleClick(componentName: string) {
+    this.selectedComponent = componentName;
+    console.log("curerent",componentName)
     this.buttonClicked.emit(componentName);    
   }
 

@@ -18,7 +18,7 @@ export class FlashcardsComponent {
   @Input() flashcards: Flashcard[] = [];
   @Input() userDetails: any;
   @Output() reloadCard: EventEmitter<any> = new EventEmitter();
-  @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
+  @Output() createFlashcardClicked: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private flashcardService: FlashcardServiceService,
@@ -172,8 +172,8 @@ export class FlashcardsComponent {
     );
   }
 
-  onClick(card: string) {
-    this.buttonClicked.emit(card);
-    this.router.navigate(["/home"]);
+  onClick(component: string) {
+    this.router.navigate(['/home'])
+    this.createFlashcardClicked.emit();
   }
 }
