@@ -68,10 +68,6 @@ export class ViewFlashcardsComponent implements OnInit {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
         this.allflashcards = data.data;
-        // this.allflashcards.forEach((flashcard) => {
-        //   flashcard.frontText = this.sanitizeHtml(flashcard.frontText);
-        //   flashcard.backText = this.sanitizeHtml(flashcard.backText);
-        // })
         this.fetchUserVotes();
       },
       (error) => {

@@ -36,8 +36,10 @@ export class FlashcardsComponent {
   }
 
   //Method to clean your innerHtml code
-  sanitizeHtml(html: string): any {
-    return this.sanitizer.bypassSecurityTrustHtml(html);
+  sanitizeHtml(html: any): any {
+    html = this.sanitizer.bypassSecurityTrustHtml(html);
+    console.log(html)
+    return html
   }
 
   // Method to fetch user details

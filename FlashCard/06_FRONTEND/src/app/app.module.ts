@@ -46,7 +46,8 @@ import { FlashcardsComponent } from "./components/flashcards/flashcards.componen
     EditFlashcardComponent,
     DeckFlashcardsComponent,
     ConfirmationDialogComponent,
-    FlashcardsComponent
+    FlashcardsComponent,
+
     
   ],
   imports: [

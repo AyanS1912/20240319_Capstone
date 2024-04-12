@@ -20,7 +20,7 @@
                                     class="public">Public</span></div>
                             <div class="visibility-tag" *ngIf="flashcard.visibility === 'private'"><span
                                     class="private">Private</span></div>
-                            <h2 [innerHTML]="sanitizeHtml(flashcard.frontText)"></h2>
+                            <p [innerHTML]="sanitizeHtml(flashcard.frontText)"></p>
         
                         </div>
                         <div class="flip-card-back">

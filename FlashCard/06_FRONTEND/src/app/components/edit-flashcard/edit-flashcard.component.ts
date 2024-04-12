@@ -86,7 +86,6 @@ export class EditFlashcardComponent implements OnInit {
         console.log("Data",this.flashcardData);
         this.backText = this.flashcardData.backText
         this.frontText = this.flashcardData.frontText
-
         this.loadDecks();
       },
       (error) => {
