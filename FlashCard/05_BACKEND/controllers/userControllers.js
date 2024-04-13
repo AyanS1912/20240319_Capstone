@@ -2,7 +2,10 @@
  * Controller functions for managing user.
  * @module userControllers
  */
-const { User } = require("../schema/userSchema")
+const schema = require('../schema')
+const { User } = schema.User
+const { Deck } = schema.Deck
+const { Flashcard } = schema.Flashcard
 const { hashPassword } = require("../utils/authUtil")
 const validator = require('../validators')
 const { token_provided, verifyToken } = validator.tokenValidator
@@ -144,6 +147,15 @@ const deleteUser = async (req, res) => {
       })
     }
 
+    // Find all decks owned by the user
+    const userDecks = await Deck.find({userId : id})
+    // Delete each deck and cascade delete associated flashcards
+    for (const deck of userDecks) {
+        await Deck.findByIdAndDelete(deck._id)
+        await Flashcard.deleteMany({ deckId: deck._id })
+    }
+
+    // Delete the user
     const deletedUser = await User.findByIdAndDelete(id)
 
     if (!deletedUser) {

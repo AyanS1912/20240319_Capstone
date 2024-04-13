@@ -6,6 +6,8 @@
 // internal imports
 const schema = require('../schema')
 const { Deck } = schema.Deck
+const { Flashcard } = schema.Flashcard
+const { DeckVote } = schema.DeckVote
 const validator = require('../validators')
 const { token_provided, verifyToken } = validator.tokenValidator
 const { validateName, validateDescription , validateVisibility} = validator.deckValidator
@@ -266,9 +268,15 @@ const deleteDeck = async (req, res) => {
         if (deck.visibility === "public") {
             return res.status(400).send({ message: "Cannot delete a publicly available deck" })
         }
-        // console.log("Iddhar")
+        
+        // Delete related data in deckVote
+        await DeckVote.deleteMany({ deckId: deckId })
+        
         // Delete the deck
         await Deck.findByIdAndDelete(deckId)
+
+         // Cascade delete: Find and delete all flashcards associated with this deck
+         await Flashcard.deleteMany({ deckId: deckId })
 
         // Return success message
         return res.status(200).send({ message: "Deck deleted" })

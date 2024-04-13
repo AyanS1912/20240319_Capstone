@@ -6,6 +6,7 @@
 // internal imports
 const schema = require('../schema')
 const { Flashcard } = schema.Flashcard
+const { FlashcardVote } = schema.FlashcardVote
 const validator = require('../validators')
 const { token_provided, verifyToken } = validator.tokenValidator
 const { validateFrontText, validateBackText, validateTags, validateVisibility} = validator.flashcardValidator
@@ -270,6 +271,9 @@ const deleteFlashcard = async (req, res) => {
         if (flashcard.visibility === "public") {
             return res.status(403).send({ message: "Forbidden. Flashcard which are public cannnot be deleted." })
         }
+
+        // Delete related data in flashcardVote
+        await FlashcardVote.deleteMany({ flashcardId: flashcardId })
 
         // Delete the flashcard
         await Flashcard.findByIdAndDelete(flashcardId)
