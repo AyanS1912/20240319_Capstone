@@ -37,17 +37,36 @@
                             <button *ngIf="deck.visibility !== 'public'  " class="delete-button"
                                 (click)="deleteDeck(deck._id)"><i class="material-icons">delete</i></button>
                         </div>
-                        <div class="voting-section">
+                        <div class="voting-section" *ngIf="deck.userVoteType===''">
                             <button class="upvote-button" (click)="upvoteDeck(deck._id)">
-                                <i class="material-icons">thumb_up</i>
+                                <i class="pi pi-thumbs-up"></i>
                                 {{ deck.upvotes }}
                             </button>
                             <button class="downvote-button">
-                                <i class="material-icons" (click)="downvoteDeck(deck._id)">thumb_down</i>
-                                <!-- <i class="material-icons" *ngIf="deck.userVoteType !== 'upvote'">thumb-down-off-alt</i>  -->
+                                <i class="pi pi-thumbs-down" (click)="downvoteDeck(deck._id)"></i>
                                 {{ deck.downvotes }}
                             </button>
-
+                        </div>
+                        <div class="voting-section" *ngIf="deck.userVoteType==='downvote'">
+                            <button class="upvote-button" (click)="upvoteDeck(deck._id)">
+                                <i class="pi pi-thumbs-up"></i>
+                                {{ deck.upvotes }}
+                            </button>
+                            <button class="downvote-button">
+                                <i class="pi pi-thumbs-down-fill" (click)="downvoteDeck(deck._id)"></i>
+                                {{ deck.downvotes }}
+                            </button>
+                        </div>
+                        <div class="voting-section" *ngIf="deck.userVoteType==='upvote'">
+                            <button class="upvote-button" (click)="upvoteDeck(deck._id)">
+                                <i class="pi pi-thumbs-up-fill"></i>
+                                {{ deck.upvotes }}
+                            </button>
+                            <button class="downvote-button">
+                                <i class="pi pi-thumbs-down" (click)="downvoteDeck(deck._id)"></i>
+                    
+                                {{ deck.downvotes }}
+                            </button>
                         </div>
                     </div>
                 </div>

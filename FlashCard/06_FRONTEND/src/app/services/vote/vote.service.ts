@@ -12,7 +12,7 @@ export class VoteService {
 
 
   constructor(private http: HttpClient) {
-    this.token = localStorage.getItem('Authorization');
+    this.token = sessionStorage.getItem('Authorization');
   }
 
   getVotesForFlashcard(flashcardId: string): Promise<any> {

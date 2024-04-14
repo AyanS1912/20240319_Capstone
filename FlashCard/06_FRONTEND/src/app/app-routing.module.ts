@@ -10,21 +10,20 @@ import { DeckCardComponent } from "./components/deck-card/deck-card.component";
 import { EditDeckComponent } from "./components/edit-deck/edit-deck.component";
 import { EditFlashcardComponent } from "./components/edit-flashcard/edit-flashcard.component";
 import { DeckFlashcardsComponent } from "./components/deck-flashcards/deck-flashcards.component";
-
+import { AuthGuard } from "./services/auth.guard";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "", redirectTo: "login", pathMatch: "full" },
   // {path : '**', component :PageNotFoundComponent},
-  { path: "nav", component: NavbarComponent },
-  { path: "side", component: SidebarComponent },
-  { path: "home", component: HomeComponent },
-  { path: "deck", component: DeckCardComponent },
-  { path: "edit-deck/:id", component: EditDeckComponent },
-  { path: "edit-flashcard/:id", component: EditFlashcardComponent },
-  { path: 'deck-flashcards/:id', component: DeckFlashcardsComponent },
-
+  { path: "nav", component: NavbarComponent, canActivate: [AuthGuard] },
+  { path: "side", component: SidebarComponent, canActivate: [AuthGuard] },
+  { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
+  { path: "deck", component: DeckCardComponent, canActivate: [AuthGuard] },
+  { path: "edit-deck/:id", component: EditDeckComponent, canActivate: [AuthGuard] },
+  { path: "edit-flashcard/:id", component: EditFlashcardComponent, canActivate: [AuthGuard] },
+  { path: 'deck-flashcards/:id', component: DeckFlashcardsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -111,6 +111,7 @@ export class DeckFlashcardsComponent implements OnInit {
           } else {
             flashcard.userVoteType = "";
           }
+          console.log(flashcard.userVoteType)
           flashcard.upvotes = votes.filter(
             (vote) => vote.voteType === "upvote"
           ).length;

@@ -85,9 +85,8 @@ export class DeckCardComponent implements OnInit {
       .upvoteDeck(deckId)
       .then((data) => {
         // Update the deck's upvote count
-        console.log(data);
         this.reloadDecks.emit();
-        this.snackBar.open("Upvoted successfully", "", { duration: 3000 }); 
+        this.snackBar.open("Voted successfully", "", { duration: 3000 }); 
       })
       .catch((error) => {
         console.error("Failed to upvote deck:", error);
@@ -101,9 +100,8 @@ export class DeckCardComponent implements OnInit {
       .downvoteDeck(deckId)
       .then((data) => {
         // Update the deck's downvote count
-        console.log(data);
         this.reloadDecks.emit();
-        this.snackBar.open("Downvoted successfully", "", { duration: 3000 }); 
+        this.snackBar.open("Voted successfully", "", { duration: 3000 }); 
       })
       .catch((error) => {
         console.error("Failed to downvote deck:", error);

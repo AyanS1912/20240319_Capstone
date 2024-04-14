@@ -71,6 +71,7 @@ export class ViewDecksComponent {
           } else {
             deck.userVoteType = "";
           }
+          console.log(deck.userVoteType)
           deck.upvotes = votes.filter(
             (vote) => vote.voteType === "upvote"
           ).length;

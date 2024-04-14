@@ -17,7 +17,7 @@ export class DeckService {
   ) { }
 
   createDeck(deckData: any): Promise<any> {
-    const token = localStorage.getItem('Authorization');
+    const token = sessionStorage.getItem('Authorization');
     if (!token) {
       return Promise.reject('No token found');
     }
@@ -38,7 +38,7 @@ export class DeckService {
   }
 
   getAllDecks(): Promise<any> {
-    const token = localStorage.getItem('Authorization');
+    const token = sessionStorage.getItem('Authorization');
     if (!token) {
       return Promise.reject('No token found');
     }
@@ -58,7 +58,7 @@ export class DeckService {
   }
 
   getDecks(deckId: string): Promise<any> {
-    const token = localStorage.getItem('Authorization');
+    const token = sessionStorage.getItem('Authorization');
     if (!token) {
       return Promise.reject('No token found');
     }
@@ -77,7 +77,7 @@ export class DeckService {
   }
 
   updateDeck(id: string, deckData: any): Promise<any> {
-    const token = localStorage.getItem('Authorization');
+    const token = sessionStorage.getItem('Authorization');
     if (!token) {
       return Promise.reject('No token found');
     }
@@ -98,7 +98,7 @@ export class DeckService {
 
   deleteDeck(id: string): Promise<any> {
     // console.log(id)
-    const token = localStorage.getItem('Authorization');
+    const token = sessionStorage.getItem('Authorization');
     // console.log(token);
     if (!token) {
       return Promise.reject('No token found');

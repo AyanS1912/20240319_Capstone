@@ -41,7 +41,7 @@ export class RegisterService {
     return new Promise<any>((resolve, reject) => {
       this.http.post<any>(`${this.Url}/auth/login`, credentials).subscribe(
         (response: any) => {
-          localStorage.setItem("Authorization", response.token);
+          sessionStorage.setItem("Authorization", response.token);
           resolve(response);
         },
         (error) => {
@@ -52,9 +52,31 @@ export class RegisterService {
     });
   }
 
+  isAuthenticated(): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      const token = sessionStorage.getItem("Authorization");
+
+      if (!token) {
+        resolve(false);
+        return;
+      }
+      this.http.post<any>(`${this.Url}/auth/verify-token`, {}, { headers: { Authorization: token } })
+        .subscribe(
+          (response) => {
+            resolve(response.isValid);
+
+          },
+          (error) => {
+            console.error(error);
+            reject(false);
+          }
+        );
+    });
+  }
+
   getUserDetails(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      const token = localStorage.getItem('Authorization');
+      const token = sessionStorage.getItem('Authorization');
       // console.log(token)
       if (!token) {
         reject('No token found');
@@ -74,9 +96,9 @@ export class RegisterService {
 
   updateUser(id: string, userData: any): Promise<any> {
     // console.log("aaagay")
-    const token = localStorage.getItem("Authorization");
+    const token = sessionStorage.getItem("Authorization");
     if (!token) {
-      return Promise.reject("No token found in localStorage");
+      return Promise.reject("No token found in sessionStorage");
     }
     return new Promise<any>((resolve, reject) => {
       this.http
@@ -96,9 +118,9 @@ export class RegisterService {
   }
 
   deleteUser(id: string): Promise<any> {
-    const token = localStorage.getItem("Authorization");
+    const token = sessionStorage.getItem("Authorization");
     if (!token) {
-      return Promise.reject("No token found in localStorage");
+      return Promise.reject("No token found in sessionStorage");
     }
     return new Promise<any>((resolve, reject) => {
       this.http

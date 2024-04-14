@@ -6,5 +6,7 @@ const controllers = require('../controllers');
 router.post('/register', controllers.authController.register);
 // Route to authenticate and log in a user
 router.post('/login', controllers.authController.login);
+// POST route to verify token
+router.post('/verify-token', controllers.authController.verifyToken);
 
 module.exports = router

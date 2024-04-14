@@ -33,16 +33,35 @@
                         <button *ngIf="flashcard.visibility ==='private'" class="delete-button" (click)="deleteFlashcard(flashcard._id)"><i
                                 class="material-icons">delete</i></button>
                     </div>
-                    <div class="voting-section">
+                    <div class="voting-section" *ngIf="flashcard.userVoteType===''">
                         <button class="upvote-button" (click)="upvoteFlashcard(flashcard._id)">
-                            <i class="material-icons">thumb_up</i>
+                            <i class="pi pi-thumbs-up"></i>
                             {{ flashcard.upvotes }}
                         </button>
                         <button class="downvote-button">
-                            <i class="material-icons" (click)="downvoteFlashcard(flashcard._id)">thumb_down</i>
+                            <i class="pi pi-thumbs-down" (click)="downvoteFlashcard(flashcard._id)"></i>
                             {{ flashcard.downvotes }}
                         </button>
-                        
+                    </div>
+                    <div class="voting-section" *ngIf="flashcard.userVoteType==='upvote'">
+                        <button class="upvote-button" (click)="upvoteFlashcard(flashcard._id)">
+                            <i class="pi pi-thumbs-up-fill"></i>
+                            {{ flashcard.upvotes }}
+                        </button>
+                        <button class="downvote-button">
+                            <i class="pi pi-thumbs-down" (click)="downvoteFlashcard(flashcard._id)"></i>
+                            {{ flashcard.downvotes }}
+                        </button>
+                    </div>
+                    <div class="voting-section" *ngIf="flashcard.userVoteType==='downvote'">
+                        <button class="upvote-button" (click)="upvoteFlashcard(flashcard._id)">
+                            <i class="pi pi-thumbs-up"></i>
+                            {{ flashcard.upvotes }}
+                        </button>
+                        <button class="downvote-button">
+                            <i class="pi pi-thumbs-down-fill" (click)="downvoteFlashcard(flashcard._id)"></i>
+                            {{ flashcard.downvotes }}
+                        </button>
                     </div>
                 </div>
                 </div>

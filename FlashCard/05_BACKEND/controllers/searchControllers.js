@@ -117,6 +117,7 @@ const search = async (req, res) => {
       const totalVotesA = upvotesA - downvotesA;
       const totalVotesB = upvotesB - downvotesB;
       return totalVotesB - totalVotesA;
+      
     });
 
     // Return sorted results in the response

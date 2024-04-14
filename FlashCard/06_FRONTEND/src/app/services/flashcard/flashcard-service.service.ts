@@ -14,7 +14,7 @@ export class FlashcardServiceService {
   constructor(
     private http: HttpClient, 
     private snackBar: MatSnackBar) {
-      this.token = localStorage.getItem('Authorization');
+      this.token = sessionStorage.getItem('Authorization');
     }
 
     private handleError(error: any): Promise<any> {
