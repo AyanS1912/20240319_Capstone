@@ -12,7 +12,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrl: "./home.component.css",
 })
 export class HomeComponent implements OnInit {
-  selectedComponent: string = "";
+  selectedComponent: string = "deck-card";
   isProfileOpen: boolean = false;
   deckCardDecks: Deck[] = [];
 
