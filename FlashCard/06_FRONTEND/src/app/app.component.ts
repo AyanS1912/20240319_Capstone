@@ -10,9 +10,4 @@ export class AppComponent {
   title = 'FlashMastery';
 
   constructor(private router: Router) {}
-
-  shouldShowNavbar(): boolean {
-    const url = this.router.url;
-    return !(url === '**' || url === '/login' || url === '/register');
-  }
 }

@@ -16,14 +16,26 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "", redirectTo: "login", pathMatch: "full" },
-  // {path : '**', component :PageNotFoundComponent},
   { path: "nav", component: NavbarComponent, canActivate: [AuthGuard] },
   { path: "side", component: SidebarComponent, canActivate: [AuthGuard] },
   { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
   { path: "deck", component: DeckCardComponent, canActivate: [AuthGuard] },
-  { path: "edit-deck/:id", component: EditDeckComponent, canActivate: [AuthGuard] },
-  { path: "edit-flashcard/:id", component: EditFlashcardComponent, canActivate: [AuthGuard] },
-  { path: 'deck-flashcards/:id', component: DeckFlashcardsComponent, canActivate: [AuthGuard] },
+  {
+    path: "edit-deck/:id",
+    component: EditDeckComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "edit-flashcard/:id",
+    component: EditFlashcardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "deck-flashcards/:id",
+    component: DeckFlashcardsComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: "**", component: PageNotFoundComponent },
 ];
 
 @NgModule({

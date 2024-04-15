@@ -27,7 +27,9 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private voteService: VoteService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    console.log(this.selectedComponent)
+  }
 
   ngOnInit(): void {
     this.getUserDetails();

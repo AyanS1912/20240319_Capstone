@@ -40,11 +40,11 @@
   transform: rotateY(180deg);
 }
 .flip-card-inner:focus {
-  outline: 5px solid #f7f7f7;
+  outline: 2px solid #f7f7f7;
   cursor: pointer;
 }
 .flip-card-inner:hover {
-  outline: 5px solid #f7f7f7;
+  outline: 2px solid #f7f7f7;
   cursor: pointer;
 }
 .flip-card-front,

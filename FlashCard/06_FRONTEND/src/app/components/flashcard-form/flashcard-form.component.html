@@ -23,7 +23,7 @@
             <input type="text" class="customInputField" formControlName="tags" placeholder="Add Tags"
                 (blur)="onBlur('tags')" (focus)="onFocus('tags')" />
             <div *ngIf="flashcardForm.controls.tags.invalid && (flashcardForm.controls.tags.dirty || flashcardForm.controls.tags.touched)"
-                class="error-msg">
+                class="error-message">
                 <div *ngIf="flashcardForm.controls.tags.errors?.['required']">Tags are required.</div>
                 <div *ngIf="flashcardForm.controls.tags.errors?.['minlength']">Tags must be at least 1 character
                     long.
@@ -41,7 +41,7 @@
                 <option value="private">Private</option>
             </select>
             <div *ngIf="flashcardForm.controls.visibility.invalid && (flashcardForm.controls.visibility.dirty || flashcardForm.controls.visibility.touched)"
-                class="error-msg">
+                class="error-message">
                 <div *ngIf="flashcardForm.controls.visibility.errors?.['required']">Visibility state is required.
                 </div>
             </div>
@@ -52,7 +52,7 @@
                 <option *ngFor="let deck of decks" [value]="deck._id">{{ deck.name }}</option>
             </select>
             <div *ngIf="flashcardForm.controls.deckName.invalid && (flashcardForm.controls.deckName.dirty || flashcardForm.controls.deckName.touched)"
-                class="error-msg">
+                class="error-message">
                 <div *ngIf="flashcardForm.controls.deckName.errors?.['required']">Please select a deck to add.</div>
             </div>
 

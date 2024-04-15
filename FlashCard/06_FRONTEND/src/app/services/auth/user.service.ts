@@ -28,7 +28,7 @@ export class RegisterService {
           resolve(true);
         },
         (error) => {
-          this.snackBar.open("Failed to Create New Account", "", {
+          this.snackBar.open("Failed to Create New Account."+ error, "", {
             duration: 3000,
           });
           reject(error);
