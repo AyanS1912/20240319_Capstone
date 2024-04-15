@@ -163,7 +163,7 @@
 @media (max-width: 768px) {
   /* Add now: New CSS rules for smaller screen sizes */
   .tpn_card {
-    width: 90%; 
+    width: 100%; 
     max-width: none;
   }
 

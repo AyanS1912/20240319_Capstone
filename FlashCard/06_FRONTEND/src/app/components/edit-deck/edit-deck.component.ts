@@ -34,7 +34,7 @@ export class EditDeckComponent implements OnInit {
     this.deckService.getDecks(this.deckId).then(
       (data) => {
         this.deckData = data.data;
-        console.log(this.deckData,"Data")
+
       },
       (error) => {
         console.error("Failed to fetch deck data:", error);
@@ -49,13 +49,11 @@ export class EditDeckComponent implements OnInit {
   onSubmit(formData: any) {
     this.deckService.updateDeck(this.deckId, formData).then(
       (response) => {
-        console.log("Deck updated successfully:", response);
         this.snackBar.open("Deck updated successfully", "", { duration: 3000 });
         this.router.navigate(["/home"]); // Navigate to home page after successful update
       },
       (error) => {
-        console.error("Failed to update deck:", error);
-        this.snackBar.open("Failed to update deck. Please try again.", "", {
+        this.snackBar.open("Failed to update deck. Please try again."+error, "", {
           duration: 3000,
         });
       }

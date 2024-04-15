@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, DoCheck, OnChanges } from "@angular/core";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
 import { Flashcard } from "../../interface/flashcardInterface";
 import { Router } from "@angular/router";
@@ -18,7 +18,13 @@ export class FlashcardsComponent {
   @Input() flashcards: Flashcard[] = [];
   @Input() userDetails: any;
   @Output() reloadCard: EventEmitter<any> = new EventEmitter();
-  @Output() createFlashcardClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() createFlashcardClicked: EventEmitter<void> = new EventEmitter<
+    void
+  >();
+  @Input() htmlFrontText : any = '';
+  @Input() htmlBackText : any = '';
+
+  
 
   constructor(
     private flashcardService: FlashcardServiceService,
@@ -38,8 +44,7 @@ export class FlashcardsComponent {
   //Method to clean your innerHtml code
   sanitizeHtml(html: any): any {
     html = this.sanitizer.bypassSecurityTrustHtml(html);
-    console.log(html)
-    return html
+    return html;
   }
 
   // Method to fetch user details
@@ -114,17 +119,17 @@ export class FlashcardsComponent {
         // User confirmed deletion
         this.flashcardService.deleteFlashcard(flashcardId).then(
           (res) => {
-            this.snackBar.open("Flashcard deleted successfully", "", {
+            
+            this.snackBar.open(res.message, "", {
               duration: 3000,
             });
-            console.log("Flashcard deleted successfully:", res);
             this.reloadCard.emit();
             // Reload flashcards after deletion
           },
           (error) => {
             // Handle error
             console.error("Failed to delete Flashcard :", error);
-            this.snackBar.open("Failed to delete Flashcard", "", {
+            this.snackBar.open(error, "", {
               duration: 3000,
             });
           }
@@ -139,7 +144,7 @@ export class FlashcardsComponent {
     this.voteService.upvoteFlashcard(flashcardId).then(
       (res) => {
         console.log("Flashcard upvoted successfully:", res);
-        this.snackBar.open("Flashcard upvoted successfully", "", {
+        this.snackBar.open(res.message, "", {
           duration: 3000,
         });
         this.reloadCard.emit();
@@ -159,7 +164,7 @@ export class FlashcardsComponent {
     this.voteService.downvoteFlashcard(flashcardId).then(
       (res) => {
         console.log("Flashcard downvoted successfully:", res);
-        this.snackBar.open("Flashcard downvoted successfully", "", {
+        this.snackBar.open(res.message, "", {
           duration: 3000,
         });
         this.reloadCard.emit();
@@ -175,7 +180,7 @@ export class FlashcardsComponent {
   }
 
   onClick(component: string) {
-    this.router.navigate(['/home'])
+    this.router.navigate(["/home"]);
     this.createFlashcardClicked.emit();
   }
 }

@@ -17,7 +17,8 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class ViewFlashcardsComponent implements OnInit {
   allflashcards: Flashcard[] = [];
   @Input() userDetails: any;
- 
+  htmlFrontText: any = '';
+  htmlBackText: any = ''; 
 
   constructor(
     private flashcardService: FlashcardServiceService,
@@ -68,6 +69,11 @@ export class ViewFlashcardsComponent implements OnInit {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
         this.allflashcards = data.data;
+        this.allflashcards.forEach(flashcard => {
+          this.htmlFrontText = flashcard.frontText;
+          this.htmlBackText = flashcard.backText
+          console.log(this.htmlFrontText, this.htmlBackText)
+        })
         this.fetchUserVotes();
       },
       (error) => {

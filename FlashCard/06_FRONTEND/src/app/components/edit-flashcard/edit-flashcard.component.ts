@@ -28,32 +28,6 @@ export class EditFlashcardComponent implements OnInit {
     private deckService: DeckService
   ) {}
 
-  // Initialize flashcardForm with form controls and validators
-  // flashcardForm = new FormGroup({
-  //   tags: new FormControl("", [
-  //     Validators.required,
-  //     Validators.minLength(1),
-  //     Validators.maxLength(10),
-  //     Validators.pattern(/^[a-zA-Z0-9\s,]*$/),
-  //   ]),
-  //   frontText: new FormControl("", [
-  //     Validators.required,
-  //     Validators.minLength(3),
-  //     Validators.maxLength(200),
-  //   ]),
-  //   backText: new FormControl("", [
-  //     Validators.required,
-  //     Validators.minLength(3),
-  //     Validators.maxLength(500),
-  //   ]),
-  //   visibility: new FormControl("", [Validators.required]),
-  //   deckName: new FormControl("", [
-  //     Validators.required,
-  //     Validators.minLength(3),
-  //     Validators.maxLength(50),
-  //     Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/),
-  //   ]),
-  // });
   ngOnInit(): void {
     this.flashcardId = this.route.snapshot.params["id"];
     this.loadFlashcardData();
@@ -104,7 +78,6 @@ export class EditFlashcardComponent implements OnInit {
       .updateFlashcard(this.flashcardId, formData )
       .then(
         (response) => {
-          console.log("Flashcard updated successfully:", response);
           this.snackBar.open("Flashcard updated successfully", "", {
             duration: 3000,
           });

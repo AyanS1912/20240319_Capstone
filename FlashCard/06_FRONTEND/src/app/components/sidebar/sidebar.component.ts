@@ -1,4 +1,4 @@
-import { Output, EventEmitter, Component } from '@angular/core';
+import { Output, EventEmitter, Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
   @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
   isCollapsed: boolean = false;
-  selectedComponent: string = 'home';
+  selectedComponent: string = 'deck-card';
 
 
   constructor (
     private router : Router,
-
+    
   ){}
   // Function to handle button clicks
   handleClick(componentName: string) {

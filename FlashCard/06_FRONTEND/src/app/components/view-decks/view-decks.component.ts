@@ -47,7 +47,6 @@ export class ViewDecksComponent {
         this.mydeckCardDecks = this.mydeckCardDecks.filter(
           (deck) => deck.userId.toString() === this.userData._id.toString()
         );
-        console.log("Personal Decks",this.mydeckCardDecks);
         this.fetchUserVotes();
       },
       (error) => {
@@ -78,10 +77,6 @@ export class ViewDecksComponent {
           deck.downvotes = votes.filter(
             (vote) => vote.voteType === "downvote"
           ).length;
-          console.log("Votes fetched successfully for deck:", deck._id);
-          console.log("User vote type:", deck.userVoteType);
-          console.log("Total upvotes:", deck.upvotes);
-          console.log("Total downvotes:", deck.downvotes);
         })
         .catch((error) => {
           console.error("Failed to fetch votes for deck:", error);

@@ -183,6 +183,10 @@
   margin-right: 5px;
 }
 
+.card-backText, .card-frontText{
+  color : black
+}
+
 @media screen and (max-width: 768px) {
   /* Add now: Adjust card width and margin for smaller screens */
   .flip-card,

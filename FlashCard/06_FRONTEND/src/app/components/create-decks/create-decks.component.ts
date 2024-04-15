@@ -21,7 +21,6 @@ export class CreateDecksComponent {
   onSubmit(formData: any) {
     this.deckService.createDeck(formData).then(
       (response) => {
-        console.log("Deck created successfully:", response);
         this.snackBar.open("Deck created successfully", "", { duration: 3000 });
         this.router.navigate(["/home"]); // Navigate to home page after successful creation
       },
