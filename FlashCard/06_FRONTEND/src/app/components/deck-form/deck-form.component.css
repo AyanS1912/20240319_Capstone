@@ -3,10 +3,16 @@
   font-size: 20px;
   font-weight: 600;
   padding: auto;
-
 }
 
-
+.visibility-form {
+  color: #292c44;
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  left: 0px;
+}
 
 .deckform {
   background-color: #ffffff; /* Form page background color */
@@ -23,13 +29,12 @@
   margin: 50px auto;
 }
 
-.field {
-  position: relative;
-  height: 45px;
-  width: 100%;
-  display: flex;
-  margin-bottom: 16px;
-  background: rgba(255, 255, 255, 0.94);
+
+.form-title {
+  color: #292c44;
+  font-size: 20px;
+  font-weight: 600;
+  padding: auto;
 }
 .mainBody {
   height: 100vh;
@@ -67,9 +72,7 @@
   border-radius: 8px;
   border: none;
   margin-top: 10px;
-  width: calc(
-    100%
-  ); /* Adjusting input width to cover most of the form box */
+  width: calc(100%); /* Adjusting input width to cover most of the form box */
   margin-bottom: 20px;
   height: 40px;
   background-color: #fff;
@@ -82,7 +85,7 @@
 .dropdown {
   height: 40px;
   width: calc(
-    100% - 40px
+    100%
   ); /* Adjusting input width to cover most of the form box */
   margin-bottom: 20px;
   border-radius: 10px;

@@ -1,3 +1,12 @@
+.form-title{
+  color: #292c44;
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        word-spacing: 10px;
+        margin-bottom: 10px;
+}
 .page-title {
   color: #292c44;
   font-size: 20px;
@@ -23,15 +32,6 @@
   /* height: 100vh; */
   display: flex;
   justify-content: center;
-}
-
-.field {
-  position: relative;
-  height: 45px;
-  width: 100%;
-  display: flex;
-  margin-bottom: 16px;
-  background: rgba(255, 255, 255, 0.94);
 }
 
 .shadow-button {
@@ -65,7 +65,7 @@
   border: none;
   margin-top: 10px;
   width: calc(
-    100% - 40px
+    100%
   ); /* Adjusting input width to cover most of the form box */
   margin-bottom: 20px;
   height: 40px;
@@ -79,7 +79,7 @@
 .dropdown {
   height: 40px;
   width: calc(
-    100% - 40px
+    100%
   ); /* Adjusting input width to cover most of the form box */
   margin-bottom: 20px;
   border-radius: 10px;
@@ -98,13 +98,13 @@
 }
 
 @media (min-width: 768px) {
-  .formData {
-    width: 70%; /* Adjusted width for larger screens */
+    .formData {
+      width: 70%; /* Adjusted width for larger screens */
+    }
   }
-}
-
-@media (min-width: 1024px) {
-  .formData {
-    width: 60%; /* Adjusted width for even larger screens */
+  
+  @media (min-width: 1024px) {
+    .formData {
+      width: 60%; /* Adjusted width for even larger screens */
+    }
   }
-}
