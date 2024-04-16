@@ -1,5 +1,3 @@
-<app-flashcard-form
-    [title]="'Create your Flashcard'"
-    [buttonLabel]="'Create and Save'"
-    (submitForm)="onCreateSubmit($event)">
+<app-flashcard-form [title]="'Create your Flashcard'" [buttonLabel]="'Create and Save'"
+    (submitForm)="onCreateSubmit($event)" [frontText]="frontText" [backText]="backText">
 </app-flashcard-form>

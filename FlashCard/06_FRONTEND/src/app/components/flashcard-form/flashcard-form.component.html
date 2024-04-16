@@ -20,8 +20,11 @@
         </h3>
         <form [formGroup]="flashcardForm">
 
-            <input type="text" class="customInputField" formControlName="tags" placeholder="Add Tags"
+            <div class="field">
+                <input type="text" class="customInputField" formControlName="tags" placeholder="Add Tags"
                 (blur)="onBlur('tags')" (focus)="onFocus('tags')" />
+            </div>
+            
             <div *ngIf="flashcardForm.controls.tags.invalid && (flashcardForm.controls.tags.dirty || flashcardForm.controls.tags.touched)"
                 class="error-message">
                 <div *ngIf="flashcardForm.controls.tags.errors?.['required']">Tags are required.</div>
@@ -34,23 +37,30 @@
                     characters and commas.</div>
             </div>
 
-            <select class="dropdown" formControlName="visibility" (blur)="onBlur('visibility')"
+            <div class="field">
+                <select class="dropdown" formControlName="visibility" (blur)="onBlur('visibility')"
                 (focus)="onFocus('visibility')">
                 <option value="" disabled selected>Select Visibility State</option>
                 <option value="public">Public</option>
                 <option value="private">Private</option>
             </select>
+            </div>
+            
             <div *ngIf="flashcardForm.controls.visibility.invalid && (flashcardForm.controls.visibility.dirty || flashcardForm.controls.visibility.touched)"
                 class="error-message">
                 <div *ngIf="flashcardForm.controls.visibility.errors?.['required']">Visibility state is required.
                 </div>
             </div>
 
-            <select class="dropdown" formControlName="deckName" (blur)="onBlur('deckName')"
+
+            <div class="field">
+                <select class="dropdown" formControlName="deckName" (blur)="onBlur('deckName')"
                 (focus)="onFocus('deckName')">
                 <option value="" disabled selected>Select Deck to Add</option>
                 <option *ngFor="let deck of decks" [value]="deck._id">{{ deck.name }}</option>
             </select>
+            </div>
+            
             <div *ngIf="flashcardForm.controls.deckName.invalid && (flashcardForm.controls.deckName.dirty || flashcardForm.controls.deckName.touched)"
                 class="error-message">
                 <div *ngIf="flashcardForm.controls.deckName.errors?.['required']">Please select a deck to add.</div>
@@ -60,11 +70,9 @@
         </form>
 
         <br>
-        <h3><b>Enter the FrontText</b></h3>
         <editor apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" [init]="editorConfig" [(ngModel)]="frontText">
         </editor>
         <br>
-        <h3><b>Enter the BackText</b></h3>
         <editor apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" [init]="editorConfig" [(ngModel)]="backText">
         </editor>
 

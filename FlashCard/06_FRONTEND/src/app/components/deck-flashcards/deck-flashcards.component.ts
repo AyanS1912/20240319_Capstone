@@ -19,6 +19,7 @@ export class DeckFlashcardsComponent implements OnInit {
   myflashcards: Flashcard[] = [];
   deckId: string | null = "";
   userDetails: any;
+  userId : any;
   deckTitle: string = "";
   constructor(
     private flashcardService: FlashcardServiceService,
@@ -32,6 +33,7 @@ export class DeckFlashcardsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getUserDetails();
     this.route.paramMap.subscribe((params) => {
       this.deckId = params.get("id");
       if (this.deckId) {
@@ -39,7 +41,7 @@ export class DeckFlashcardsComponent implements OnInit {
         this.fetchdecksFlashcards(this.deckId);
       }
     });
-    this.getUserDetails();
+    
     this.initializeFlipCards();
   }
 
@@ -58,6 +60,8 @@ export class DeckFlashcardsComponent implements OnInit {
     this.userService.getUserDetails().then(
       (data) => {
         this.userDetails = data;
+        this.userId = this.userDetails._id
+        console.log(this.userId)
       },
       (error) => {
         console.error("Failed to fetch user details:", error);
@@ -78,13 +82,20 @@ export class DeckFlashcardsComponent implements OnInit {
   fetchdecksFlashcards(deckId: string) {
     this.flashcardService.getAllFlashcards().then(
       (data: any) => {
-        this.myflashcards = data.data;
-        console.log("All", this.myflashcards);
-
+        this.myflashcards = data.data;        
         this.myflashcards = this.myflashcards.filter(
-          (card) => card.deckId.toString() === deckId
+          (card) => {
+            // If the user owns the flashcard, include 
+            if (card.userId.toString() === this.userId) {
+
+              return card.deckId.toString() === deckId;
+            } else {
+              // If the user doesn't own the flashcard, include only if it's public
+              return card.deckId.toString() === deckId && card.visibility === 'public';
+            }
+          }
         );
-        console.log("Mine", this.myflashcards);
+        // console.log("Mine", this.myflashcards);
         this.fetchUserVotes();
       },
       (error) => {

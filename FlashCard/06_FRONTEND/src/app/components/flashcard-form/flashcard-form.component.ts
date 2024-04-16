@@ -17,17 +17,12 @@ export class FlashcardFormComponent implements OnInit {
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
   flashcardForm: any;
   userId: string = "";
+  editorConfig: any;
 
   @Input() frontText: string = "";
   @Input() backText: string = "";
 
-  editorConfig = {
-    plugins: "lists link image paste help wordcount",
-    toolbar:
-      "undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help",
-    skin: "oxide-dark",
-    content_css: "dark",
-  };
+
 
   // Object to track focus state of input fields
   inputFocus: { [key: string]: boolean } = {
@@ -60,8 +55,17 @@ export class FlashcardFormComponent implements OnInit {
 
   constructor(
     private userService: RegisterService,
-    private deckService: DeckService
-  ) {}
+    private deckService: DeckService,
+    
+  ) {
+    this.editorConfig = {
+      plugins: "lists link image paste help wordcount",
+      toolbar:
+        "undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help",
+      skin: "oxide-dark",
+      content_css: "dark",
+    };
+  }
   // Method to handle input focus event
   onFocus(controlName: string) {
     this.inputFocus[controlName] = true;
