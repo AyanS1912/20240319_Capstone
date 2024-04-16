@@ -1,7 +1,6 @@
-
 <div class="deck-title">
-    <h1>{{deckTitle}}</h1>
-  </div>
+  <h1><b>{{deckTitle}} </b></h1>
+</div>
 <div class="deck-container">
-    <app-flashcards [flashcards]="myflashcards" (reloadCard)="recallCard()"></app-flashcards>
-  </div>
+  <app-flashcards [flashcards]="myflashcards" (reloadCard)="recallCard()" (createFlashcardClicked)="createCard()" ></app-flashcards>
+</div>

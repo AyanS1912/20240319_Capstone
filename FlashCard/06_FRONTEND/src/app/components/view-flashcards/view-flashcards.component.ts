@@ -18,7 +18,8 @@ export class ViewFlashcardsComponent implements OnInit {
   allflashcards: Flashcard[] = [];
   @Input() userDetails: any;
   htmlFrontText: any = '';
-  htmlBackText: any = ''; 
+  htmlBackText: any = '';
+  @Output() createCard: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private flashcardService: FlashcardServiceService,
@@ -189,5 +190,8 @@ export class ViewFlashcardsComponent implements OnInit {
     );
   }
 
+  OncreateFlashcardClicked(){
+    this.createCard.emit()
+  }
 
 }

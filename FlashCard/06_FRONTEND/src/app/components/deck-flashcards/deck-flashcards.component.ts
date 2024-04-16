@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FlashcardServiceService } from "../../services/flashcard/flashcard-service.service";
 import { Flashcard } from "../../interface/flashcardInterface";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -9,6 +9,8 @@ import { MatDialog } from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 import { FlashcardVote } from "../../interface/flashcardvote";
 import { DeckService } from "../../services/deck/deck.service";
+import { SharedService } from "../../services/shared/shared.service";
+
 
 @Component({
   selector: "app-deck-flashcards",
@@ -21,6 +23,7 @@ export class DeckFlashcardsComponent implements OnInit {
   userDetails: any;
   userId : any;
   deckTitle: string = "";
+
   constructor(
     private flashcardService: FlashcardServiceService,
     private router: Router,
@@ -29,7 +32,9 @@ export class DeckFlashcardsComponent implements OnInit {
     private voteService: VoteService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private deckService: DeckService
+    private deckService: DeckService,
+    private sharedService : SharedService
+    
   ) {}
 
   ngOnInit(): void {
@@ -135,5 +140,12 @@ export class DeckFlashcardsComponent implements OnInit {
         }
       );
     }
+  }
+
+  createCard(): void {
+    console.log("call hua toh deck-flash poe")
+    this.sharedService.createCard = true
+    this.router.navigate(['/home'])
+    console.log(this.sharedService.createCard)
   }
 }

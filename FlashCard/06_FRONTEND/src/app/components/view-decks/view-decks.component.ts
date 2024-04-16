@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { Deck } from "../../interface/deckInterface";
 import { DeckService } from "../../services/deck/deck.service";
 import { RegisterService } from "../../services/auth/user.service";
@@ -14,6 +14,7 @@ export class ViewDecksComponent {
   // @Input() deck!: Deck;
   mydeckCardDecks: Deck[] = [];
   userData: any;
+  @Output() createDeck: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private deckService: DeckService,
@@ -88,4 +89,9 @@ export class ViewDecksComponent {
   reloadDecks() {
     this.loadDecks();
   }
+
+  onCreateDeckClicked() {
+    this.createDeck.emit();
+  }
+
 }

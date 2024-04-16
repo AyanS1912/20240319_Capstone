@@ -14,17 +14,21 @@
 
             <div style="width: 100%;">
                 <input type="text" class="customInputField" formControlName="tags" placeholder="Add Tags"
-                (blur)="onBlur('tags')" (focus)="onFocus('tags')" />
+                    (blur)="onBlur('tags')" (focus)="onFocus('tags')" />
             </div>
-            <div class="error-block" *ngIf="flashcardForm.controls.tags.invalid && (flashcardForm.controls.tags.dirty || flashcardForm.controls.tags.touched)"
-                >
-                <div class="error-message" *ngIf="flashcardForm.controls.tags.errors?.['required']">Tags are required.</div>
-                <div class="error-message" *ngIf="flashcardForm.controls.tags.errors?.['minlength']">Tags must be at least 3 character
+            <div class="error-block"
+                *ngIf="flashcardForm.controls.tags.invalid && (flashcardForm.controls.tags.dirty || flashcardForm.controls.tags.touched)">
+                <div class="error-message" *ngIf="flashcardForm.controls.tags.errors?.['required']">Tags are required.
+                </div>
+                <div class="error-message" *ngIf="flashcardForm.controls.tags.errors?.['minlength']">Tags must be at
+                    least 3 character
                     long.
                 </div>
-                <div class="error-message" *ngIf="flashcardForm.controls.tags.errors?.['maxlength']">Tags cannot exceed 10 characters.
+                <div class="error-message" *ngIf="flashcardForm.controls.tags.errors?.['maxlength']">Tags cannot exceed
+                    10 characters.
                 </div>
-                <div class="error-message" *ngIf="flashcardForm.controls.tags.errors?.['pattern']">Tags can only contain alphanumeric
+                <div class="error-message" *ngIf="flashcardForm.controls.tags.errors?.['pattern']">Tags can only contain
+                    alphanumeric
                     characters and commas.</div>
             </div>
 
@@ -36,7 +40,8 @@
             </select>
             <div *ngIf="flashcardForm.controls.visibility.invalid && (flashcardForm.controls.visibility.dirty || flashcardForm.controls.visibility.touched)"
                 class="error-block">
-                <div class="error-message" *ngIf="flashcardForm.controls.visibility.errors?.['required']">Visibility state is required.
+                <div class="error-message" *ngIf="flashcardForm.controls.visibility.errors?.['required']">Visibility
+                    state is required.
                 </div>
             </div>
 
@@ -47,22 +52,24 @@
             </select>
             <div *ngIf="flashcardForm.controls.deckName.invalid && (flashcardForm.controls.deckName.dirty || flashcardForm.controls.deckName.touched)"
                 class="error-block">
-                <div class="error-message" *ngIf="flashcardForm.controls.deckName.errors?.['required']">Please select a deck to add.</div>
+                <div class="error-message" *ngIf="flashcardForm.controls.deckName.errors?.['required']">Please select a
+                    deck to add.</div>
             </div>
 
 
         </form>
 
         <br>
-        
+
         <editor apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" [init]="editorConfig" [(ngModel)]="frontText">
         </editor>
         <br>
-        <editor  apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" [init]="editorConfig" [(ngModel)]="backText">
+        <editor apiKey="9npfszuuth1huubd8fpzs5hxx40ff5tgte871awbj9uhdcea" [init]="editorConfig" [(ngModel)]="backText">
         </editor>
 
         <br>
-        <button [disabled]="!flashcardForm.valid" type="submit" class="shadow-button" (click)="onSubmit()">{{ buttonLabel }}</button>
+        <button [disabled]="!flashcardForm.valid" type="submit" class="shadow-button" (click)="onSubmit()">{{
+            buttonLabel }}</button>
 
         <br>
 

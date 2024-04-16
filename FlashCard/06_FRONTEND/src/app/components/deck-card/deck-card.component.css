@@ -1,4 +1,11 @@
-.add-deck {
+#deck-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-flashcard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,17 +13,16 @@
   text-align: center;
 }
 
-.add-deck-icon {
+.add-flashcard-icon {
   margin-top: 20px;
   padding: 10px;
   border: 2px solid #000;
   border-radius: 5px;
 }
 
-.add-deck-icon i {
+.add-flashcard-icon i {
   margin-right: 5px;
 }
-
 
 .tpn_card .image-container img {
   border-radius: 23px;
@@ -153,6 +159,8 @@
   gap: 30px;
   margin-top: 5rem;
 }
+
+
 
 @media (min-width: 768px) {
   .custom-flex-container {

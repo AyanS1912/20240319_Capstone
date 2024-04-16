@@ -1,26 +1,37 @@
-import { Output, EventEmitter, Component, OnInit, OnChanges } from '@angular/core';
+import { Output, EventEmitter, Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedService } from '../../services/shared/shared.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent {
+export class SidebarComponent implements DoCheck{
   @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
   isCollapsed: boolean = false;
   selectedComponent: string = 'deck-card';
+  forFlashCreate : boolean = false
 
 
   constructor (
     private router : Router,
+    private sharedService : SharedService
     
   ){}
+
+  ngDoCheck(): void {
+      this.forFlashCreate = this.sharedService.createCard
+      if(this.forFlashCreate){
+        this.selectedComponent ='create-flashcard'
+        this.handleClick(this.selectedComponent)
+      }
+  }
   // Function to handle button clicks
   handleClick(componentName: string) {
     this.selectedComponent = componentName;
-    console.log("curerent",componentName)
-    this.buttonClicked.emit(componentName);    
+    this.buttonClicked.emit(componentName);
+    this.sharedService.createCard = false   
   }
 
   // Logout the user

@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnInit, DoCheck, OnChanges } from "@angular/core";
 import { Deck } from "../../interface/deckInterface";
 import { DeckService } from "../../services/deck/deck.service";
 import { RegisterService } from "../../services/auth/user.service";
 import { Router } from "@angular/router";
 import { VoteService } from "../../services/vote/vote.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { SharedService } from "../../services/shared/shared.service";
 
 @Component({
   selector: "app-home",
@@ -15,7 +16,6 @@ export class HomeComponent implements OnInit {
   selectedComponent: string = "deck-card";
   isProfileOpen: boolean = false;
   deckCardDecks: Deck[] = [];
-
   upvotes: number = 0;
   downvotes: number = 0;
   userVote: string = "";
@@ -26,15 +26,15 @@ export class HomeComponent implements OnInit {
     private userService: RegisterService,
     private router: Router,
     private voteService: VoteService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+
   ) {
-    console.log(this.selectedComponent)
+
   }
 
   ngOnInit(): void {
     this.getUserDetails();
-    this.loadDecks();
-    this.selectedComponent = "deck-card";
+    this.loadDecks();    
   }
 
   // Fetch user details
@@ -140,4 +140,14 @@ export class HomeComponent implements OnInit {
     }
     this.isProfileOpen = open;
   }
+
+  onCreateDeckClicked() {
+    console.log("aagaya to hu yrr")
+    this.selectedComponent = "create-deck";
+  }
+
+  createFlashcard(){
+    this.selectedComponent = "create-flashcard";
+  }
+  
 }

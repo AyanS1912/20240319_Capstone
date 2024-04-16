@@ -179,8 +179,7 @@ export class FlashcardsComponent {
     );
   }
 
-  onClick(component: string) {
-    this.router.navigate(["/home"]);
+  createNewCard() {
     this.createFlashcardClicked.emit();
   }
 }

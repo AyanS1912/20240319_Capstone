@@ -1,17 +1,20 @@
 <div class="info">
     <div class="custom-flex-container">
 
-        <!-- <ng-container *ngIf="decks.length === 0">  
-            <div class="add-deck">
-                <h3> No Decks Available</h3>
-                <div class="add-deck-icon" >
-                    <i class="pi pi-plus" style="font-size: 3rem;" ></i>
+        <ng-container *ngIf="decks.length === 0">
+
+            <div class="add-flashcard">
+                <h3> No Deck Available</h3>
+                <div class="add-flashcard-icon" (click)="createNewDeck()">
+                    <i class="pi pi-plus" style="font-size: 3rem;"></i>
                 </div>
                 <span>Click this to add Deck</span>
             </div>
-        </ng-container> -->
 
-        <ng-container *ngIf=" decks.length > 0">
+
+        </ng-container>
+
+        <ng-container *ngIf="decks.length > 0">
             <div class="tpn_card" *ngFor="let deck of decks">
                 <div class="card-content">
                     <div class="image-container">
@@ -64,7 +67,7 @@
                             </button>
                             <button class="downvote-button">
                                 <i class="pi pi-thumbs-down" (click)="downvoteDeck(deck._id)"></i>
-                    
+
                                 {{ deck.downvotes }}
                             </button>
                         </div>

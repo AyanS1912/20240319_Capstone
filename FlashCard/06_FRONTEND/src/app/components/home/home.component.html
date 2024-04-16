@@ -1,26 +1,26 @@
 <div class="wrapper">
-    <app-sidebar (buttonClicked)="onButtonClicked($event)" (createFlashcardClicked)="onCreateFlashcardClicked()"></app-sidebar>
+    <app-sidebar (buttonClicked)="onButtonClicked($event)" (createFlashcardClicked)="onCreateFlashcardClicked()" ></app-sidebar>
     <div class="main_content">
         <app-navbar (profileClicked)="openMyProfile($event)" (searchResults)="handleSearchResults($event)" (searchClicked)="onSearchClicked()" [selectedComponent]="selectedComponent"></app-navbar>
         <div class="info">
             <ng-container *ngIf="selectedComponent === 'deck-card'">
-                <app-deck-card [decks]="deckCardDecks" (reloadDecks)="loadDecks()"></app-deck-card>
+                <app-deck-card [decks]="deckCardDecks" (reloadDecks)="loadDecks()" (createDeckClicked)="onCreateDeckClicked()"></app-deck-card>
             </ng-container>
             <ng-container *ngIf="selectedComponent === 'view-decks'">
-                <app-view-decks></app-view-decks>
+                <app-view-decks (createDeck)="onCreateDeckClicked()"></app-view-decks>
             </ng-container>
             <ng-container *ngIf="selectedComponent === 'create-deck'">
                 <app-create-decks></app-create-decks>
             </ng-container>
             <ng-container *ngIf="selectedComponent === 'view-flashcards'">
-                <app-view-flashcards ></app-view-flashcards>
+                <app-view-flashcards (createCard)="createFlashcard()" ></app-view-flashcards>
             </ng-container>
             <ng-container *ngIf="selectedComponent === 'create-flashcard'">
-                <app-create-flashcard></app-create-flashcard>
+                <app-create-flashcard ></app-create-flashcard>
             </ng-container>
-            <ng-container *ngIf="selectedComponent === 'deck-card'">
+            <!-- <ng-container *ngIf="selectedComponent === 'deck-card'">
                 <app-deck-card></app-deck-card>
-            </ng-container>
+            </ng-container> -->
             <ng-container *ngIf="isProfileOpen">
                 <app-myprofile></app-myprofile>
             </ng-container>
