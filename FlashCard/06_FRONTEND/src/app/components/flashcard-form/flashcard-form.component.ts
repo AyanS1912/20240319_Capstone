@@ -15,6 +15,7 @@ export class FlashcardFormComponent implements OnInit {
   @Input() title: string = "";
   @Input() buttonLabel: string = "";
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
+  decksLength : number = 0;
   flashcardForm: any;
   userId: string = "";
   editorConfig: any;
@@ -96,7 +97,7 @@ export class FlashcardFormComponent implements OnInit {
     this.deckService.getAllDecks().then(
       (data: any) => {
         this.decks = data.data;
-        // console.log("1",this.decks)
+        
 
         this.decks = this.decks.filter(
           (deck: Deck) => deck.userId.toString() === this.userId.toString()

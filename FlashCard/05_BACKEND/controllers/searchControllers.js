@@ -114,10 +114,13 @@ const search = async (req, res) => {
       const downvotesA = voteA ? voteA.downvotes : 0;
       const upvotesB = voteB ? voteB.upvotes : 0;
       const downvotesB = voteB ? voteB.downvotes : 0;
-      const totalVotesA = upvotesA - downvotesA;
-      const totalVotesB = upvotesB - downvotesB;
-      return totalVotesB - totalVotesA;
-      
+    
+      // Sort by highest upvotes first
+      if (upvotesA !== upvotesB) {
+        return upvotesB - upvotesA;
+      }
+      // If upvotes are equal, sort by fewer downvotes
+      return downvotesA - downvotesB;
     });
 
     // Return sorted results in the response

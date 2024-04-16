@@ -22,7 +22,7 @@ export class CreateFlashcardComponent {
   userId: string = "";
   flashcardId: string = "";
 
-  decks: Deck[] = [];
+  // decks: Deck[] = [];
   constructor(
     private flashcardService: FlashcardServiceService,
     private snackBar: MatSnackBar,

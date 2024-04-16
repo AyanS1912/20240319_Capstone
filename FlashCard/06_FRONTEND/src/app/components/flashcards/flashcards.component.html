@@ -1,7 +1,7 @@
 <div class="info">
 
     <div id="card-container2">
-        <ng-container>
+        <ng-container *ngIf="flashcards.length ===0">
             <div class="add-flashcard">
                 <h3> No Flashcard Available</h3>
                 <div class="add-flashcard-icon" (click)="createNewCard()">

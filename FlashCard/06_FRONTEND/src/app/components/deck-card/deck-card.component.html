@@ -1,18 +1,20 @@
+
+<ng-container *ngIf="decks.length === 0">
+
+    <div class="add-flashcard">
+        <h3> No Deck Available</h3>
+        <div class="add-flashcard-icon" (click)="createNewDeck()">
+            <i class="pi pi-plus" style="font-size: 3rem;"></i>
+        </div>
+        <span>Click this to add Deck</span>
+    </div>
+
+
+</ng-container>
+
 <div class="info">
     <div class="custom-flex-container">
 
-        <ng-container *ngIf="decks.length === 0">
-
-            <div class="add-flashcard">
-                <h3> No Deck Available</h3>
-                <div class="add-flashcard-icon" (click)="createNewDeck()">
-                    <i class="pi pi-plus" style="font-size: 3rem;"></i>
-                </div>
-                <span>Click this to add Deck</span>
-            </div>
-
-
-        </ng-container>
 
         <ng-container *ngIf="decks.length > 0">
             <div class="tpn_card" *ngFor="let deck of decks">

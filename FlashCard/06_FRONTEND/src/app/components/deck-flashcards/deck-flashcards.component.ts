@@ -143,7 +143,7 @@ export class DeckFlashcardsComponent implements OnInit {
   }
 
   createCard(): void {
-    console.log("call hua toh deck-flash poe")
+    // console.log("call hua toh deck-flash poe")
     this.sharedService.createCard = true
     this.router.navigate(['/home'])
     console.log(this.sharedService.createCard)
