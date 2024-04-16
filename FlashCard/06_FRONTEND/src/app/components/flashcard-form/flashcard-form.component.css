@@ -52,11 +52,15 @@
   z-index: 1000;
   background-size: 100% 300%;
   transition: background-position 0.5s ease-in-out;
+  margin-top: auto;
+  left: 0px; 
 }
 
-.shadow-button {
-  margin-top: auto;
-  left: 0px; /* Aligning button at the bottom */
+.shadow-button:disabled {
+  background: #cccccc; 
+  border-color: #999999; 
+  color: #666666; 
+  cursor: not-allowed;  
 }
 
 .customInputField {
@@ -96,6 +100,7 @@
 .error-message {
   color: red;
 }
+
 
 @media (min-width: 768px) {
     .formData {

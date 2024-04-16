@@ -66,7 +66,7 @@
                 <div *ngIf="deckForm.controls.visibility.errors?.['required']">Visibility is required</div>
             </div>
 
-            <button type="submit" class="shadow-button" [disabled]="deckForm.invalid">{{ submitButtonLabel }}</button>
+            <button type="submit" class="shadow-button" [disabled]="!deckForm.valid">{{ submitButtonLabel }}</button>
         </form>
     </div>
 

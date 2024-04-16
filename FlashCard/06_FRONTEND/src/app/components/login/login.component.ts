@@ -69,7 +69,10 @@ export class LoginComponent implements OnInit{
         this.router.navigate(['/home']);
       },
       (error) => {
-        this.snackBar.open("Login failed. Please check your credentials and try again.", "", { duration: 3000 });
+        
+        const mesg =error.error.message
+        console.log(mesg)
+        this.snackBar.open(`${mesg}.`, "", { duration: 3000 });
       }
     );
   }

@@ -27,7 +27,7 @@ export class NavbarComponent implements DoCheck {
         // console.log(this.navTitle)
       }
       else if(this.selectedComponent==='create-deck'){
-        this.navTitle = 'Create a Deck'
+        this.navTitle = 'Create A Deck'
         // console.log(this.navTitle)
       }
       else if(this.selectedComponent==='view-flashcards'){
@@ -35,7 +35,7 @@ export class NavbarComponent implements DoCheck {
         // console.log(this.navTitle)
       }
       else if(this.selectedComponent==='create-flashcard'){
-        this.navTitle = 'Create a Flashcard'
+        this.navTitle = 'Create A Flashcard'
         // console.log(this.navTitle)
       }
   }

@@ -52,11 +52,6 @@ export class RegisterComponent implements OnInit {
     } else if (controlName === "password") {
       this.passwordInputFocused = true;
     }
-    console.log(
-      this.emailInputFocused,
-      this.usernameInputFocused,
-      this.passwordInputFocused
-    );
   }
 
    // Method to handle input blur events
@@ -68,11 +63,6 @@ export class RegisterComponent implements OnInit {
     } else if (controlName === "password") {
       this.passwordInputFocused = false;
     }
-    console.log(
-      this.emailInputFocused,
-      this.usernameInputFocused,
-      this.passwordInputFocused
-    );
   }
 
   constructor(
@@ -101,16 +91,14 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(userData).then(
       () => {
         // Registration successful
-        console.log("Registration successful");
         this.snackBar.open("Registration done successfully. Navigating to Login Page", "", {
           duration: 3000,
         });
         this.router.navigate(['/login'])
       },
       (error) => {
-        // Registration failed
-        console.error("Registration failed:", error);
-        this.snackBar.open("Registration failed. Please try again.", "", {
+        const mesg = error.error.message
+        this.snackBar.open(`${mesg}`, "", {
           duration: 3000,
         });
       }

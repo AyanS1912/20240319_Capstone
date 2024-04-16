@@ -78,6 +78,13 @@
   background: #2691d9;
 }
 
+.field input[type="submit"]:disabled {
+  background: #cccccc; 
+  border-color: #999999; 
+  color: #666666; 
+  cursor: not-allowed;  
+}
+
 .signup {
   font-size: 15px;
   color: white;

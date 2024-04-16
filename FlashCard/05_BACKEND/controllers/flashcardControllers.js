@@ -100,7 +100,7 @@ const postFlashcard = async (req, res) => {
         // Extract flashcard information from request body
         const { frontText, backText, tags, visibility } = req.body
 
-        
+        console.log(req.body)
         // Validate front text
         if (!validateFrontText(frontText)) {
             return res.status(400).json({ error: "Invalid front text format. Front text can be alphanumeric or in HTML format." });

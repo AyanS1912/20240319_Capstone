@@ -26,23 +26,23 @@ const register = async (req, res) => {
         // Check if username, email, and password are valid
         if (!isValidUsername(username)) {
             return res.status(400).send({
-                error:
+                message:
                     "Invalid username. Username must contain only letters, numbers, underscores, and hyphens, and be between 3 to 20 characters long.",
             })
         }
 
         if (!isValidEmail(email)) {
-            return res.status(400).send({ error: "Invalid email address." })
+            return res.status(400).send({ message: "Invalid email address." })
         }
 
         if (!isValidPassword(password)) {
             return res.status(400).send({
-                error: "Invalid password. Password must be at least 6 characters long.",
+                message: "Invalid password. Password must be at least 6 characters long.",
             })
         }
 
         if (!password) {
-            return res.status(400).send({ error: "Password is required." })
+            return res.status(400).send({ message: "Password is required." })
         }
         // Check if username and email already exist
         const usernameExist = await User.findOne({ username: username })
@@ -50,14 +50,14 @@ const register = async (req, res) => {
 
         if (usernameExist) {
             return res.status(401).send({
-                error: "Username already exists. Please try another Username.",
+                message: "Username already exists. Please try another Username.",
             })
         }
 
         if (emailExist) {
             return res
                 .status(401)
-                .send({ error: "Email already exists. Please try another email." })
+                .send({ message: "Email already exists. Please try another email." })
         }
         // Hash the password
         const hashedPassword = await hashPassword(password)
@@ -95,7 +95,7 @@ const login = async (req, res) => {
         const checkPassword = await verifyPassword(user, password)
 
         if (!checkPassword) {
-            return res.status(401).send({ error: "Incorrect password." })
+            return res.status(401).send({ message: "Incorrect password." })
         }
 
         // User is authenticated, create JWT token

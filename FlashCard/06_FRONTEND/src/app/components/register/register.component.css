@@ -20,6 +20,13 @@
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
 }
+
+.rules {
+  color: yellowgreen;
+  width: 100%;
+  text-align: left;
+}
+
 .content {
   position: absolute;
   top: 50%;
@@ -27,7 +34,7 @@
   z-index: 999;
   text-align: center;
   padding: 60px 32px;
-  width: 370px;
+  width: 550px;
   transform: translate(-50%, -50%);
   background: rgba(255, 255, 255, 0.04);
   box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
@@ -79,6 +86,13 @@
   background: #2691d9;
 }
 
+.field input[type="submit"]:disabled {
+  background: #cccccc;
+  border-color: #999999;
+  color: #666666;
+  cursor: not-allowed;
+}
+
 .signup {
   font-size: 15px;
   color: white;
@@ -93,5 +107,5 @@
 }
 
 .error-message {
-  color: red
+  color: red;
 }

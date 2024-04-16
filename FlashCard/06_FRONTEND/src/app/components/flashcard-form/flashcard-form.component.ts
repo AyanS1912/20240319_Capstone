@@ -37,16 +37,13 @@ export class FlashcardFormComponent implements OnInit {
     this.flashcardForm = new FormGroup({
       tags: new FormControl("", [
         Validators.required,
-        Validators.minLength(1),
+        Validators.minLength(3),
         Validators.maxLength(10),
         Validators.pattern(/^[a-zA-Z0-9\s,]*$/),
       ]),
       visibility: new FormControl("", [Validators.required]),
       deckName: new FormControl("", [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50),
-        Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/),
       ]),
     });
 
@@ -122,7 +119,7 @@ export class FlashcardFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.flashcardForm) {
+    if (this.flashcardForm.valid) {
       // Form is valid, continue with flashcard creation
       const formData = {
         tags: this.flashcardForm.value.tags
