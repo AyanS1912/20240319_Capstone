@@ -4,7 +4,7 @@
   "description": "FlashCard(Flash Mastery) FlashMastery is a versatile flashcard app designed for efficient learning. Create custom flashcard decks, master them with spaced repetition, and share or collaborate with others effortlessly. Perfect for students, and  professionals alike.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha test --recursive",
     "start": "nodemon index.js"
   },
   "keywords": [
@@ -30,6 +30,12 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.2",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "sinon": "^17.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.5",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.1.0"
   }
 }

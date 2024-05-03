@@ -15,7 +15,7 @@
 .flip-card,
 .flip-card-click {
   display: inline-block;
-  background-color: transparent;
+  background-color: #f9f9f9;
   width: 450px;
   height: 450px;
   margin-right: 12px;
@@ -85,6 +85,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: transparent;
 }
 
 .footer {
@@ -189,9 +190,12 @@
 
 @media screen and (max-width: 768px) {
   /* Add now: Adjust card width and margin for smaller screens */
-  .flip-card,
-  .flip-card-click {
-    width: calc(50% - 24px); /* Adjust card width for smaller screens */
+
+  .flip-card-click{
+    width: 100%;
+  }
+  .flip-card {
+    width: 100%; /* Adjust card width for smaller screens */
     margin: 10px; /* Add margin between cards */
   }
 
@@ -199,11 +203,11 @@
     display: flex;
     flex-direction: column; /* Change layout to stack cards vertically */
     align-items: center; /* Center cards horizontally */
+    width:50%
   }
 
-  .flip-card,
-  .flip-card-click {
-    width: calc(100% - 24px); /* Make cards full width with margin */
+  .flip-card,.flip-card-inner{
+    width: calc(90%); /* Make cards full width with margin */
     margin: 10px; /* Add margin between cards */
   }
 

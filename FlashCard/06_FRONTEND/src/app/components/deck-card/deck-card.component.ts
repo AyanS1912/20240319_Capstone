@@ -98,7 +98,7 @@ export class DeckCardComponent implements OnInit {
         this.snackBar.open(data.message, "", { duration: 3000 });
       })
       .catch((error) => {
-        console.error("Failed to upvote deck:", error);
+        // console.error("Failed to upvote deck:", error);
         this.snackBar.open("Failed to upvote deck. Please try again.", "", {
           duration: 3000,
         });
@@ -136,6 +136,6 @@ export class DeckCardComponent implements OnInit {
 
   createNewDeck() {
     this.createDeckClicked.emit();
-    console.log("emiited")
+    // console.log("emiited")
   }
 }

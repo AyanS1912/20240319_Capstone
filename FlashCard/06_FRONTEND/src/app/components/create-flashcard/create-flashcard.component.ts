@@ -37,7 +37,7 @@ export class CreateFlashcardComponent {
       // console.log(this.frontText, this.backText);
       // Check if deckId is provided and is a non-empty string
       if (formData.deckId) {
-        console.log(formData);
+        // console.log(formData);
 
         this.flashcardService
           .createFlashcard(formData.deckId, formData)
@@ -49,7 +49,7 @@ export class CreateFlashcardComponent {
             this.router.navigate(["/home"]); // Navigate to home page after successful creation
           })
           .catch((error: any) => {
-            console.error("Error creating flashcard:", error);
+            // console.error("Error creating flashcard:", error);
             this.snackBar.open(
               "Failed to create flashcard. Please try again.",
               "",

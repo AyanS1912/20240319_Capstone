@@ -50,7 +50,7 @@ import { DeckFormComponent } from './components/deck-form/deck-form.component';
     ConfirmationDialogComponent,
     FlashcardsComponent,
     FlashcardFormComponent,
-    DeckFormComponent,
+    DeckFormComponent
 
     
   ],

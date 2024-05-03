@@ -9,7 +9,7 @@ const cors = require("cors")
 
 // Create an Express app
 const app = express()
-app.use(cors())
+// app.use(cors())
 // Parse JSON requests
 app.use(express.json())
 app.use(cors())
@@ -61,3 +61,6 @@ const startServer = async () => {
 
 // Call the asynchronous functions
 connectToMongoDB().then(startServer)
+
+//Export app module for test
+module.exports = app;
